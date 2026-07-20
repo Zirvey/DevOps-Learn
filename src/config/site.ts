@@ -1,4 +1,6 @@
 /** Site identity — learning platform (not handbook) */
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 export const siteConfig = {
   name: 'DevOps',
   tagline: 'Платформа для обучения DevOps и Office IT',
@@ -7,8 +9,8 @@ export const siteConfig = {
 
   /** Hero showcase — положите файлы в public/media/ */
   heroVideo: {
-    mp4: '/media/hero-showcase.mp4',
-    webm: '/media/hero-showcase.webm',
-    poster: '/media/hero-showcase-poster.jpg',
+    mp4: asset('media/hero-showcase.mp4'),
+    webm: asset('media/hero-showcase.webm'),
+    poster: asset('media/hero-showcase-poster.jpg'),
   },
 } as const

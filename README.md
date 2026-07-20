@@ -1,32 +1,99 @@
-# React + TypeScript + Vite
+# DevOps Learn
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Онлайн-учебник по DevOps и Office IT** — структурированный курс с уроками, практикой и отслеживанием прогресса.
 
-Currently, two official plugins are available:
+**Сайт:** [zirvey.github.io/DevOps-Learn](https://zirvey.github.io/DevOps-Learn/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## О проекте
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+DevOps Learn — бесплатная платформа для самостоятельного изучения DevOps от основ до production-практики. Материал разбит на модули и главы: теория, примеры команд, практические задания и тесты. Прогресс сохраняется локально в браузере.
 
-## Expanding the Oxlint configuration
+Подходит начинающим инженерам, студентам и тем, кто переходит в DevOps / SRE / системное администрирование.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Что внутри
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+| | |
+|---|---|
+| **50 глав** | Linux, Git, Docker, Kubernetes, CI/CD, Terraform, Ansible, AWS, мониторинг, безопасность и др. |
+| **15 модулей** | От «Что такое DevOps» до Office IT: сети, Wi‑Fi, Omada, Fortinet, Windows Server |
+| **RU / EN** | Переключение языка интерфейса и контента |
+| **Тренажёр терминала** | Интерактивная проверка команд Linux и Git прямо в уроке |
+| **Тёмная / светлая тема** | Переключатель в шапке |
+| **Прогресс** | Отмечай пройденные главы — процент сохраняется в `localStorage` |
+
+### Модули курса
+
+- Введение · Основы (Linux, Git, Bash, SSH, Nginx)
+- Контейнеры · Оркестрация · CI/CD · Infrastructure as Code
+- Облако (AWS) · Observability · Security
+- Office IT: сети, VLAN, DHCP/DNS, Wi‑Fi, Omada, Fortinet
+- Windows Server · IT Support · Карьера
+
+---
+
+## Локальный запуск
+
+```bash
+git clone git@github.com:Zirvey/DevOps-Learn.git
+cd DevOps-Learn
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Открой [http://localhost:5173](http://localhost:5173).
+
+### Сборка
+
+```bash
+npm run build
+npm run preview
+```
+
+### Hero-видео (терминал на фоне)
+
+Если нужно перегенерировать фоновое видео для главной:
+
+```bash
+npm run generate:hero-video
+```
+
+Скрипт создаёт `public/media/hero-showcase.{mp4,webm}` и постер. Требуется Python 3 + ffmpeg.
+
+---
+
+## Стек
+
+- [Vite](https://vite.dev) + [React 19](https://react.dev) + TypeScript
+- [React Router](https://reactrouter.com) — навигация по главам
+- [react-markdown](https://github.com/remarkjs/react-markdown) — контент уроков
+- [Lucide](https://lucide.dev) — иконки
+
+---
+
+## Деплой (GitHub Pages)
+
+Сайт публикуется автоматически при push в ветку `main` через GitHub Actions (`.github/workflows/deploy-pages.yml`).
+
+Базовый путь: `/DevOps-Learn/` — учитывается в роутинге и путях к статике.
+
+---
+
+## Структура репозитория
+
+```
+src/
+  content/          # главы и модули (RU + EN переводы)
+  components/       # UI: sidebar, hero, terminal lab, quiz
+  i18n/             # локализация интерфейса
+  pages/            # HomePage, ChapterPage
+public/
+  media/            # hero-видео и постер
+```
+
+---
+
+## Лицензия
+
+Учебные материалы — для личного и образовательного использования.
