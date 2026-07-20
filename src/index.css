@@ -71,6 +71,21 @@ ul, ol {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  font-family: var(--font-terminal-retro);
+  letter-spacing: 0.06em;
+  font-variation-settings: 'ELSH' 2;
+}
+
+.sidebar .brand-logo,
+.sidebar .nav-module-title,
+.sidebar .nav-chapter {
+  font-family: inherit;
+  letter-spacing: inherit;
+  font-variation-settings: inherit;
+}
+
+.sidebar .nav-chapter {
+  font-size: 0.8125rem;
 }
 
 .sidebar-header {
@@ -125,12 +140,9 @@ ul, ol {
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  font-family: var(--font-terminal-retro);
   font-size: 0.8125rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-variation-settings: 'ELSH' 2;
   color: var(--text-muted);
 }
 
@@ -1269,12 +1281,19 @@ ul, ol {
 }
 
 .chapter-header h1 {
-  font-family: var(--font-display);
-  font-size: var(--text-heading);
-  font-weight: var(--font-weight-regular);
-  letter-spacing: 0;
-  line-height: var(--leading-heading);
+  font-family: var(--font-terminal-retro);
+  font-size: clamp(1.625rem, 3vw, 2.125rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  font-variation-settings: 'ELSH' 2;
+  line-height: 1.15;
   margin-bottom: var(--spacing-8);
+}
+
+.chapter-header .module-badge {
+  font-family: var(--font-terminal-retro);
+  letter-spacing: 0.06em;
+  font-variation-settings: 'ELSH' 2;
 }
 
 .chapter-description {
