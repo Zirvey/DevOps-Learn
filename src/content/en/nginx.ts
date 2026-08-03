@@ -457,6 +457,42 @@ spec:
       ],
       answer: 'Permanent redirect to a new URL',
     },
+    {
+      question: 'What does the try_files directive do in a location?',
+      options: [
+        'Checks files/URIs in order and serves the first found or fallback',
+        'Proxies HTTPS only',
+        'Enables gzip',
+        'Sets upstream health check',
+      ],
+      answer: 'Checks files/URIs in order and serves the first found or fallback',
+      explanation: 'Often used for SPAs: try_files $uri /index.html.',
+    },
+    {
+      question: 'Why configure client_max_body_size in nginx?',
+      options: [
+        'Limit maximum request body size (file uploads)',
+        'Increase number of worker processes',
+        'Enable HTTP/2',
+        'Set static cache TTL',
+      ],
+      answer: 'Limit maximum request body size (file uploads)',
+    },
+    {
+      question: 'What does the gzip on directive do?',
+      options: [
+        'Enables response compression for supported content types',
+        'Encrypts TLS traffic',
+        'Balances TCP at L4',
+        'Writes access log to syslog',
+      ],
+      answer: 'Enables response compression for supported content types',
+      explanation: 'Reduces traffic volume for text resources (HTML, CSS, JS).',
+    },
+    {
+      question: 'How do you safely apply a new nginx configuration without downtime for active connections?',
+      answer: 'nginx -t && nginx -s reload (or systemctl reload nginx after successful check).',
+    },
   ],
 }
 

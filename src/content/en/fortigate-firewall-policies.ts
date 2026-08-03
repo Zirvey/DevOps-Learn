@@ -1292,6 +1292,26 @@ show firewall policy | grep -E "ALL|any.*any"
       options: ['Port forwarding / DNAT', 'VLAN ID', 'VPN user'],
       answer: 'Port forwarding / DNAT',
     },
+    {
+      question: 'Implicit deny on FortiGate means:',
+      options: ['Traffic without a matching policy is blocked', 'Everything allowed by default', 'Only UDP is blocked', 'Guest VLAN is open'],
+      answer: 'Traffic without a matching policy is blocked',
+    },
+    {
+      question: 'Application Control in a policy allows:',
+      options: ['Allowing/blocking by application, not just port', 'Only changing DNS', 'Only AD join', 'Only printing'],
+      answer: 'Allowing/blocking by application, not just port',
+    },
+    {
+      question: 'CLI for tracing why traffic is blocked:',
+      answer: 'diagnose debug flow (or diagnose firewall iprope lookup)',
+    },
+    {
+      question: 'Log Allowed Traffic in a policy is needed for:',
+      options: ['Auditing and troubleshooting allowed sessions', 'Increasing throughput', 'Disabling UTM', 'Changing VLAN'],
+      answer: 'Auditing and troubleshooting allowed sessions',
+      explanation: 'All Sessions — lots of logs; enable selectively on test policies.',
+    },
   ],
 }
 

@@ -975,6 +975,41 @@ Lead calls user within 24h; acknowledge; explain; offer follow-up; document in t
       options: ['We are waiting for the user\'s response', 'Problem solved', 'P1 closed'],
       answer: 'We are waiting for the user\'s response',
     },
+    {
+      question: 'MTTR (Mean Time To Repair) is:',
+      options: [
+        'Average time to recover after a failure',
+        'Time to first response',
+        'License term',
+        'DHCP lease',
+      ],
+      answer: 'Average time to recover after a failure',
+    },
+    {
+      question: 'CSAT in helpdesk measures:',
+      options: [
+        'User satisfaction with support',
+        'Firewall CPU speed',
+        'Number of VLANs',
+        'Backup size',
+      ],
+      answer: 'User satisfaction with support',
+    },
+    {
+      question: 'Minimum information when opening a ticket:',
+      answer: 'User, symptoms, scope (one/many), urgency, what was already tried',
+    },
+    {
+      question: 'Ticket triage is:',
+      options: [
+        'Prioritization by impact and urgency',
+        'Deleting all P3 tickets',
+        'Only closing old tickets',
+        'Changing AD password',
+      ],
+      answer: 'Prioritization by impact and urgency',
+      explanation: 'P1/P2 are assigned before deep diagnostics.',
+    },
   ],
 }
 

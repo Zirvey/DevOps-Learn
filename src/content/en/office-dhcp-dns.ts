@@ -972,6 +972,26 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
       options: ['Search Domain Controller', 'Posts', 'Stamps'],
       answer: 'Search Domain Controller',
     },
+    {
+      question: 'TTL in a DNS record defines:',
+      options: ['How long a client caches the answer', 'Internet speed', 'DHCP lease', 'VLAN ID'],
+      answer: 'How long a client caches the answer',
+    },
+    {
+      question: 'Typical DHCP lease time in an office:',
+      options: ['8–24 hours', '5 seconds', '365 days', 'No term (forever)'],
+      answer: '8–24 hours',
+    },
+    {
+      question: 'Command to flush DNS cache on a Windows client:',
+      answer: 'ipconfig /flushdns',
+    },
+    {
+      question: 'Dynamic DNS update in AD allows:',
+      options: ['Clients to register A/AAAA records in the zone', 'Delete DC', 'Change VLAN', 'Disable Kerberos'],
+      answer: 'Clients to register A/AAAA records in the zone',
+      explanation: 'Without secure DDNS old records accumulate — need cleanup and scavenging.',
+    },
   ],
 }
 

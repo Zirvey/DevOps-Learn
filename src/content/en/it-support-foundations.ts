@@ -1008,6 +1008,26 @@ ITIL 4 Foundation book (ch 1–4), «The Phoenix Project» fiction for DevOps mi
       options: ['Focus on solutions, not blame', 'Don\'t help the user', 'Close tickets without response'],
       answer: 'Focus on solutions, not blame',
     },
+    {
+      question: 'CMDB differs from asset inventory because:',
+      options: ['It links CIs and service dependencies', 'It only counts mice', 'DNS only', 'VPN only'],
+      answer: 'It links CIs and service dependencies',
+    },
+    {
+      question: 'Shift-left in IT support means:',
+      options: ['Early IT involvement and self-service', 'Moving servers left in the rack', 'L3 only', 'No tickets'],
+      answer: 'Early IT involvement and self-service',
+    },
+    {
+      question: 'In ITIL, Problem differs from Incident because:',
+      answer: 'Incident—restore service now; Problem—find and eliminate the root cause',
+    },
+    {
+      question: 'First Call Resolution (FCR) measures:',
+      options: ['% resolved on the first contact', 'Internet speed', 'PoE on switch', 'Number of VLANs'],
+      answer: '% resolved on the first contact',
+      explanation: 'High FCR reduces L2/L3 load.',
+    },
   ],
 }
 

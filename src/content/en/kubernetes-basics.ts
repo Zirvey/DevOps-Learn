@@ -328,6 +328,31 @@ const translation: ChapterTranslation = {
       question: "Why are labels and selectors needed?",
       answer: "Link objects (Service, Deployment) to the Pod group using labels.",
     },
+    {
+      question: "How does Secret differ from ConfigMap?",
+      options: [
+        "Secret is for sensitive data and stored base64-encoded (not encryption by default)",
+        "ConfigMap cannot be mounted in a Pod",
+        "Secret is only available in kube-system",
+        "No difference",
+      ],
+      answer: "Secret is for sensitive data and stored base64-encoded (not encryption by default)",
+      explanation: "For production, use encryption at rest and an external secrets manager.",
+    },
+    {
+      question: "What does kubectl describe pod <name> do?",
+      options: [
+        "Shows events, container status, reasons for Pending/CrashLoop",
+        "Deletes the Pod",
+        "Scales Deployment",
+        "Creates Service",
+      ],
+      answer: "Shows events, container status, reasons for Pending/CrashLoop",
+    },
+    {
+      question: "Describe the difference between readiness and liveness probes.",
+      answer: "Readiness determines whether the Pod is ready to receive traffic; liveness checks if the container is alive (on fail — restart).",
+    },
   ],
 }
 

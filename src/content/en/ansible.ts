@@ -850,6 +850,42 @@ ansible-lint playbooks/site.yml
       ],
       answer: `-e / --extra-vars or vars_files in the playbook`,
     },
+    {
+      question: `What is Ansible Galaxy?`,
+      options: [
+        `Registry of roles and collections for reuse`,
+        `Red Hat cloud CI`,
+        `A type of Kubernetes Ingress`,
+        `Default inventory file`,
+      ],
+      answer: `Registry of roles and collections for reuse`,
+      explanation: `Lets you install community roles instead of writing everything from scratch.`,
+    },
+    {
+      question: `How does a handler differ from a regular task in Ansible?`,
+      options: [
+        `Handler runs once on notify, usually to restart a service`,
+        `Handler always goes first in a playbook`,
+        `A task cannot be made idempotent`,
+        `No difference`,
+      ],
+      answer: `Handler runs once on notify, usually to restart a service`,
+    },
+    {
+      question: `What is become: true used for in a playbook?`,
+      options: [
+        `Privilege escalation (often sudo) for a task`,
+        `Hiding output`,
+        `Running on 1000 hosts in parallel`,
+        `Encrypting vars`,
+      ],
+      answer: `Privilege escalation (often sudo) for a task`,
+      explanation: `Needed to install packages and edit /etc without root SSH login.`,
+    },
+    {
+      question: `How do you check a playbook without making changes on hosts?`,
+      answer: `ansible-playbook site.yml --check (optionally --diff to view diffs).`,
+    },
   ],
 }
 

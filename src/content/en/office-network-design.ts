@@ -981,6 +981,25 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
       options: ['Fast diagnostics in case of failure', 'Beauty', 'PoE reduction'],
       answer: 'Fast diagnostics in case of failure',
     },
+    {
+      question: 'DMZ in an office network is used for:',
+      options: ['Publishing services with limited external access', 'Storing AD', 'Guest Wi‑Fi without firewall', 'Printers only'],
+      answer: 'Publishing services with limited external access',
+    },
+    {
+      question: 'Core switch in a three-tier model is:',
+      options: ['Central L3/L2 aggregation node', 'Wi‑Fi controller only', 'ISP modem', 'Print server'],
+      answer: 'Central L3/L2 aggregation node',
+    },
+    {
+      question: 'Main goal of network segmentation in an office:',
+      answer: 'Limit blast radius—isolate guests, IoT, and critical systems',
+    },
+    {
+      question: 'Standard for structured cabling in an office:',
+      options: ['TIA/EIA-568', 'ISO 9001', 'PCI DSS', 'HIPAA only'],
+      answer: 'TIA/EIA-568',
+    },
   ],
 }
 

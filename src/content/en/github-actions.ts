@@ -199,6 +199,42 @@ const translation: ChapterTranslation = {
       ],
       answer: "Manually starting workflow from UI/API",
     },
+    {
+      question: "What is a GitHub Actions runner?",
+      options: [
+        "Execution environment for a job (GitHub-hosted or self-hosted)",
+        "Docker registry only",
+        "Type of branch protection",
+        "kubectl plugin",
+      ],
+      answer: "Execution environment for a job (GitHub-hosted or self-hosted)",
+      explanation: "Self-hosted runners are needed for access to private networks or specific hardware.",
+    },
+    {
+      question: "How do you limit a workflow to pull_request from the same repository (not a fork)?",
+      options: [
+        "Condition if: github.event.pull_request.head.repo.full_name == github.repository",
+        "Disable all triggers",
+        "Use only workflow_dispatch",
+        "Cannot be limited",
+      ],
+      answer: "Condition if: github.event.pull_request.head.repo.full_name == github.repository",
+    },
+    {
+      question: "How does needs differ from depends_on in the GHA context?",
+      options: [
+        "needs sets job order in workflow; depends_on is a Docker Compose term",
+        "needs runs matrix",
+        "depends_on is a synonym for needs in GHA",
+        "No difference",
+      ],
+      answer: "needs sets job order in workflow; depends_on is a Docker Compose term",
+      explanation: "In GitHub Actions, jobs are parallel by default without needs.",
+    },
+    {
+      question: "How do you pass output from one job to the next in GitHub Actions?",
+      answer: "Via job outputs and referencing needs.<job_id>.outputs.<name> in subsequent steps.",
+    },
   ],
 }
 

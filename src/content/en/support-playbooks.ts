@@ -1017,6 +1017,26 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
       options: ['DNS', 'Cable', 'Printer'],
       answer: 'DNS',
     },
+    {
+      question: 'Post-Incident Review (PIR) is conducted to:',
+      options: ['Capture lessons learned and improve processes', 'Find the guilty person and fire them', 'Delete all tickets', 'Disable VPN'],
+      answer: 'Capture lessons learned and improve processes',
+    },
+    {
+      question: 'War room during a P1 outage is:',
+      options: ['Real-time coordination of responsible parties', 'Room with a printer', 'Guest Wi-Fi', 'Email correspondence only'],
+      answer: 'Real-time coordination of responsible parties',
+    },
+    {
+      question: 'Runbook for onboarding a new employee includes:',
+      answer: 'Create AD account, M365 licenses, equipment, access, security briefing',
+    },
+    {
+      question: 'Change Request before changing firewall in production:',
+      options: ['Required — window, rollback, approver', 'Never needed', 'Only for Wi-Fi', 'Verbal only'],
+      answer: 'Required — window, rollback, approver',
+      explanation: 'Even a "small" rule can cut the office off from AD.',
+    },
   ],
 }
 

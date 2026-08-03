@@ -277,6 +277,42 @@ const translation: ChapterTranslation = {
       ],
       answer: "docker logs <container>",
     },
+    {
+      question: "What does .dockerignore do?",
+      options: [
+        "Excludes files from the build context during docker build",
+        "Blocks pulling images from registry",
+        "Disables container networking",
+        "Removes unused volumes",
+      ],
+      answer: "Excludes files from the build context during docker build",
+      explanation: "Speeds up builds and avoids copying secrets/node_modules into the context.",
+    },
+    {
+      question: "How does docker exec differ from docker attach?",
+      options: [
+        "exec runs a new command in the container; attach connects to the main process",
+        "attach always opens a shell",
+        "exec works only on Windows",
+        "No difference",
+      ],
+      answer: "exec runs a new command in the container; attach connects to the main process",
+    },
+    {
+      question: "Why use a digest (sha256) instead of the latest tag when pulling an image?",
+      options: [
+        "To guarantee an exact immutable version of the image",
+        "To speed up the network 10x",
+        "To bypass Docker Hub limits without authentication",
+        "latest is always immutable",
+      ],
+      answer: "To guarantee an exact immutable version of the image",
+      explanation: "Tags can be overwritten; digest pins the contents.",
+    },
+    {
+      question: "How do you remove all stopped containers with one command?",
+      answer: "docker container prune (or docker rm $(docker ps -aq) with caution).",
+    },
   ],
 }
 

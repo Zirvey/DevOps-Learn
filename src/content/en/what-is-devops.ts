@@ -295,6 +295,42 @@ Less critical for: rare embedded releases, desktop software without a server sid
       answer:
         'Long releases, manual non-reproducible deploys, mutual blame during incidents.',
     },
+    {
+      question: 'What does "you build it, you run it" mean in DevOps?',
+      options: [
+        'The team that built the service is responsible for running it in production',
+        'Only ops deploys, dev does not participate in incidents',
+        'Developers write code without tests',
+        'Operations is fully outsourced',
+      ],
+      answer: 'The team that built the service is responsible for running it in production',
+      explanation: 'The principle strengthens ownership and breaks down the wall between creation and support.',
+    },
+    {
+      question: 'How does Continuous Delivery differ from Continuous Deployment?',
+      options: [
+        'CDelivery prepares releases for deploy manually or by decision; CDeployment automatically rolls out to prod',
+        'Continuous Deployment does not use tests',
+        'Continuous Delivery works only with monoliths',
+        'They are identical terms',
+      ],
+      answer: 'CDelivery prepares releases for deploy manually or by decision; CDeployment automatically rolls out to prod',
+    },
+    {
+      question: 'Why adopt Infrastructure as Code in DevOps?',
+      options: [
+        'Version, reproduce, and review infrastructure like code',
+        'Replace monitoring with logs in Git',
+        'Remove the need for the cloud',
+        'Store passwords in the repository',
+      ],
+      answer: 'Version, reproduce, and review infrastructure like code',
+      explanation: 'IaC reduces configuration drift and speeds up environment recovery.',
+    },
+    {
+      question: 'Describe how production feedback helps the team improve the product in DevOps culture.',
+      answer: 'Metrics, alerts, and postmortems provide data for prioritizing reliability, automation, and reducing lead time.',
+    },
   ],
 }
 

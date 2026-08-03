@@ -149,6 +149,42 @@ const translation: ChapterTranslation = {
       ],
       answer: "Sets the cluster resources to the state from Git",
     },
+    {
+      question: "What is the app-of-apps pattern in Argo CD?",
+      options: [
+        "Root Application manages other Applications from Git",
+        "One Pod runs all microservices",
+        "Monorepo without branches",
+        "Way to store Docker images",
+      ],
+      answer: "Root Application manages other Applications from Git",
+      explanation: "Simplifies cluster bootstrap and managing multiple applications.",
+    },
+    {
+      question: "Why use a separate repo for manifests in GitOps?",
+      options: [
+        "Separate application lifecycle from desired infrastructure state",
+        "Speed up git clone 100x",
+        "Bypass Kubernetes RBAC",
+        "Must store binaries in Git LFS",
+      ],
+      answer: "Separate application lifecycle from desired infrastructure state",
+    },
+    {
+      question: "What does auto-sync in Argo CD mean?",
+      options: [
+        "Automatic application of changes from Git without manual sync",
+        "Automatic merge to main without review",
+        "Remove drift without logs",
+        "Build images in cluster",
+      ],
+      answer: "Automatic application of changes from Git without manual sync",
+      explanation: "Convenient for dev; in prod often keep manual sync or approval.",
+    },
+    {
+      question: "How to safely update an image tag in GitOps without a direct push to main?",
+      answer: "Via PR updating values/manifest with review; CI can open a PR after a successful image build.",
+    },
   ],
 }
 

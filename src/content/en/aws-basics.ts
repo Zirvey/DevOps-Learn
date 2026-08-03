@@ -655,6 +655,42 @@ systemctl start nginx && systemctl enable nginx`,
       ],
       answer: `Reduce the risk of account compromise`,
     },
+    {
+      question: `What is an AWS IAM role compared to an IAM user?`,
+      options: [
+        `Role — temporary credentials for services/people via assume; user — permanent account with keys`,
+        `User is always for EC2, role only for Lambda`,
+        `Role cannot be attached to policies`,
+        `They are the same thing`,
+      ],
+      answer: `Role — temporary credentials for services/people via assume; user — permanent account with keys`,
+      explanation: `Roles are preferred for applications — no long-lived access keys.`,
+    },
+    {
+      question: `What is CloudWatch used for in AWS?`,
+      options: [
+        `Metrics, alerts, logs, and dashboards for AWS resources`,
+        `DNS only`,
+        `Kubernetes Pod management`,
+        `Git repository storage`,
+      ],
+      answer: `Metrics, alerts, logs, and dashboards for AWS resources`,
+    },
+    {
+      question: `How does RDS differ from a self-managed database on EC2?`,
+      options: [
+        `RDS is a managed service with backups, patches, and failover options`,
+        `RDS does not support PostgreSQL`,
+        `EC2 is always cheaper at any load`,
+        `No difference`,
+      ],
+      answer: `RDS is a managed service with backups, patches, and failover options`,
+      explanation: `It reduces operational overhead but offers less control over the OS.`,
+    },
+    {
+      question: `Name three ways to reduce the risk of leaking AWS access keys.`,
+      answer: `IAM roles instead of keys, key rotation, MFA, banning keys in code/CI (any three reasonable practices).`,
+    },
   ],
 }
 

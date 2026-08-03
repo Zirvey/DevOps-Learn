@@ -501,6 +501,42 @@ Internet → IGW → ALB (public subnet)
       ],
       answer: `DNS hosting and traffic routing`,
     },
+    {
+      question: `What is an Internet Gateway (IGW) in a VPC?`,
+      options: [
+        `Gateway for inbound/outbound internet traffic of public subnets`,
+        `VPN site-to-site only`,
+        `L7 load balancer`,
+        `A type of Security Group`,
+      ],
+      answer: `Gateway for inbound/outbound internet traffic of public subnets`,
+      explanation: `Attached to a VPC; a 0.0.0.0/0 route in the route table points to the IGW.`,
+    },
+    {
+      question: `Why use an Elastic IP?`,
+      options: [
+        `Static public IPv4 address bound to an instance or NAT`,
+        `Private IP inside a VPC`,
+        `DNS alias for S3`,
+        `Traffic encryption`,
+      ],
+      answer: `Static public IPv4 address bound to an instance or NAT`,
+    },
+    {
+      question: `How does Application Load Balancer differ from Network Load Balancer?`,
+      options: [
+        `ALB — L7 HTTP/HTTPS with routing by path/host; NLB — L4 TCP/UDP with low latency`,
+        `NLB only for S3 static content`,
+        `ALB does not support TLS`,
+        `No difference`,
+      ],
+      answer: `ALB — L7 HTTP/HTTPS with routing by path/host; NLB — L4 TCP/UDP with low latency`,
+      explanation: `Choice depends on protocol and routing requirements.`,
+    },
+    {
+      question: `How do you give EC2 in a private subnet internet access without a public IP?`,
+      answer: `Route 0.0.0.0/0 to a NAT Gateway in a public subnet with IGW.`,
+    },
   ],
 }
 

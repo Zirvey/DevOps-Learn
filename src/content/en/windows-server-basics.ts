@@ -1177,6 +1177,31 @@ Migrate roles/data, remove from Veeam, disable AD computer, remove DNS records, 
       options: ['Server and lab virtualization', 'Docker containers only', 'File server only'],
       answer: 'Server and lab virtualization',
     },
+    {
+      question: 'WSUS on Windows Server is used for:',
+      options: ['Centralized update management', 'DNS only', 'VPN only', 'Printing only'],
+      answer: 'Centralized update management',
+    },
+    {
+      question: 'Windows Server Core is chosen because:',
+      options: [
+        'Smaller attack surface and fewer patches',
+        'No AD support',
+        'RDP cannot be used',
+        'Only for Linux VMs',
+      ],
+      answer: 'Smaller attack surface and fewer patches',
+      explanation: 'Core has no GUI — fewer components to maintain and attack.',
+    },
+    {
+      question: 'Command to rename Windows Server in PowerShell:',
+      answer: 'Rename-Computer -NewName "name" -Restart',
+    },
+    {
+      question: 'SMB file server role on Windows Server provides:',
+      options: ['Shared folder access in the domain', 'DHCP only', 'Wi‑Fi only', 'VPN only'],
+      answer: 'Shared folder access in the domain',
+    },
   ],
 }
 

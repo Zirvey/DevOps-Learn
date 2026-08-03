@@ -480,6 +480,42 @@ spec:
       ],
       answer: `P1 — critical business outage; P3 — low impact / workaround exists`,
     },
+    {
+      question: `What is a communication bridge during an incident?`,
+      options: [
+        `Communication channel for stakeholder status updates (chat, bridge call)`,
+        `Bridge between VPCs`,
+        `Type of Kubernetes Service`,
+        `Backup DNS`,
+      ],
+      answer: `Communication channel for stakeholder status updates (chat, bridge call)`,
+      explanation: `Offloads the IC and maintains a single source of truth for status.`,
+    },
+    {
+      question: `Why mitigate first during an incident rather than immediately fixing root cause?`,
+      options: [
+        `Restore service faster for users; deep fix comes after stabilization`,
+        `Root cause is always obvious in seconds`,
+        `Mitigate is forbidden in SRE`,
+        `Terraform requires it`,
+      ],
+      answer: `Restore service faster for users; deep fix comes after stabilization`,
+    },
+    {
+      question: `What is a runbook?`,
+      options: [
+        `Documented diagnosis and recovery steps for common failures`,
+        `Git merge script`,
+        `Type of Helm chart`,
+        `Postmortem only`,
+      ],
+      answer: `Documented diagnosis and recovery steps for common failures`,
+      explanation: `Reduces MTTR and dependency on a single "hero".`,
+    },
+    {
+      question: `What are good action items in a postmortem?`,
+      answer: `Specific, with owner and deadline; focused on preventing recurrence, not punishment.`,
+    },
   ],
 }
 

@@ -420,6 +420,32 @@ The foundation from this chapter underpins all of these abstractions.`,
       ],
       answer: 'Resolving domain names to IP addresses',
     },
+    {
+      question: 'What is TTL in a DNS record?',
+      options: [
+        'Time in seconds that a resolver may cache the response',
+        'Maximum number of TCP connections',
+        'Type of TLS encryption',
+        'MTU packet size',
+      ],
+      answer: 'Time in seconds that a resolver may cache the response',
+      explanation: 'Low TTL speeds up switching on IP change but increases DNS load.',
+    },
+    {
+      question: 'Which address ranges are private IP per RFC 1918?',
+      options: [
+        '10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16',
+        '8.8.8.0/24 only',
+        'All class A addresses',
+        '127.0.0.0/8 only',
+      ],
+      answer: '10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16',
+    },
+    {
+      question: 'Describe what happens during TCP three-way handshake (SYN, SYN-ACK, ACK).',
+      answer:
+        'Client sends SYN, server responds SYN-ACK, client confirms with ACK — connection is established with agreed parameters.',
+    },
   ],
 }
 

@@ -536,6 +536,31 @@ Avoid: killing all replicas at once, incompatible schema flips, long startup wit
       ],
       answer: `Say so honestly, describe your reasoning and related experience`,
     },
+    {
+      question: `How do you structure an answer to "how would you design CI/CD for a startup"?`,
+      options: [
+        `Clarify requirements → VCS/branching → build/test → artifacts → deploy stages → observability`,
+        `Immediately name one tool without questions`,
+        `Only talk about certificates`,
+        `Avoid the topic of tests`,
+      ],
+      answer: `Clarify requirements → VCS/branching → build/test → artifacts → deploy stages → observability`,
+      explanation: `Shows systematic thinking and consideration of team context.`,
+    },
+    {
+      question: `What should you ask about on-call in an interview?`,
+      options: [
+        `Rotation, compensation, page frequency, runbook maturity`,
+        `Only salary`,
+        `Office color`,
+        `Windows version on laptop`,
+      ],
+      answer: `Rotation, compensation, page frequency, runbook maturity`,
+    },
+    {
+      question: `How do you briefly explain the difference between IaC and configuration management?`,
+      answer: `IaC (Terraform) provisions infrastructure; CM (Ansible) configures OS and packages on existing hosts.`,
+    },
   ],
 }
 

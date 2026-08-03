@@ -436,6 +436,42 @@ aws sts get-caller-identity | jq .`,
       ],
       answer: 'Describing containers and their configuration',
     },
+    {
+      question: 'How do you set a boolean false value in YAML?',
+      options: [
+        'false, False, FALSE, or n (depending on parser; usually false)',
+        'Only 0 in quotes as a string, mandatory',
+        'Cannot — strings only',
+        'Via the ! symbol',
+      ],
+      answer: 'false, False, FALSE, or n (depending on parser; usually false)',
+      explanation: 'In Kubernetes manifests, lowercase true/false is more common.',
+    },
+    {
+      question: 'What do anchor &anchor and alias *alias do in YAML?',
+      options: [
+        'Reuse the same structure fragment by reference',
+        'Encrypt a value',
+        'Specify API version',
+        'Define a multiline string',
+      ],
+      answer: 'Reuse the same structure fragment by reference',
+    },
+    {
+      question: 'Why can the number 0123 in YAML be dangerous?',
+      options: [
+        'Some parsers interpret it as octal',
+        'YAML does not support numbers',
+        'It is always a string',
+        'Breaks only JSON, not YAML',
+      ],
+      answer: 'Some parsers interpret it as octal',
+      explanation: 'For ports and IDs, better to explicitly quote the value.',
+    },
+    {
+      question: 'How do you set three replicas and nginx:1.25 image in a Kubernetes Deployment in YAML (name the keys)?',
+      answer: 'spec.replicas: 3 and spec.template.spec.containers[].image: nginx:1.25 (plus apiVersion/kind/metadata).',
+    },
   ],
 }
 

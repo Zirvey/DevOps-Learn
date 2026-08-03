@@ -285,6 +285,42 @@ Learning in this handbook follows a **bottom-up** logic:
       ],
       answer: 'After Linux, networking, containers, and CI/CD basics',
     },
+    {
+      question: 'Why is troubleshooting and debugging important in a roadmap?',
+      options: [
+        'In production you will need to diagnose failures via logs, metrics, and network',
+        'Only needed for algorithm interviews',
+        'Automation fully eliminates manual debugging',
+        'Troubleshooting is replaced by certifications',
+      ],
+      answer: 'In production you will need to diagnose failures via logs, metrics, and network',
+      explanation: 'Without diagnostic skills it is hard to maintain SLA and on-call.',
+    },
+    {
+      question: 'What learning format is effective for memorizing CLI commands?',
+      options: [
+        'Regular practice in the terminal and repetition on real tasks',
+        'Only reading cheat sheets without typing commands',
+        'Watching one video without repetition',
+        'Memorizing man pages without practice',
+      ],
+      answer: 'Regular practice in the terminal and repetition on real tasks',
+    },
+    {
+      question: 'When does it make sense to add observability study to the roadmap?',
+      options: [
+        'After basic application deployment, when you need to understand service health',
+        'Before learning Linux and Bash',
+        'Only after 5 years in Kubernetes',
+        'Observability is not needed for a DevOps engineer',
+      ],
+      answer: 'After basic application deployment, when you need to understand service health',
+      explanation: 'Metrics, logs, and traces are critical for operating any stack.',
+    },
+    {
+      question: 'Name three ways to document DevOps learning progress for yourself and recruiters.',
+      answer: 'Pet projects in Git, notes/blog, certificates or checklist of completed topics with demos.',
+    },
   ],
 }
 

@@ -951,6 +951,42 @@ Import and moved are key tools for evolving infrastructure without downtime.`,
       ],
       answer: `They will end up in Git history and CI logs`,
     },
+    {
+      question: `What does terraform validate do?`,
+      options: [
+        `Checks syntax and internal consistency of configuration`,
+        `Applies changes in the cloud`,
+        `Deletes state`,
+        `Generates provider credentials`,
+      ],
+      answer: `Checks syntax and internal consistency of configuration`,
+      explanation: `Often run in CI before plan/apply.`,
+    },
+    {
+      question: `Why use terraform workspace?`,
+      options: [
+        `Multiple state for the same code (dev/stage/prod) with context switching`,
+        `Replace Git branches`,
+        `Store secrets`,
+        `Speed up internet`,
+      ],
+      answer: `Multiple state for the same code (dev/stage/prod) with context switching`,
+    },
+    {
+      question: `What is lifecycle { prevent_destroy = true }?`,
+      options: [
+        `Prevents terraform destroy for a critical resource`,
+        `Disables plan`,
+        `Enables auto-approve`,
+        `Creates a resource without state`,
+      ],
+      answer: `Prevents terraform destroy for a critical resource`,
+      explanation: `Protection from accidental deletion of prod database or bucket.`,
+    },
+    {
+      question: `How do you pass an output value from one module to another?`,
+      answer: `Via output in the child module and reference module.<name>.<output> in the parent code.`,
+    },
   ],
 }
 

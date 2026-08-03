@@ -482,6 +482,42 @@ Add screenshots of Grafana and the architecture diagram.`,
       question: `What should you include in a README for a reviewer?`,
       answer: `Project goal, stack, prerequisites, deploy/destroy commands, diagram, and dashboard screenshots.`,
     },
+    {
+      question: `Why show a CI pipeline status badge in a portfolio?`,
+      options: [
+        `Shows the project builds and tests pass automatically`,
+        `Speeds up git clone`,
+        `Replaces code review`,
+        `Hides build errors`,
+      ],
+      answer: `Shows the project builds and tests pass automatically`,
+      explanation: `Reviewers see process maturity without running locally.`,
+    },
+    {
+      question: `How to describe homelab honestly on a resume?`,
+      options: [
+        `Specific stack, what you automated, link to repo and metrics (uptime, cost)`,
+        `"Set up everything in the world" with no details`,
+        `Only "know Docker"`,
+        `Never mention homelab`,
+      ],
+      answer: `Specific stack, what you automated, link to repo and metrics (uptime, cost)`,
+    },
+    {
+      question: `Why add a Makefile or scripts/ to a pet project?`,
+      options: [
+        `Simplify reproduce deploy/destroy for reviewers`,
+        `Hide commands from users`,
+        `Replace README`,
+        `Mandatory GitHub requirement`,
+      ],
+      answer: `Simplify reproduce deploy/destroy for reviewers`,
+      explanation: `One entrypoint (\`make up\`) lowers the bar for reviewing the project.`,
+    },
+    {
+      question: `What three sections are useful in ARCHITECTURE.md for a DevOps project?`,
+      answer: `Component diagram, CI/CD flow, network/secrets and observability.`,
+    },
   ],
 }
 

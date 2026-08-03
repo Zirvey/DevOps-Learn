@@ -331,6 +331,42 @@ This chapter is a **map of the terrain**. Details come in the following modules.
       question: 'List three DevSecOps tool categories.',
       answer: 'SAST, DAST/image scanning, secrets and policy management.',
     },
+    {
+      question: 'What category do Jenkins/GitLab CI fall into in a DevOps stack?',
+      options: [
+        'CI/CD — automation of build, test, and delivery',
+        'Container runtime',
+        'DNS management system',
+        'Time-series database',
+      ],
+      answer: 'CI/CD — automation of build, test, and delivery',
+      explanation: 'CI/CD servers orchestrate the pipeline between commit and deploy.',
+    },
+    {
+      question: 'What are HashiCorp Vault or AWS Secrets Manager used for in the stack?',
+      options: [
+        'Secure storage and rotation of secrets with access control',
+        'CPU metrics collection',
+        'Pod orchestration in Kubernetes',
+        'Compiling Terraform modules',
+      ],
+      answer: 'Secure storage and rotation of secrets with access control',
+    },
+    {
+      question: 'How does a message broker (Kafka, RabbitMQ) differ from a reverse proxy?',
+      options: [
+        'Broker asynchronously delivers messages between services; proxy proxies HTTP requests',
+        'They are the same component',
+        'Broker replaces Git',
+        'Proxy stores event queues',
+      ],
+      answer: 'Broker asynchronously delivers messages between services; proxy proxies HTTP requests',
+      explanation: 'Different roles: queues/streams vs inbound HTTP traffic.',
+    },
+    {
+      question: 'List three categories of tools typically included in a "platform" DevOps stack.',
+      answer: 'VCS, CI/CD, containerization/orchestration, IaC, monitoring/logging (any three from this list).',
+    },
   ],
 }
 

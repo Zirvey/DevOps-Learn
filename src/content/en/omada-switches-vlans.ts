@@ -987,6 +987,25 @@ set username admin password YourStrongPassword
       options: ['Prevents a loop from a custom switch', 'Speeds up Wi‑Fi', 'Replaces AD'],
       answer: 'Prevents a loop from a custom switch',
     },
+    {
+      question: 'PVID on an Omada trunk port defines:',
+      options: ['Native (untagged) VLAN', 'Maximum port speed', 'PoE class', 'STP root priority'],
+      answer: 'Native (untagged) VLAN',
+    },
+    {
+      question: 'IGMP Snooping on a switch is needed for:',
+      options: ['Correct multicast delivery (IPTV, video)', 'DHCP relay', 'AD replication', 'VPN only'],
+      answer: 'Correct multicast delivery (IPTV, video)',
+    },
+    {
+      question: 'Port mirroring is used for:',
+      answer: 'Copying port traffic to an analyzer for diagnostics',
+    },
+    {
+      question: 'Storm Control on an Omada switch limits:',
+      options: ['Broadcast/multicast flood on a port', 'WAN internet speed', 'Number of AD users', 'DNS TTL'],
+      answer: 'Broadcast/multicast flood on a port',
+    },
   ],
 }
 

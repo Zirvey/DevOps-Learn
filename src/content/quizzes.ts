@@ -54,6 +54,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       question: 'Назовите три ключевых антипаттерна традиционной модели «стена между dev и ops».',
       answer: 'Долгие релизы, ручные невоспроизводимые деплои, взаимные обвинения при инцидентах.',
     },
+    {
+      question: 'Что означает принцип «you build it, you run it» в DevOps?',
+      options: [
+        'Команда, создавшая сервис, отвечает и за его эксплуатацию в продакшене',
+        'Только ops деплоит, dev не участвует в инцидентах',
+        'Разработчики пишут код без тестов',
+        'Эксплуатация полностью передаётся внешнему аутсорсу',
+      ],
+      answer: 'Команда, создавшая сервис, отвечает и за его эксплуатацию в продакшене',
+      explanation: 'Принцип усиливает ownership и сокращает «стену» между созданием и поддержкой.',
+    },
+    {
+      question: 'Чем Continuous Delivery отличается от Continuous Deployment?',
+      options: [
+        'CDelivery готовит релиз к деплою вручную или по решению; CDeployment автоматически выкатывает в prod',
+        'Continuous Deployment не использует тесты',
+        'Continuous Delivery работает только с монолитами',
+        'Это полностью идентичные термины',
+      ],
+      answer: 'CDelivery готовит релиз к деплою вручную или по решению; CDeployment автоматически выкатывает в prod',
+    },
+    {
+      question: 'Зачем в DevOps внедряют Infrastructure as Code?',
+      options: [
+        'Версионировать, воспроизводить и ревьюить инфраструктуру как код',
+        'Заменить мониторинг логами в Git',
+        'Убрать необходимость в облаке',
+        'Хранить пароли в репозитории',
+      ],
+      answer: 'Версионировать, воспроизводить и ревьюить инфраструктуру как код',
+      explanation: 'IaC снижает дрейф конфигурации и ускоряет восстановление окружений.',
+    },
+    {
+      question: 'Опишите, как обратная связь от production помогает команде улучшать продукт в DevOps-культуре.',
+      answer: 'Метрики, алерты и postmortem дают данные для приоритизации надёжности, автоматизации и сокращения lead time.',
+    },
   ],
 
   'learning-roadmap': [
@@ -106,6 +142,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'После основ Linux, сетей, контейнеров и CI/CD',
     },
+    {
+      question: 'Почему в roadmap важно изучать troubleshooting и debugging?',
+      options: [
+        'В продакшене придётся диагностировать сбои по логам, метрикам и сети',
+        'Это нужно только на собеседованиях по алгоритмам',
+        'Автоматизация полностью исключает ручную отладку',
+        'Troubleshooting заменяется сертификациями',
+      ],
+      answer: 'В продакшене придётся диагностировать сбои по логам, метрикам и сети',
+      explanation: 'Без навыков диагностики сложно поддерживать SLA и on-call.',
+    },
+    {
+      question: 'Какой формат обучения эффективен для запоминания CLI-команд?',
+      options: [
+        'Регулярная практика в терминале и повторение на реальных задачах',
+        'Только чтение шпаргалок без ввода команд',
+        'Просмотр одного видео без повторения',
+        'Заучивание man-страниц наизусть без практики',
+      ],
+      answer: 'Регулярная практика в терминале и повторение на реальных задачах',
+    },
+    {
+      question: 'Когда имеет смысл добавить в roadmap изучение observability?',
+      options: [
+        'После базового деплоя приложений, когда нужно понимать health сервисов',
+        'До изучения Linux и Bash',
+        'Только после 5 лет в Kubernetes',
+        'Observability не нужна DevOps-инженеру',
+      ],
+      answer: 'После базового деплоя приложений, когда нужно понимать health сервисов',
+      explanation: 'Метрики, логи и трейсы критичны для эксплуатации любого стека.',
+    },
+    {
+      question: 'Назовите три способа зафиксировать прогресс обучения DevOps для себя и рекрутера.',
+      answer: 'Pet-проекты в Git, заметки/блог, сертификаты или чеклист пройденных тем с демо.',
+    },
   ],
 
   'devops-tools-overview': [
@@ -157,6 +229,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       question: 'Перечислите три категории инструментов DevSecOps.',
       answer: 'SAST, DAST/сканирование образов, управление секретами и политиками.',
     },
+    {
+      question: 'К какой категории относится Jenkins/GitLab CI в DevOps-стеке?',
+      options: [
+        'CI/CD — автоматизация сборки, тестов и доставки',
+        'Контейнерный runtime',
+        'Система управления DNS',
+        'База данных временных рядов',
+      ],
+      answer: 'CI/CD — автоматизация сборки, тестов и доставки',
+      explanation: 'CI/CD-серверы оркестрируют pipeline между commit и deploy.',
+    },
+    {
+      question: 'Для чего в стеке используют HashiCorp Vault или AWS Secrets Manager?',
+      options: [
+        'Безопасное хранение и ротация секретов с контролем доступа',
+        'Сбор метрик CPU',
+        'Оркестрация Pod в Kubernetes',
+        'Компиляция Terraform-модулей',
+      ],
+      answer: 'Безопасное хранение и ротация секретов с контролем доступа',
+    },
+    {
+      question: 'Чем message broker (Kafka, RabbitMQ) отличается от reverse proxy?',
+      options: [
+        'Broker асинхронно доставляет сообщения между сервисами; proxy проксирует HTTP-запросы',
+        'Это один и тот же компонент',
+        'Broker заменяет Git',
+        'Proxy хранит очереди событий',
+      ],
+      answer: 'Broker асинхронно доставляет сообщения между сервисами; proxy проксирует HTTP-запросы',
+      explanation: 'Разные роли: очереди/стримы vs входной HTTP-трафик.',
+    },
+    {
+      question: 'Перечислите три категории инструментов, которые обычно входят в «платформенный» DevOps-стек.',
+      answer: 'VCS, CI/CD, контейнеризация/оркестрация, IaC, мониторинг/логирование (любые три из этого списка).',
+    },
   ],
 
   linux: [
@@ -203,6 +311,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
     {
       question: 'Как посмотреть последние 50 строк лог-файла в реальном времени?',
       answer: 'tail -f -n 50 /path/to/log или tail -n 50 -f /path/to/log',
+    },
+    {
+      question: 'Что показывает команда df -h?',
+      options: [
+        'Использование дискового пространства файловых систем в человекочитаемом виде',
+        'Список запущенных процессов',
+        'Маршрутизацию TCP-пакетов',
+        'Содержимое crontab',
+      ],
+      answer: 'Использование дискового пространства файловых систем в человекочитаемом виде',
+      explanation: 'Полезно при диагностике «disk full» на серверах и в контейнерах.',
+    },
+    {
+      question: 'Как найти файлы больше 100 МБ в текущей директории рекурсивно?',
+      options: [
+        'find . -type f -size +100M',
+        'ls -la | grep 100M',
+        'du -sh only',
+        'grep -r 100M .',
+      ],
+      answer: 'find . -type f -size +100M',
+    },
+    {
+      question: 'Что делает команда chown user:group file?',
+      options: [
+        'Меняет владельца и группу файла',
+        'Меняет только права rwx',
+        'Создаёт жёсткую ссылку',
+        'Монтирует раздел',
+      ],
+      answer: 'Меняет владельца и группу файла',
+      explanation: 'Часто нужно после копирования файлов от root или в Docker volume.',
+    },
+    {
+      question: 'Как перезапустить systemd-сервис nginx и проверить его статус?',
+      answer: 'sudo systemctl restart nginx && sudo systemctl status nginx',
     },
   ],
 
@@ -254,6 +398,31 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Хранение TLS-сертификатов',
       ],
       answer: 'Преобразование доменных имён в IP-адреса',
+    },
+    {
+      question: 'Что такое TTL в DNS-записи?',
+      options: [
+        'Время в секундах, сколько резолвер может кэшировать ответ',
+        'Максимальное число TCP-соединений',
+        'Тип шифрования TLS',
+        'Размер MTU пакета',
+      ],
+      answer: 'Время в секундах, сколько резолвер может кэшировать ответ',
+      explanation: 'Низкий TTL ускоряет переключение при смене IP, но увеличивает нагрузку на DNS.',
+    },
+    {
+      question: 'Какой диапазон адресов относится к private IP по RFC 1918?',
+      options: [
+        '10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16',
+        '8.8.8.0/24 только',
+        'Все адреса класса A',
+        'Только 127.0.0.0/8',
+      ],
+      answer: '10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16',
+    },
+    {
+      question: 'Опишите, что происходит при трёхстороннем handshake TCP (SYN, SYN-ACK, ACK).',
+      answer: 'Клиент отправляет SYN, сервер отвечает SYN-ACK, клиент подтверждает ACK — устанавливается соединение с согласованными параметрами.',
     },
   ],
 
@@ -321,6 +490,21 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Требовать PR, review и зелёный CI вместо прямого push',
     },
+    {
+      question: 'Что делает git cherry-pick?',
+      options: [
+        'Применяет выбранный коммит на текущую ветку',
+        'Удаляет все неотслеживаемые файлы',
+        'Создаёт bare-репозиторий',
+        'Сжимает историю в один коммит автоматически',
+      ],
+      answer: 'Применяет выбранный коммит на текущую ветку',
+      explanation: 'Полезно для переноса hotfix с одной ветки на другую без полного merge.',
+    },
+    {
+      question: 'Как посмотреть историю изменений конкретного файла с blame-информацией?',
+      answer: 'git log --follow -- path/to/file или git blame path/to/file',
+    },
   ],
 
   bash: [
@@ -362,6 +546,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Сжать архив',
       ],
       answer: 'Передать многострочный ввод команде или в файл',
+    },
+    {
+      question: 'Что делает конструкция cmd1 | cmd2 в bash?',
+      options: [
+        'Передаёт stdout cmd1 на stdin cmd2 (pipe)',
+        'Запускает команды параллельно всегда',
+        'Логическое И между кодами возврата',
+        'Перенаправляет stderr в файл',
+      ],
+      answer: 'Передаёт stdout cmd1 на stdin cmd2 (pipe)',
+      explanation: 'Классический паттерн: cat file | grep pattern | wc -l.',
+    },
+    {
+      question: 'Как в bash выполнить цикл по файлам *.log в текущей директории?',
+      options: [
+        'for f in *.log; do ...; done',
+        'while *.log do',
+        'loop files *.log',
+        'foreach log in bash only',
+      ],
+      answer: 'for f in *.log; do ...; done',
+    },
+    {
+      question: 'Чем отличается > от >> в перенаправлении вывода?',
+      options: [
+        '> перезаписывает файл, >> дописывает в конец',
+        '>> удаляет файл',
+        '> работает только с stderr',
+        'Разницы нет',
+      ],
+      answer: '> перезаписывает файл, >> дописывает в конец',
+      explanation: 'Важно не затереть лог при повторном запуске скрипта.',
+    },
+    {
+      question: 'Как в скрипте безопасно обработать путь с пробелами при копировании?',
+      answer: 'Заключить переменную в двойные кавычки: cp "$src" "$dst".',
     },
   ],
 
@@ -409,6 +629,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Создаёт локальный port forwarding (туннель)',
     },
+    {
+      question: 'Что делает опция -R в ssh (remote port forwarding)?',
+      options: [
+        'Пробрасывает порт с удалённого хоста обратно на локальную машину',
+        'Рекурсивно копирует директории',
+        'Отключает сжатие',
+        'Меняет алгоритм host key',
+      ],
+      answer: 'Пробрасывает порт с удалённого хоста обратно на локальную машину',
+      explanation: 'Используют, когда нужно дать доступ к сервису на вашей машине с удалённого сервера.',
+    },
+    {
+      question: 'Зачем проверять fingerprint хоста при первом подключении?',
+      options: [
+        'Убедиться, что подключаетесь к правильному серверу, а не к MITM',
+        'Ускорить handshake',
+        'Включить X11 forwarding',
+        'Создать новый SSH-ключ',
+      ],
+      answer: 'Убедиться, что подключаетесь к правильному серверу, а не к MITM',
+    },
+    {
+      question: 'Как добавить приватный ключ в ssh-agent?',
+      answer: 'ssh-add ~/.ssh/id_ed25519 (или путь к нужному ключу).',
+    },
+    {
+      question: 'Что делает директива PermitRootLogin no в sshd_config?',
+      options: [
+        'Запрещает прямой вход под пользователем root по SSH',
+        'Отключает все ключи',
+        'Разрешает только пароль',
+        'Включает SFTP-only режим для всех',
+      ],
+      answer: 'Запрещает прямой вход под пользователем root по SSH',
+      explanation: 'Рекомендуемая практика безопасности: sudo после входа обычным пользователем.',
+    },
   ],
 
   yaml: [
@@ -449,6 +705,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Описание IAM-ролей AWS',
       ],
       answer: 'Описание контейнеров и их конфигурации',
+    },
+    {
+      question: 'Как в YAML задать булево значение false?',
+      options: [
+        'false, False, FALSE или n (в зависимости от парсера; обычно false)',
+        'Только 0 в кавычках как строка обязательно',
+        'Нельзя — только строки',
+        'Через символ !',
+      ],
+      answer: 'false, False, FALSE или n (в зависимости от парсера; обычно false)',
+      explanation: 'В Kubernetes-манифестах чаще используют lowercase true/false.',
+    },
+    {
+      question: 'Что делает якорь &anchor и ссылка *alias в YAML?',
+      options: [
+        'Переиспользуют один и тот же фрагмент структуры по ссылке',
+        'Шифруют значение',
+        'Указывают версию API',
+        'Задают multiline string',
+      ],
+      answer: 'Переиспользуют один и тот же фрагмент структуры по ссылке',
+    },
+    {
+      question: 'Почему число 0123 в YAML может быть опасным?',
+      options: [
+        'Некоторые парсеры интерпретируют его как восьмеричное',
+        'YAML не поддерживает числа',
+        'Это всегда строка',
+        'Ломает только JSON, не YAML',
+      ],
+      answer: 'Некоторые парсеры интерпретируют его как восьмеричное',
+      explanation: 'Для портов и ID лучше явно брать значение в кавычки.',
+    },
+    {
+      question: 'Как в Kubernetes Deployment задать три реплики и образ nginx:1.25 в YAML (назовите ключи)?',
+      answer: 'spec.replicas: 3 и spec.template.spec.containers[].image: nginx:1.25 (плюс apiVersion/kind/metadata).',
     },
   ],
 
@@ -496,6 +788,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Постоянный редирект на новый URL',
     },
+    {
+      question: 'Что делает директива try_files в location?',
+      options: [
+        'Проверяет файлы/URI по порядку и отдаёт первый найденный или fallback',
+        'Проксирует только HTTPS',
+        'Включает gzip',
+        'Задаёт upstream health check',
+      ],
+      answer: 'Проверяет файлы/URI по порядку и отдаёт первый найденный или fallback',
+      explanation: 'Часто используют для SPA: try_files $uri /index.html.',
+    },
+    {
+      question: 'Зачем в nginx настраивать client_max_body_size?',
+      options: [
+        'Ограничить максимальный размер тела запроса (загрузки файлов)',
+        'Увеличить число worker processes',
+        'Включить HTTP/2',
+        'Задать TTL кэша статики',
+      ],
+      answer: 'Ограничить максимальный размер тела запроса (загрузки файлов)',
+    },
+    {
+      question: 'Что делает директива gzip on?',
+      options: [
+        'Включает сжатие ответов для поддерживаемых типов контента',
+        'Шифрует трафик TLS',
+        'Балансирует TCP на L4',
+        'Пишет access log в syslog',
+      ],
+      answer: 'Включает сжатие ответов для поддерживаемых типов контента',
+      explanation: 'Снижает объём трафика для текстовых ресурсов (HTML, CSS, JS).',
+    },
+    {
+      question: 'Как безопасно применить новую конфигурацию nginx без простоя активных соединений?',
+      answer: 'nginx -t && nginx -s reload (или systemctl reload nginx после успешной проверки).',
+    },
   ],
 
   docker: [
@@ -542,6 +870,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       options: ['docker logs <container>', 'docker images', 'docker network ls', 'docker volume prune'],
       answer: 'docker logs <container>',
     },
+    {
+      question: 'Что делает .dockerignore?',
+      options: [
+        'Исключает файлы из build context при docker build',
+        'Блокирует pull образов из registry',
+        'Отключает сеть контейнера',
+        'Удаляет неиспользуемые volumes',
+      ],
+      answer: 'Исключает файлы из build context при docker build',
+      explanation: 'Ускоряет сборку и не копирует секреты/node_modules в контекст.',
+    },
+    {
+      question: 'Чем docker exec отличается от docker attach?',
+      options: [
+        'exec запускает новую команду в контейнере; attach подключается к основному процессу',
+        'attach всегда открывает shell',
+        'exec работает только на Windows',
+        'Разницы нет',
+      ],
+      answer: 'exec запускает новую команду в контейнере; attach подключается к основному процессу',
+    },
+    {
+      question: 'Зачем использовать digest (sha256) вместо тега latest при pull образа?',
+      options: [
+        'Гарантировать точную неизменяемую версию образа',
+        'Ускорить сеть в 10 раз',
+        'Обойти лимиты Docker Hub без авторизации',
+        'latest всегда иммутабелен',
+      ],
+      answer: 'Гарантировать точную неизменяемую версию образа',
+      explanation: 'Теги могут перезаписываться; digest фиксирует содержимое.',
+    },
+    {
+      question: 'Как удалить все остановленные контейнеры одной командой?',
+      answer: 'docker container prune (или docker rm $(docker ps -aq) с осторожностью).',
+    },
   ],
 
   'docker-compose': [
@@ -582,6 +946,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       question: 'Как поднять стек в фоне?',
       options: ['docker compose up -d', 'docker compose build --no-cache only', 'docker run compose', 'kubectl apply -f compose.yml'],
       answer: 'docker compose up -d',
+    },
+    {
+      question: 'Как в Compose описать healthcheck для сервиса?',
+      options: [
+        'Секция healthcheck с test, interval, retries в определении сервиса',
+        'Только через внешний Kubernetes probe',
+        'Через Dockerfile EXPOSE',
+        'Healthcheck в Compose не поддерживается',
+      ],
+      answer: 'Секция healthcheck с test, interval, retries в определении сервиса',
+      explanation: 'Позволяет depends_on с condition: service_healthy в Compose v2.',
+    },
+    {
+      question: 'Что делает docker compose down -v?',
+      options: [
+        'Останавливает контейнеры и удаляет named/anonymous volumes проекта',
+        'Только останавливает без удаления сетей',
+        'Собирает образы без кэша',
+        'Публикует порты наружу',
+      ],
+      answer: 'Останавливает контейнеры и удаляет named/anonymous volumes проекта',
+    },
+    {
+      question: 'Как переопределить команду запуска контейнера в compose-файле?',
+      options: [
+        'Ключ command или entrypoint в сервисе',
+        'Только через docker run после up',
+        'Через секцию networks',
+        'Нельзя — только из Dockerfile',
+      ],
+      answer: 'Ключ command или entrypoint в сервисе',
+      explanation: 'Удобно для dev-режима с hot reload без пересборки образа.',
+    },
+    {
+      question: 'Как запустить только один сервис из multi-service compose-файла?',
+      answer: 'docker compose up -d service_name',
     },
   ],
 
@@ -633,6 +1033,31 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       question: 'Зачем нужны labels и selectors?',
       answer: 'Связывают объекты (Service, Deployment) с группой Pod по меткам.',
     },
+    {
+      question: 'Чем Secret отличается от ConfigMap?',
+      options: [
+        'Secret предназначен для чувствительных данных и хранится base64-encoded (не шифрование по умолчанию)',
+        'ConfigMap нельзя монтировать в Pod',
+        'Secret доступен только в kube-system',
+        'Разницы нет',
+      ],
+      answer: 'Secret предназначен для чувствительных данных и хранится base64-encoded (не шифрование по умолчанию)',
+      explanation: 'Для production лучше encryption at rest и внешний secrets manager.',
+    },
+    {
+      question: 'Что делает kubectl describe pod <name>?',
+      options: [
+        'Показывает события, статус контейнеров, причины Pending/CrashLoop',
+        'Удаляет Pod',
+        'Масштабирует Deployment',
+        'Создаёт Service',
+      ],
+      answer: 'Показывает события, статус контейнеров, причины Pending/CrashLoop',
+    },
+    {
+      question: 'Опишите разницу между readiness и liveness probe.',
+      answer: 'Readiness определяет, готов ли Pod принимать трафик; liveness — жив ли контейнер (при fail — перезапуск).',
+    },
   ],
 
   'kubernetes-advanced': [
@@ -677,6 +1102,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
     {
       question: 'Что делает kubectl drain node?',
       answer: 'Эвакуирует Pod с ноды (с учётом PDB) для обслуживания или вывода ноды из кластера.',
+    },
+    {
+      question: 'Для чего используют Custom Resource Definitions (CRD)?',
+      options: [
+        'Расширить API Kubernetes собственными типами ресурсов',
+        'Заменить etcd',
+        'Отключить RBAC',
+        'Создать только ConfigMap',
+      ],
+      answer: 'Расширить API Kubernetes собственными типами ресурсов',
+      explanation: 'Операторы и контроллеры часто строятся вокруг CRD.',
+    },
+    {
+      question: 'Что делает Vertical Pod Autoscaler (VPA)?',
+      options: [
+        'Рекомендует или автоматически корректирует requests/limits CPU и memory',
+        'Создаёт новые ноды в кластере',
+        'Масштабирует только Ingress',
+        'Заменяет HPA для RPS',
+      ],
+      answer: 'Рекомендует или автоматически корректирует requests/limits CPU и memory',
+    },
+    {
+      question: 'Зачем настраивать resource requests и limits для контейнера?',
+      options: [
+        'Планировщик учитывает requests; limits ограничивают потребление на ноде',
+        'Только для красоты YAML',
+        'Без них Pod не запустится никогда',
+        'Заменяют liveness probe',
+      ],
+      answer: 'Планировщик учитывает requests; limits ограничивают потребление на ноде',
+      explanation: 'Неправильные limits могут вызвать OOMKill или неэффективный scheduling.',
+    },
+    {
+      question: 'Как посмотреть логи предыдущего упавшего контейнера в Pod?',
+      answer: 'kubectl logs <pod> -c <container> --previous',
     },
   ],
 
@@ -723,6 +1184,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       question: 'Как откатить release на предыдущую ревизию?',
       options: ['helm rollback <release> <revision>', 'kubectl undo deployment', 'git revert HEAD', 'terraform destroy'],
       answer: 'helm rollback <release> <revision>',
+    },
+    {
+      question: 'Что такое Helm repository (chart repo)?',
+      options: [
+        'HTTP-репозиторий с индексом chart-пакетов для helm repo add/install',
+        'Git-ветка main',
+        'Docker registry',
+        'Тип Kubernetes Namespace',
+      ],
+      answer: 'HTTP-репозиторий с индексом chart-пакетов для helm repo add/install',
+      explanation: 'Позволяет версионировать и распространять charts как артефакты.',
+    },
+    {
+      question: 'Для чего в chart используют helpers в _helpers.tpl?',
+      options: [
+        'Переиспользуемые именованные шаблоны для labels/names',
+        'Хранение бинарных файлов',
+        'Секреты в plain text',
+        'Только для NOTES.txt',
+      ],
+      answer: 'Переиспользуемые именованные шаблоны для labels/names',
+    },
+    {
+      question: 'Что делает helm template?',
+      options: [
+        'Рендерит манифесты локально без установки в кластер',
+        'Удаляет release',
+        'Создаёт новый cluster',
+        'Пушит chart в OCI registry автоматически',
+      ],
+      answer: 'Рендерит манифесты локально без установки в кластер',
+      explanation: 'Удобно для отладки шаблонов и CI-проверки до deploy.',
+    },
+    {
+      question: 'Как передать несколько values-файлов при установке chart?',
+      answer: 'helm install -f values.yaml -f prod.yaml <release> <chart> (порядок файлов важен — последний перекрывает).',
     },
   ],
 
@@ -775,6 +1272,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Два идентичных окружения; трафик переключается на новое после проверки',
     },
+    {
+      question: 'Что такое canary deployment?',
+      options: [
+        'Постепенная выкладка новой версии на небольшую долю трафика',
+        'Деплой только в выходные',
+        'Откат через удаление кластера',
+        'Замена CI на CD',
+      ],
+      answer: 'Постепенная выкладка новой версии на небольшую долю трафика',
+      explanation: 'Снижает риск: ошибки видны на малой аудитории до полного rollout.',
+    },
+    {
+      question: 'Зачем кэшировать зависимости в CI pipeline?',
+      options: [
+        'Ускорить повторные сборки и снизить нагрузку на registry',
+        'Хранить секреты между job',
+        'Отключить тесты',
+        'Заменить artifact storage',
+      ],
+      answer: 'Ускорить повторные сборки и снизить нагрузку на registry',
+    },
+    {
+      question: 'Что такое deployment gate (manual approval)?',
+      options: [
+        'Точка в pipeline, где человек подтверждает продвижение в prod',
+        'Автоматический rollback без условий',
+        'Секрет в plain text',
+        'Тип unit-теста',
+      ],
+      answer: 'Точка в pipeline, где человек подтверждает продвижение в prod',
+      explanation: 'Часто используют для regulated или high-risk окружений.',
+    },
+    {
+      question: 'Перечислите три практики для ускорения feedback loop в CI.',
+      answer: 'Параллельные job, кэш зависимостей, быстрые unit-тесты на ранних стадиях.',
+    },
   ],
 
   'github-actions': [
@@ -825,6 +1358,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Запуск только по cron без исключений',
       ],
       answer: 'Ручной запуск workflow из UI/API',
+    },
+    {
+      question: 'Что такое GitHub Actions runner?',
+      options: [
+        'Среда выполнения job (GitHub-hosted или self-hosted)',
+        'Только Docker registry',
+        'Тип branch protection',
+        'Плагин для kubectl',
+      ],
+      answer: 'Среда выполнения job (GitHub-hosted или self-hosted)',
+      explanation: 'Self-hosted runners нужны для доступа к private сети или специфичному железу.',
+    },
+    {
+      question: 'Как ограничить workflow только для pull_request из того же репозитория (не fork)?',
+      options: [
+        'Условие if: github.event.pull_request.head.repo.full_name == github.repository',
+        'Отключить все triggers',
+        'Использовать только workflow_dispatch',
+        'Нельзя ограничить',
+      ],
+      answer: 'Условие if: github.event.pull_request.head.repo.full_name == github.repository',
+    },
+    {
+      question: 'Чем needs отличается от depends_on в контексте GHA?',
+      options: [
+        'needs задаёт порядок job в workflow; depends_on — термин Docker Compose',
+        'needs запускает matrix',
+        'depends_on — синоним needs в GHA',
+        'Разницы нет',
+      ],
+      answer: 'needs задаёт порядок job в workflow; depends_on — термин Docker Compose',
+      explanation: 'В GitHub Actions jobs по умолчанию параллельны без needs.',
+    },
+    {
+      question: 'Как передать output одного job в следующий в GitHub Actions?',
+      answer: 'Через outputs job и обращение needs.<job_id>.outputs.<name> в последующих steps.',
     },
   ],
 
@@ -877,6 +1446,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Приводит ресурсы кластера к состоянию из Git',
     },
+    {
+      question: 'Что такое app-of-apps паттерн в Argo CD?',
+      options: [
+        'Корневое Application управляет другими Applications из Git',
+        'Один Pod запускает все микросервисы',
+        'Монорепозиторий без веток',
+        'Способ хранения Docker-образов',
+      ],
+      answer: 'Корневое Application управляет другими Applications из Git',
+      explanation: 'Упрощает bootstrap кластера и управление множеством приложений.',
+    },
+    {
+      question: 'Зачем в GitOps использовать separate repo для manifests?',
+      options: [
+        'Разделить lifecycle приложения и желаемого состояния инфраструктуры',
+        'Ускорить git clone в 100 раз',
+        'Обойти RBAC Kubernetes',
+        'Хранить бинарники в Git LFS обязательно',
+      ],
+      answer: 'Разделить lifecycle приложения и желаемого состояния инфраструктуры',
+    },
+    {
+      question: 'Что означает auto-sync в Argo CD?',
+      options: [
+        'Автоматическое применение изменений из Git без ручного sync',
+        'Автоматический merge в main без review',
+        'Удаление drift без логов',
+        'Сборка образов в кластере',
+      ],
+      answer: 'Автоматическое применение изменений из Git без ручного sync',
+      explanation: 'Удобно для dev; в prod часто оставляют manual sync или approval.',
+    },
+    {
+      question: 'Как безопасно обновить image tag в GitOps без прямого push в main?',
+      answer: 'Через PR с обновлением values/манифеста и review; CI может открывать PR после успешной сборки образа.',
+    },
   ],
 
   terraform: [
@@ -928,6 +1533,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Они попадут в Git-историю и CI-логи',
     },
+    {
+      question: 'Что делает terraform validate?',
+      options: [
+        'Проверяет синтаксис и внутреннюю согласованность конфигурации',
+        'Применяет изменения в облаке',
+        'Удаляет state',
+        'Генерирует provider credentials',
+      ],
+      answer: 'Проверяет синтаксис и внутреннюю согласованность конфигурации',
+      explanation: 'Часто запускают в CI до plan/apply.',
+    },
+    {
+      question: 'Зачем использовать terraform workspace?',
+      options: [
+        'Несколько state для одного кода (dev/stage/prod) с переключением контекста',
+        'Заменить Git branches',
+        'Хранить secrets',
+        'Ускорить интернет',
+      ],
+      answer: 'Несколько state для одного кода (dev/stage/prod) с переключением контекста',
+    },
+    {
+      question: 'Что такое lifecycle { prevent_destroy = true }?',
+      options: [
+        'Запрещает terraform destroy для критичного ресурса',
+        'Отключает plan',
+        'Включает auto-approve',
+        'Создаёт ресурс без state',
+      ],
+      answer: 'Запрещает terraform destroy для критичного ресурса',
+      explanation: 'Защита от случайного удаления prod-базы или bucket.',
+    },
+    {
+      question: 'Как передать значение output одного модуля в другой модуль?',
+      answer: 'Через output в дочернем модуле и ссылку module.<name>.<output> в родительском коде.',
+    },
   ],
 
   ansible: [
@@ -973,6 +1614,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Нельзя переопределить',
       ],
       answer: '-e / --extra-vars или vars_files в playbook',
+    },
+    {
+      question: 'Что такое Ansible Galaxy?',
+      options: [
+        'Реестр ролей и коллекций для переиспользования',
+        'Облачный CI от Red Hat',
+        'Тип Kubernetes Ingress',
+        'Файл inventory по умолчанию',
+      ],
+      answer: 'Реестр ролей и коллекций для переиспользования',
+      explanation: 'Позволяет ставить community roles вместо написания всего с нуля.',
+    },
+    {
+      question: 'Чем handler отличается от обычной task в Ansible?',
+      options: [
+        'Handler выполняется один раз при notify, обычно для перезапуска сервиса',
+        'Handler всегда идёт первым в playbook',
+        'Task нельзя идемпотентной сделать',
+        'Разницы нет',
+      ],
+      answer: 'Handler выполняется один раз при notify, обычно для перезапуска сервиса',
+    },
+    {
+      question: 'Для чего используют become: true в playbook?',
+      options: [
+        'Повышение привилегий (часто sudo) для task',
+        'Скрытие вывода',
+        'Параллельный запуск на 1000 хостов',
+        'Шифрование vars',
+      ],
+      answer: 'Повышение привилегий (часто sudo) для task',
+      explanation: 'Нужно для установки пакетов и правки /etc без root-login по SSH.',
+    },
+    {
+      question: 'Как проверить playbook без внесения изменений на хостах?',
+      answer: 'ansible-playbook site.yml --check (опционально --diff для просмотра diff).',
     },
   ],
 
@@ -1025,6 +1702,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Снизить риск компрометации учётных записей',
     },
+    {
+      question: 'Что такое AWS IAM role по сравнению с IAM user?',
+      options: [
+        'Role — временные credentials для сервисов/людей через assume; user — постоянная учётка с ключами',
+        'User всегда для EC2, role только для Lambda',
+        'Role нельзя привязать к политикам',
+        'Это одно и то же',
+      ],
+      answer: 'Role — временные credentials для сервисов/людей через assume; user — постоянная учётка с ключами',
+      explanation: 'Роли предпочтительнее для приложений — нет долгоживущих access keys.',
+    },
+    {
+      question: 'Для чего используют CloudWatch в AWS?',
+      options: [
+        'Метрики, алерты, логи и дашборды для ресурсов AWS',
+        'Только DNS',
+        'Управление Kubernetes Pod',
+        'Хранение Git-репозиториев',
+      ],
+      answer: 'Метрики, алерты, логи и дашборды для ресурсов AWS',
+    },
+    {
+      question: 'Чем RDS отличается от самостоятельной БД на EC2?',
+      options: [
+        'RDS — managed сервис с бэкапами, патчами и failover опциями',
+        'RDS не поддерживает PostgreSQL',
+        'EC2 всегда дешевле при любой нагрузке',
+        'Разницы нет',
+      ],
+      answer: 'RDS — managed сервис с бэкапами, патчами и failover опциями',
+      explanation: 'Снижает операционную нагрузку, но меньше контроля над ОС.',
+    },
+    {
+      question: 'Назовите три способа снизить риск утечки AWS access keys.',
+      answer: 'IAM roles вместо keys, ротация ключей, MFA, запрет keys в коде/CI (любые три разумных практики).',
+    },
   ],
 
   'aws-networking': [
@@ -1075,6 +1788,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Сбор метрик CloudWatch',
       ],
       answer: 'DNS-хостинг и маршрутизацию трафика',
+    },
+    {
+      question: 'Что такое Internet Gateway (IGW) в VPC?',
+      options: [
+        'Шлюз для исходящего/входящего интернет-трафика публичных subnet',
+        'VPN только site-to-site',
+        'Балансировщик L7',
+        'Тип Security Group',
+      ],
+      answer: 'Шлюз для исходящего/входящего интернет-трафика публичных subnet',
+      explanation: 'Привязывается к VPC; маршрут 0.0.0.0/0 в route table указывает на IGW.',
+    },
+    {
+      question: 'Зачем использовать Elastic IP?',
+      options: [
+        'Статический публичный IPv4, привязанный к instance или NAT',
+        'Приватный IP внутри VPC',
+        'DNS alias для S3',
+        'Шифрование трафика',
+      ],
+      answer: 'Статический публичный IPv4, привязанный к instance или NAT',
+    },
+    {
+      question: 'Чем Application Load Balancer отличается от Network Load Balancer?',
+      options: [
+        'ALB — L7 HTTP/HTTPS с routing по path/host; NLB — L4 TCP/UDP с низкой latency',
+        'NLB только для статики S3',
+        'ALB не поддерживает TLS',
+        'Разницы нет',
+      ],
+      answer: 'ALB — L7 HTTP/HTTPS с routing по path/host; NLB — L4 TCP/UDP с низкой latency',
+      explanation: 'Выбор зависит от протокола и требований к маршрутизации.',
+    },
+    {
+      question: 'Как из private subnet дать EC2 доступ в интернет без публичного IP?',
+      answer: 'Маршрут 0.0.0.0/0 на NAT Gateway в public subnet с IGW.',
     },
   ],
 
@@ -1127,6 +1876,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Снизить поверхность атаки, исходящий трафик через NAT',
     },
+    {
+      question: 'Для чего нужен OIDC identity provider в EKS?',
+      options: [
+        'IRSA — выдача IAM-ролей Pod через ServiceAccount',
+        'Только SSO в AWS Console',
+        'Замена kube-proxy',
+        'Хранение Helm charts',
+      ],
+      answer: 'IRSA — выдача IAM-ролей Pod через ServiceAccount',
+      explanation: 'Без IRSA приходится раздавать широкие node IAM roles.',
+    },
+    {
+      question: 'Что делает cluster autoscaler в EKS?',
+      options: [
+        'Добавляет/удаляет worker nodes при нехватке/избытке ресурсов для Pod',
+        'Масштабирует только RDS',
+        'Создаёт новый control plane',
+        'Заменяет HPA',
+      ],
+      answer: 'Добавляет/удаляет worker nodes при нехватке/избытке ресурсов для Pod',
+    },
+    {
+      question: 'Зачем устанавливать metrics-server в EKS?',
+      options: [
+        'Сбор метрик CPU/memory для kubectl top и HPA',
+        'Сбор логов в S3',
+        'Создание ALB',
+        'Шифрование etcd',
+      ],
+      answer: 'Сбор метрик CPU/memory для kubectl top и HPA',
+      explanation: 'Без metrics-server HPA по CPU не работает из коробки.',
+    },
+    {
+      question: 'Как обновить версию Kubernetes в EKS с минимальным downtime workload?',
+      answer: 'Поэтапно: обновить control plane, затем node groups (rolling/новая группа + drain старой) с учётом PDB.',
+    },
   ],
 
   certifications: [
@@ -1177,6 +1962,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Ничего из перечисленного',
       ],
       answer: 'Оба дополняют друг друга; проекты часто весят больше на интервью',
+    },
+    {
+      question: 'Что проверяет HashiCorp Terraform Associate?',
+      options: [
+        'Основы IaC, workflow plan/apply, state, модули и best practices',
+        'Только написание Ansible playbooks',
+        'Администрирование Windows AD',
+        'Только пентест web-приложений',
+      ],
+      answer: 'Основы IaC, workflow plan/apply, state, модули и best practices',
+      explanation: 'Хороший complement к облачным сертификациям для DevOps.',
+    },
+    {
+      question: 'Чем CKA отличается от CKS?',
+      options: [
+        'CKA — администрирование кластера; CKS — security hardening Kubernetes',
+        'CKS проще и без практики',
+        'CKA только теория на бумаге',
+        'Это одна сертификация',
+      ],
+      answer: 'CKA — администрирование кластера; CKS — security hardening Kubernetes',
+    },
+    {
+      question: 'Как выбрать между AWS SAA и DevOps Engineer Professional?',
+      options: [
+        'SAA — широкая архитектура AWS; DevOps Pro — CI/CD, IaC, observability в AWS',
+        'DevOps Pro не требует опыта',
+        'SAA только для разработчиков фронтенда',
+        'Выбирать не нужно — сдавать обе в один день обязательно',
+      ],
+      answer: 'SAA — широкая архитектура AWS; DevOps Pro — CI/CD, IaC, observability в AWS',
+      explanation: 'Часто идут цепочкой: Cloud Practitioner → Associate → Specialty/Professional.',
+    },
+    {
+      question: 'Назовите три ошибки при подготовке к hands-on экзамену Kubernetes.',
+      answer: 'Не тренировать kubectl под таймер, игнорировать документацию kubernetes.io, не практиковать troubleshooting Pod/Service.',
     },
   ],
 
@@ -1229,6 +2050,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Проверяет доступность снаружи (HTTP, TCP, DNS)',
     },
+    {
+      question: 'Что такое error budget в контексте SRE?',
+      options: [
+        'Допустимый объём недоступности/ошибок до нарушения SLO',
+        'Бюджет на покупку серверов',
+        'Лимит CPU в Kubernetes',
+        'Количество on-call смен',
+      ],
+      answer: 'Допустимый объём недоступности/ошибок до нарушения SLO',
+      explanation: 'Связывает надёжность с темпом релизов: исчерпан budget — замедляем изменения.',
+    },
+    {
+      question: 'Зачем использовать RED-метод (Rate, Errors, Duration)?',
+      options: [
+        'Базовый набор метрик для сервисов с запросами',
+        'Только для batch jobs',
+        'Заменяет логирование',
+        'Метод шифрования TLS',
+      ],
+      answer: 'Базовый набор метрик для сервисов с запросами',
+    },
+    {
+      question: 'Что делает recording rule в Prometheus?',
+      options: [
+        'Предвычисляет и сохраняет часто используемый запрос как новую метрику',
+        'Удаляет старые метрики',
+        'Отправляет email алерты',
+        'Создаёт Grafana dashboard',
+      ],
+      answer: 'Предвычисляет и сохраняет часто используемый запрос как новую метрику',
+      explanation: 'Ускоряет дашборды и снижает нагрузку на query при высокой cardinality.',
+    },
+    {
+      question: 'Перечислите три признака «шумного» алерта, который стоит пересмотреть.',
+      answer: 'Срабатывает без действий, не коррелирует с user impact, дублирует другие алерты.',
+    },
   ],
 
   logging: [
@@ -1279,6 +2136,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Хранит Docker images',
       ],
       answer: 'Считывает логи из shared volume/stdout и отправляет в backend',
+    },
+    {
+      question: 'Что такое log retention policy?',
+      options: [
+        'Правила срока хранения и удаления логов по compliance/стоимости',
+        'Политика RBAC в Kubernetes',
+        'TTL DNS-записи',
+        'Сжатие Docker-образов',
+      ],
+      answer: 'Правила срока хранения и удаления логов по compliance/стоимости',
+      explanation: 'Бесконечное хранение всех логов быстро становится дорогим.',
+    },
+    {
+      question: 'Зачем добавлять correlation_id / trace_id в structured logs?',
+      options: [
+        'Связать логи одного запроса через микросервисы',
+        'Ускорить CPU на 50%',
+        'Заменить метрики',
+        'Шифровать логи at rest',
+      ],
+      answer: 'Связать логи одного запроса через микросервисы',
+    },
+    {
+      question: 'Чем ELK stack отличается от Grafana Loki на высоком уровне?',
+      options: [
+        'ELK часто индексирует полнотекстово (Elasticsearch); Loki индексирует labels, тело сжато',
+        'Loki не работает с Kubernetes',
+        'ELK не поддерживает JSON',
+        'Разницы нет',
+      ],
+      answer: 'ELK часто индексирует полнотекстово (Elasticsearch); Loki индексирует labels, тело сжато',
+      explanation: 'Loki дешевле при правильных labels, ELK мощнее для сложного full-text search.',
+    },
+    {
+      question: 'Какие поля минимум стоит включить в structured log production-сервиса?',
+      answer: 'timestamp, level, message, service/name, correlation/trace id, environment.',
     },
   ],
 
@@ -1331,6 +2224,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'P1 — критический простой бизнеса, P3 — низкий impact/workaround есть',
     },
+    {
+      question: 'Что такое communication bridge на инциденте?',
+      options: [
+        'Канал связи для статус-апдейтов stakeholders (чат, bridge call)',
+        'Мост между VPC',
+        'Тип Kubernetes Service',
+        'Резервный DNS',
+      ],
+      answer: 'Канал связи для статус-апдейтов stakeholders (чат, bridge call)',
+      explanation: 'Разгружает IC и держит единый источник правды для статуса.',
+    },
+    {
+      question: 'Почему на инциденте сначала mitigate, а не сразу root cause fix?',
+      options: [
+        'Быстрее восстановить сервис для пользователей; глубокий fix — после стабилизации',
+        'Root cause всегда очевиден за секунды',
+        'Mitigate запрещён в SRE',
+        'Так требует только Terraform',
+      ],
+      answer: 'Быстрее восстановить сервис для пользователей; глубокий fix — после стабилизации',
+    },
+    {
+      question: 'Что такое runbook?',
+      options: [
+        'Документированные шаги диагностики и восстановления для типовых сбоев',
+        'Скрипт git merge',
+        'Тип Helm chart',
+        'Только postmortem',
+      ],
+      answer: 'Документированные шаги диагностики и восстановления для типовых сбоев',
+      explanation: 'Сокращает MTTR и снижает зависимость от одного «героя».',
+    },
+    {
+      question: 'Какие action items в postmortem считаются хорошими?',
+      answer: 'Конкретные, с владельцем и сроком; направлены на предотвращение повторения, а не наказание.',
+    },
   ],
 
   devsecops: [
@@ -1382,6 +2311,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
       ],
       answer: 'Встраивание проверок безопасности раньше в SDLC',
     },
+    {
+      question: 'Что такое DAST?',
+      options: [
+        'Динамическое тестирование работающего приложения на уязвимости',
+        'Статический анализ исходного кода',
+        'Шифрование диска',
+        'Ротация SSH-ключей',
+      ],
+      answer: 'Динамическое тестирование работающего приложения на уязвимости',
+      explanation: 'Дополняет SAST: видит runtime-конфигурацию и реальные HTTP-ответы.',
+    },
+    {
+      question: 'Зачем подписывать контейнерные образы (cosign, Notary)?',
+      options: [
+        'Проверять целостность и доверенный источник образа перед deploy',
+        'Ускорить docker pull',
+        'Заменить Kubernetes RBAC',
+        'Сжать слои образа',
+      ],
+      answer: 'Проверять целостность и доверенный источник образа перед deploy',
+    },
+    {
+      question: 'Что проверяет dependency scanning в CI?',
+      options: [
+        'Известные CVE в библиотеках из lock-файлов (npm, pip, maven и др.)',
+        'Только стиль кода',
+        'DNS-записи',
+        'Размер Docker volume',
+      ],
+      answer: 'Известные CVE в библиотеках из lock-файлов (npm, pip, maven и др.)',
+      explanation: 'Supply chain — частый вектор атак; сканирование ловит уязвимые зависимости рано.',
+    },
+    {
+      question: 'Назовите три меры hardening для Kubernetes API и worker nodes.',
+      answer: 'RBAC least privilege, private API endpoint/network policies, регулярные патчи и ограничение privileged Pod.',
+    },
   ],
 
   portfolio: [
@@ -1426,6 +2391,42 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
     {
       question: 'Что включить в README для ревьюера?',
       answer: 'Цель проекта, стек, prerequisites, команды deploy/destroy, схема и скриншоты дашбордов.',
+    },
+    {
+      question: 'Зачем в портфолио показывать CI pipeline status badge?',
+      options: [
+        'Демонстрирует, что проект собирается и тесты проходят автоматически',
+        'Ускоряет git clone',
+        'Заменяет code review',
+        'Скрывает ошибки сборки',
+      ],
+      answer: 'Демонстрирует, что проект собирается и тесты проходят автоматически',
+      explanation: 'Ревьюер видит зрелость процесса без локального запуска.',
+    },
+    {
+      question: 'Как честно описать homelab в резюме?',
+      options: [
+        'Конкретный стек, что автоматизировали, ссылка на репо и метрики (uptime, cost)',
+        '«Настроил всё в мире» без деталей',
+        'Только «знаю Docker»',
+        'Не упоминать homelab никогда',
+      ],
+      answer: 'Конкретный стек, что автоматизировали, ссылка на репо и метрики (uptime, cost)',
+    },
+    {
+      question: 'Почему стоит добавить Makefile или scripts/ в pet-проект?',
+      options: [
+        'Упростить воспроизведение deploy/destroy для ревьюера',
+        'Скрыть команды от пользователя',
+        'Заменить README',
+        'Обязательное требование GitHub',
+      ],
+      answer: 'Упростить воспроизведение deploy/destroy для ревьюера',
+      explanation: 'Один entrypoint (`make up`) снижает порог проверки проекта.',
+    },
+    {
+      question: 'Какие три раздела полезны в ARCHITECTURE.md для DevOps-проекта?',
+      answer: 'Диаграмма компонентов, поток CI/CD, сеть/секреты и observability.',
     },
   ],
 
@@ -1481,6 +2482,31 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
         'Перевести на личные темы',
       ],
       answer: 'Честно сказать, описать ход мыслей и смежный опыт',
+    },
+    {
+      question: 'Как структурировать ответ на «как бы вы спроектировали CI/CD для стартапа»?',
+      options: [
+        'Уточнить требования → VCS/branching → build/test → artifacts → deploy stages → observability',
+        'Сразу назвать один инструмент без вопросов',
+        'Только про сертификаты',
+        'Избегать темы тестов',
+      ],
+      answer: 'Уточнить требования → VCS/branching → build/test → artifacts → deploy stages → observability',
+      explanation: 'Показывает системное мышление и учёт контекста команды.',
+    },
+    {
+      question: 'Что спросить о on-call на интервью?',
+      options: [
+        'Ротация, компенсация, частота страниц, зрелость runbooks',
+        'Только зарплату',
+        'Цвет офиса',
+        'Версию Windows на ноутбуке',
+      ],
+      answer: 'Ротация, компенсация, частота страниц, зрелость runbooks',
+    },
+    {
+      question: 'Как кратко объяснить разницу между IaC и конфигурационным management?',
+      answer: 'IaC (Terraform) провижинит инфраструктуру; CM (Ansible) настраивает ОС и пакеты на уже существующих хостах.',
     },
   ],
 }

@@ -973,6 +973,26 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
       options: ['Merging links for bandwidth and redundancy', 'Wi-Fi only', 'VLAN 1 only'],
       answer: 'Merging links for bandwidth and redundancy',
     },
+    {
+      question: 'Native VLAN on a trunk port is:',
+      options: ['Untagged VLAN for frames without 802.1Q tag', 'The most secure VLAN', 'Management only', 'VLAN for printers'],
+      answer: 'Untagged VLAN for frames without 802.1Q tag',
+      explanation: 'Native VLAN must match on both ends of a trunk—otherwise leaks and loops.',
+    },
+    {
+      question: 'Voice VLAN (802.1p) is used for:',
+      options: ['IP telephony priority', 'Guests only', 'AD servers only', 'Disabling PoE'],
+      answer: 'IP telephony priority',
+    },
+    {
+      question: 'Command to put a port in access mode (typical Cisco CLI):',
+      answer: 'switchport mode access',
+    },
+    {
+      question: 'Root bridge in STP is selected by:',
+      options: ['Lowest Bridge Priority + MAC', 'Highest IP', 'Randomly', 'Number of PoE ports'],
+      answer: 'Lowest Bridge Priority + MAC',
+    },
   ],
 }
 

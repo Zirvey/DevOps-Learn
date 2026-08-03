@@ -973,6 +973,26 @@ Wi-Fi problem reported
       options: ['No ethernet to AP (throughput below)', 'Always required', 'DC only'],
       answer: 'No ethernet to AP (throughput below)',
     },
+    {
+      question: 'SSID Schedule in Omada allows:',
+      options: ['Turning Wi‑Fi on/off on a schedule', 'Automatically changing AD passwords', 'Disabling PoE', 'Changing VLAN on switch'],
+      answer: 'Turning Wi‑Fi on/off on a schedule',
+    },
+    {
+      question: 'WPA2-PSK is undesirable in a corporate network because:',
+      options: ['Shared password—hard to revoke when someone leaves', 'Does not work on 5 GHz', 'Requires FortiGate', 'Blocks RADIUS'],
+      answer: 'Shared password—hard to revoke when someone leaves',
+      explanation: 'Enterprise 802.1X provides per-user credentials.',
+    },
+    {
+      question: 'Recommended 5 GHz channel width in a dense office:',
+      answer: '20 or 40 MHz (80 MHz—only with few neighbors)',
+    },
+    {
+      question: 'Standalone mode AP in Omada is used when:',
+      options: ['No controller—managed locally on the AP', 'Required for Corp SSID', 'DC only', 'Mesh only'],
+      answer: 'No controller—managed locally on the AP',
+    },
   ],
 }
 

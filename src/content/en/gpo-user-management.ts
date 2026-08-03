@@ -1136,6 +1136,26 @@ AGPM — version control workflow in production. Backup-GPO — point-in-time ba
       options: ['When the computer boots', 'Only when logout', 'Only on DC'],
       answer: 'When the computer boots',
     },
+    {
+      question: 'Item-Level Targeting in GPO Preferences allows:',
+      options: ['Applying a setting based on conditions (OU, group, IP)', 'Encrypting GPO', 'Deleting AD objects', 'Changing forest schema'],
+      answer: 'Applying a setting based on conditions (OU, group, IP)',
+    },
+    {
+      question: 'gpresult /r on a client shows:',
+      options: ['Which GPOs are applied', 'List of all DCs', 'MAC address only', 'DHCP lease only'],
+      answer: 'Which GPOs are applied',
+    },
+    {
+      question: 'Command to view applied GPOs with an HTML report:',
+      answer: 'gpresult /h report.html',
+    },
+    {
+      question: 'Loopback Processing in GPO is needed when:',
+      options: ['User settings are needed regardless of the physical PC location', 'Disable all GPOs', 'DC only', 'Printers only'],
+      answer: 'User settings are needed regardless of the physical PC location',
+      explanation: 'Merge or Replace mode—for terminals, kiosks, labs.',
+    },
   ],
 }
 

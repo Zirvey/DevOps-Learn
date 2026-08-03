@@ -342,6 +342,42 @@ kubectl explain pod.spec.containers`,
       ],
       answer: `They complement each other; projects often weigh more in interviews`,
     },
+    {
+      question: `What does HashiCorp Terraform Associate test?`,
+      options: [
+        `IaC fundamentals, plan/apply workflow, state, modules, and best practices`,
+        `Only writing Ansible playbooks`,
+        `Windows AD administration`,
+        `Only web application pentesting`,
+      ],
+      answer: `IaC fundamentals, plan/apply workflow, state, modules, and best practices`,
+      explanation: `A good complement to cloud certifications for DevOps.`,
+    },
+    {
+      question: `How does CKA differ from CKS?`,
+      options: [
+        `CKA is cluster administration; CKS is Kubernetes security hardening`,
+        `CKS is easier with no hands-on`,
+        `CKA is only theory on paper`,
+        `It is one certification`,
+      ],
+      answer: `CKA is cluster administration; CKS is Kubernetes security hardening`,
+    },
+    {
+      question: `How do you choose between AWS SAA and DevOps Engineer Professional?`,
+      options: [
+        `SAA covers broad AWS architecture; DevOps Pro covers CI/CD, IaC, observability on AWS`,
+        `DevOps Pro requires no experience`,
+        `SAA is only for frontend developers`,
+        `No need to choose — both must be taken on the same day`,
+      ],
+      answer: `SAA covers broad AWS architecture; DevOps Pro covers CI/CD, IaC, observability on AWS`,
+      explanation: `Often followed in sequence: Cloud Practitioner → Associate → Specialty/Professional.`,
+    },
+    {
+      question: `Name three mistakes when preparing for a hands-on Kubernetes exam.`,
+      answer: `Not practicing kubectl under time pressure, ignoring kubernetes.io documentation, not practicing troubleshooting Pods/Services.`,
+    },
   ],
 }
 

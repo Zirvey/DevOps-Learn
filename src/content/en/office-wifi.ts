@@ -973,6 +973,26 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
       options: ['Not a real defense', 'Replaces WPA3', 'Blocks guests'],
       answer: 'Not a real defense',
     },
+    {
+      question: 'Non-overlapping 2.4 GHz channels:',
+      options: ['1, 6, 11', '1, 2, 3', '5, 10, 15', 'Only channel 14'],
+      answer: '1, 6, 11',
+    },
+    {
+      question: 'WPA3-Personal improves over WPA2 by:',
+      options: ['Protection against offline brute-force (SAE)', 'Signal range', 'PoE budget', 'DNS speed'],
+      answer: 'Protection against offline brute-force (SAE)',
+    },
+    {
+      question: 'Tool for Wi‑Fi site survey in the office:',
+      answer: 'Ekahau, NetSpot, inSSIDer, or built-in survey in the controller',
+    },
+    {
+      question: 'Channel bonding 80 MHz on 5 GHz gives:',
+      options: ['Higher throughput but fewer free channels', 'Only 2.4 GHz', 'Disabling PoE', 'Automatic AD join'],
+      answer: 'Higher throughput but fewer free channels',
+      explanation: 'In dense offices, 20/40 MHz is often better for less interference.',
+    },
   ],
 }
 

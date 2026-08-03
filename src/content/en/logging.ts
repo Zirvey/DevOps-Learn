@@ -491,6 +491,42 @@ groups:
       ],
       answer: `Reads logs from a shared volume/stdout and sends them to a backend`,
     },
+    {
+      question: `What is a log retention policy?`,
+      options: [
+        `Rules for how long to keep and when to delete logs for compliance/cost`,
+        `Kubernetes RBAC policy`,
+        `DNS record TTL`,
+        `Docker image compression`,
+      ],
+      answer: `Rules for how long to keep and when to delete logs for compliance/cost`,
+      explanation: `Storing all logs forever quickly becomes expensive.`,
+    },
+    {
+      question: `Why add correlation_id / trace_id to structured logs?`,
+      options: [
+        `Link logs from one request across microservices`,
+        `Speed up CPU by 50%`,
+        `Replace metrics`,
+        `Encrypt logs at rest`,
+      ],
+      answer: `Link logs from one request across microservices`,
+    },
+    {
+      question: `How does the ELK stack differ from Grafana Loki at a high level?`,
+      options: [
+        `ELK often full-text indexes (Elasticsearch); Loki indexes labels, body compressed`,
+        `Loki does not work with Kubernetes`,
+        `ELK does not support JSON`,
+        `No difference`,
+      ],
+      answer: `ELK often full-text indexes (Elasticsearch); Loki indexes labels, body compressed`,
+      explanation: `Loki is cheaper with proper labels; ELK is stronger for complex full-text search.`,
+    },
+    {
+      question: `What fields should you at minimum include in a production service structured log?`,
+      answer: `timestamp, level, message, service/name, correlation/trace id, environment.`,
+    },
   ],
 }
 

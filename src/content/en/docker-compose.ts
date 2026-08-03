@@ -209,6 +209,42 @@ const translation: ChapterTranslation = {
       ],
       answer: "docker compose up -d",
     },
+    {
+      question: "How do you define a healthcheck for a service in Compose?",
+      options: [
+        "healthcheck section with test, interval, retries in the service definition",
+        "Only via external Kubernetes probe",
+        "Via Dockerfile EXPOSE",
+        "Healthcheck is not supported in Compose",
+      ],
+      answer: "healthcheck section with test, interval, retries in the service definition",
+      explanation: "Enables depends_on with condition: service_healthy in Compose v2.",
+    },
+    {
+      question: "What does docker compose down -v do?",
+      options: [
+        "Stops containers and removes the project's named/anonymous volumes",
+        "Only stops without removing networks",
+        "Builds images without cache",
+        "Publishes ports externally",
+      ],
+      answer: "Stops containers and removes the project's named/anonymous volumes",
+    },
+    {
+      question: "How do you override the container startup command in a compose file?",
+      options: [
+        "command or entrypoint key in the service",
+        "Only via docker run after up",
+        "Via networks section",
+        "Cannot — only from Dockerfile",
+      ],
+      answer: "command or entrypoint key in the service",
+      explanation: "Useful for dev mode with hot reload without rebuilding the image.",
+    },
+    {
+      question: "How do you start only one service from a multi-service compose file?",
+      answer: "docker compose up -d service_name",
+    },
   ],
 }
 

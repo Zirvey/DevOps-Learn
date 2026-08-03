@@ -1269,6 +1269,26 @@ diagnose vpn ike gateway list
       options: ['SSL/IPsec VPN client', 'Only antivirus on FG', 'GPO editor'],
       answer: 'SSL/IPsec VPN client',
     },
+    {
+      question: 'IKE Phase 1 in IPsec is responsible for:',
+      options: ['Authentication and negotiation of tunnel encryption', 'Routing only', 'DNS only', 'DHCP only'],
+      answer: 'Authentication and negotiation of tunnel encryption',
+    },
+    {
+      question: 'SSL-VPN is preferred for:',
+      options: ['Remote employees through NAT/firewall', 'Site-to-site only', 'Printing only', 'AD schema only'],
+      answer: 'Remote employees through NAT/firewall',
+    },
+    {
+      question: 'FortiClient EMS is used for:',
+      answer: 'Centralized deployment, profiles, and reporting for FortiClient',
+    },
+    {
+      question: 'Dead Peer Detection (DPD) in IPsec is needed for:',
+      options: ['Detecting tunnel failure and reconnecting', 'Speeding up Wi-Fi', 'Changing VLAN', 'Printing'],
+      answer: 'Detecting tunnel failure and reconnecting',
+      explanation: 'Without DPD, a "dead" tunnel may remain down and not be recreated for a long time.',
+    },
   ],
 }
 

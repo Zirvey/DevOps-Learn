@@ -698,6 +698,21 @@ reflog when “everything is gone”
       ],
       answer: 'Require a PR, review, and green CI instead of a direct push',
     },
+    {
+      question: 'What does git cherry-pick do?',
+      options: [
+        'Applies a selected commit to the current branch',
+        'Deletes all untracked files',
+        'Creates a bare repository',
+        'Automatically squashes history into one commit',
+      ],
+      answer: 'Applies a selected commit to the current branch',
+      explanation: 'Useful for moving a hotfix from one branch to another without a full merge.',
+    },
+    {
+      question: 'How do you view change history for a specific file with blame info?',
+      answer: 'git log --follow -- path/to/file or git blame path/to/file',
+    },
   ],
   terminalLab: {
     id: 'git-basics',

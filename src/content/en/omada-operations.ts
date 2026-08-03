@@ -995,6 +995,26 @@ OFFLINE=$(echo "$DEVICES" | jq '[.data[] | select(.status==0)] | length')
       options: ['Backup + re-adopt', 'Factory reset AP only', 'Deleting a VLAN'],
       answer: 'Backup + re-adopt',
     },
+    {
+      question: 'Syslog from Omada Gateway is sent for:',
+      options: ['Centralized log storage', 'Faster Wi-Fi', 'AD backup', 'Printing'],
+      answer: 'Centralized log storage',
+    },
+    {
+      question: 'SNMP on Omada is used for:',
+      options: ['Monitoring in Zabbix/Prometheus/Grafana', 'DNS only', 'GPO only', 'Printing only'],
+      answer: 'Monitoring in Zabbix/Prometheus/Grafana',
+    },
+    {
+      question: 'After factory reset of an Omada device you need to:',
+      answer: 'Perform adoption again and apply profiles from the controller',
+    },
+    {
+      question: 'Load Balance on Dual WAN in Omada distributes:',
+      options: ['Sessions across both links per policy', 'DNS only', 'AD replication only', 'Multicast only'],
+      answer: 'Sessions across both links per policy',
+      explanation: 'Failover and load balance are different modes; check health checks.',
+    },
   ],
 }
 

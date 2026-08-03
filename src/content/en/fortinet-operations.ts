@@ -1351,6 +1351,26 @@ A: Confirm scope, check WAN link status, ping ISP gateway, check SD-WAN failover
       options: ['Session table and UTM load', 'Cable only', 'DNS MX only'],
       answer: 'Session table and UTM load',
     },
+    {
+      question: 'Config Revision History on FortiGate allows you to:',
+      options: ['Roll back configuration changes', 'Delete AD', 'Change ISP', 'Disable PoE'],
+      answer: 'Roll back configuration changes',
+    },
+    {
+      question: 'Before a firmware upgrade on a FortiGate HA cluster:',
+      options: ['Check version compatibility and take a backup', 'Immediately reboot both', 'Delete all policies', 'Disable DNS'],
+      answer: 'Check version compatibility and take a backup',
+      explanation: 'Usually update secondary, failover, then primary.',
+    },
+    {
+      question: 'Command to view the FortiGate session table:',
+      answer: 'diagnose sys session list',
+    },
+    {
+      question: 'FortiGuard Outbreak Alerts warn about:',
+      options: ['New threats and zero-day campaigns', 'AD password change', 'PoE budget', 'Printing'],
+      answer: 'New threats and zero-day campaigns',
+    },
   ],
 }
 

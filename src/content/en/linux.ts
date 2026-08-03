@@ -563,6 +563,42 @@ These topics deepen in the Security and SSH modules.`,
       question: 'How do you view the last 50 lines of a log file in real time?',
       answer: 'tail -f -n 50 /path/to/log or tail -n 50 -f /path/to/log',
     },
+    {
+      question: 'What does df -h show?',
+      options: [
+        'Filesystem disk space usage in human-readable format',
+        'List of running processes',
+        'TCP packet routing',
+        'Contents of crontab',
+      ],
+      answer: 'Filesystem disk space usage in human-readable format',
+      explanation: 'Useful when diagnosing "disk full" on servers and in containers.',
+    },
+    {
+      question: 'How do you find files larger than 100 MB in the current directory recursively?',
+      options: [
+        'find . -type f -size +100M',
+        'ls -la | grep 100M',
+        'du -sh only',
+        'grep -r 100M .',
+      ],
+      answer: 'find . -type f -size +100M',
+    },
+    {
+      question: 'What does chown user:group file do?',
+      options: [
+        'Changes file owner and group',
+        'Changes only rwx permissions',
+        'Creates a hard link',
+        'Mounts a partition',
+      ],
+      answer: 'Changes file owner and group',
+      explanation: 'Often needed after copying files from root or in Docker volumes.',
+    },
+    {
+      question: 'How do you restart the nginx systemd service and check its status?',
+      answer: 'sudo systemctl restart nginx && sudo systemctl status nginx',
+    },
   ],
   terminalLab: {
     id: 'linux-basics',

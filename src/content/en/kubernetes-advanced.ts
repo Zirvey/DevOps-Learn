@@ -218,6 +218,42 @@ const translation: ChapterTranslation = {
       question: "What does kubectl drain node do?",
       answer: "Evacuates a Pod from a node (taking into account the PDB) for maintenance or removal of the node from the cluster.",
     },
+    {
+      question: "What are Custom Resource Definitions (CRDs) used for?",
+      options: [
+        "Extending the Kubernetes API with custom resource types",
+        "Replacing etcd",
+        "Disabling RBAC",
+        "Creating only ConfigMap",
+      ],
+      answer: "Extending the Kubernetes API with custom resource types",
+      explanation: "Operators and controllers are often built around CRDs.",
+    },
+    {
+      question: "What does Vertical Pod Autoscaler (VPA) do?",
+      options: [
+        "Recommends or automatically adjusts CPU and memory requests/limits",
+        "Creates new nodes in the cluster",
+        "Scales only Ingress",
+        "Replaces HPA for RPS",
+      ],
+      answer: "Recommends or automatically adjusts CPU and memory requests/limits",
+    },
+    {
+      question: "Why configure resource requests and limits for a container?",
+      options: [
+        "Scheduler uses requests; limits cap consumption on the node",
+        "Just for YAML aesthetics",
+        "Pods never start without them",
+        "They replace liveness probes",
+      ],
+      answer: "Scheduler uses requests; limits cap consumption on the node",
+      explanation: "Incorrect limits can cause OOMKill or inefficient scheduling.",
+    },
+    {
+      question: "How do you view logs from a previous crashed container in a Pod?",
+      answer: "kubectl logs <pod> -c <container> --previous",
+    },
   ],
 }
 

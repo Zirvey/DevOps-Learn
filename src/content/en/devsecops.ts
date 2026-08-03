@@ -595,6 +595,42 @@ checkov -d . --framework terraform`,
       ],
       answer: `Embedding security checks earlier in the SDLC`,
     },
+    {
+      question: `What is DAST?`,
+      options: [
+        `Dynamic testing of a running application for vulnerabilities`,
+        `Static analysis of source code`,
+        `Disk encryption`,
+        `SSH key rotation`,
+      ],
+      answer: `Dynamic testing of a running application for vulnerabilities`,
+      explanation: `Complements SAST: sees runtime configuration and real HTTP responses.`,
+    },
+    {
+      question: `Why sign container images (cosign, Notary)?`,
+      options: [
+        `Verify integrity and trusted source of the image before deploy`,
+        `Speed up docker pull`,
+        `Replace Kubernetes RBAC`,
+        `Compress image layers`,
+      ],
+      answer: `Verify integrity and trusted source of the image before deploy`,
+    },
+    {
+      question: `What does dependency scanning in CI check?`,
+      options: [
+        `Known CVEs in libraries from lock files (npm, pip, maven, etc.)`,
+        `Only code style`,
+        `DNS records`,
+        `Docker volume size`,
+      ],
+      answer: `Known CVEs in libraries from lock files (npm, pip, maven, etc.)`,
+      explanation: `Supply chain is a common attack vector; scanning catches vulnerable dependencies early.`,
+    },
+    {
+      question: `Name three hardening measures for Kubernetes API and worker nodes.`,
+      answer: `RBAC least privilege, private API endpoint/network policies, regular patches and restricting privileged Pods.`,
+    },
   ],
 }
 

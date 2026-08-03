@@ -1373,6 +1373,26 @@ diagnose sys fortiguard-service rating
       options: ['Change admin password', 'Open all ports', 'Disable DNS'],
       answer: 'Change admin password',
     },
+    {
+      question: 'FortiCare Support contract provides:',
+      options: ['Access to firmware updates and support', 'Free internet', 'Automatic AD', 'Wi‑Fi only'],
+      answer: 'Access to firmware updates and support',
+    },
+    {
+      question: 'FortiGate management interface should be:',
+      options: ['On a protected VLAN with restricted access', 'On WAN with any-any', 'Without password', 'Telnet only'],
+      answer: 'On a protected VLAN with restricted access',
+      explanation: 'Mgmt should not be accessible from the internet.',
+    },
+    {
+      question: 'CLI command to view CPU load and sessions:',
+      answer: 'get system performance status or diagnose sys top',
+    },
+    {
+      question: 'ZTNA (Zero Trust) on FortiGate means:',
+      options: ['Verifying every access by identity and context', 'Opening all ports', 'PSK VPN only', 'Disabling logs'],
+      answer: 'Verifying every access by identity and context',
+    },
   ],
 }
 

@@ -447,6 +447,42 @@ bash -x myscript.sh 2>&1 | tee debug.log`,
       ],
       answer: 'Pass multiline input to a command or into a file',
     },
+    {
+      question: 'What does cmd1 | cmd2 do in bash?',
+      options: [
+        'Pipes stdout of cmd1 to stdin of cmd2 (pipe)',
+        'Always runs commands in parallel',
+        'Logical AND between exit codes',
+        'Redirects stderr to a file',
+      ],
+      answer: 'Pipes stdout of cmd1 to stdin of cmd2 (pipe)',
+      explanation: 'Classic pattern: cat file | grep pattern | wc -l.',
+    },
+    {
+      question: 'How do you loop over *.log files in the current directory in bash?',
+      options: [
+        'for f in *.log; do ...; done',
+        'while *.log do',
+        'loop files *.log',
+        'foreach log in bash only',
+      ],
+      answer: 'for f in *.log; do ...; done',
+    },
+    {
+      question: 'What is the difference between > and >> in output redirection?',
+      options: [
+        '> overwrites the file, >> appends to the end',
+        '>> deletes the file',
+        '> works only with stderr',
+        'No difference',
+      ],
+      answer: '> overwrites the file, >> appends to the end',
+      explanation: 'Important not to overwrite the log on a script rerun.',
+    },
+    {
+      question: 'How do you safely handle paths with spaces when copying in a script?',
+      answer: 'Wrap the variable in double quotes: cp "$src" "$dst".',
+    },
   ],
 }
 

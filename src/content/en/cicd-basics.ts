@@ -147,6 +147,42 @@ const translation: ChapterTranslation = {
       ],
       answer: "Two identical environments; traffic switches to the new one after verification",
     },
+    {
+      question: "What is canary deployment?",
+      options: [
+        "Gradual rollout of a new version to a small share of traffic",
+        "Deploy only on weekends",
+        "Rollback by deleting the cluster",
+        "Replacing CI with CD",
+      ],
+      answer: "Gradual rollout of a new version to a small share of traffic",
+      explanation: "Reduces risk: errors are visible to a small audience before full rollout.",
+    },
+    {
+      question: "Why cache dependencies in a CI pipeline?",
+      options: [
+        "Speed up repeated builds and reduce load on the registry",
+        "Store secrets between jobs",
+        "Disable tests",
+        "Replace artifact storage",
+      ],
+      answer: "Speed up repeated builds and reduce load on the registry",
+    },
+    {
+      question: "What is a deployment gate (manual approval)?",
+      options: [
+        "A point in the pipeline where a person approves promotion to prod",
+        "Automatic unconditional rollback",
+        "Secret in plain text",
+        "A type of unit test",
+      ],
+      answer: "A point in the pipeline where a person approves promotion to prod",
+      explanation: "Often used for regulated or high-risk environments.",
+    },
+    {
+      question: "List three practices to speed up the feedback loop in CI.",
+      answer: "Parallel jobs, dependency caching, fast unit tests at early stages.",
+    },
   ],
 }
 

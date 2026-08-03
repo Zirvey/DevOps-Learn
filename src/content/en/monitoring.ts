@@ -509,6 +509,42 @@ Apply to: CPU, memory, disk, network interfaces.
       ],
       answer: `Checks availability from the outside (HTTP, TCP, DNS)`,
     },
+    {
+      question: `What is an error budget in SRE context?`,
+      options: [
+        `Allowed amount of downtime/errors before breaching the SLO`,
+        `Budget for buying servers`,
+        `CPU limit in Kubernetes`,
+        `Number of on-call shifts`,
+      ],
+      answer: `Allowed amount of downtime/errors before breaching the SLO`,
+      explanation: `Links reliability to release pace: exhausted budget — slow down changes.`,
+    },
+    {
+      question: `Why use the RED method (Rate, Errors, Duration)?`,
+      options: [
+        `Core metric set for request-driven services`,
+        `Only for batch jobs`,
+        `Replaces logging`,
+        `TLS encryption method`,
+      ],
+      answer: `Core metric set for request-driven services`,
+    },
+    {
+      question: `What does a recording rule do in Prometheus?`,
+      options: [
+        `Precomputes and stores a frequently used query as a new metric`,
+        `Deletes old metrics`,
+        `Sends email alerts`,
+        `Creates Grafana dashboards`,
+      ],
+      answer: `Precomputes and stores a frequently used query as a new metric`,
+      explanation: `Speeds up dashboards and reduces query load at high cardinality.`,
+    },
+    {
+      question: `Name three signs of a "noisy" alert worth revisiting.`,
+      answer: `Fires without actionable steps, doesn't correlate with user impact, duplicates other alerts.`,
+    },
   ],
 }
 

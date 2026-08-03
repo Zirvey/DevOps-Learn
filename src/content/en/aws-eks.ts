@@ -554,6 +554,42 @@ This lab combines EKS, ECR, ALB, Route 53, Helm — a full production workflow.`
       ],
       answer: `Reduce attack surface; outbound traffic via NAT`,
     },
+    {
+      question: `What is the OIDC identity provider in EKS used for?`,
+      options: [
+        `IRSA — granting IAM roles to Pods via ServiceAccount`,
+        `AWS Console SSO only`,
+        `Replacing kube-proxy`,
+        `Storing Helm charts`,
+      ],
+      answer: `IRSA — granting IAM roles to Pods via ServiceAccount`,
+      explanation: `Without IRSA you have to assign broad node IAM roles.`,
+    },
+    {
+      question: `What does the cluster autoscaler do in EKS?`,
+      options: [
+        `Adds/removes worker nodes when there is insufficient/excess capacity for Pods`,
+        `Scales RDS only`,
+        `Creates a new control plane`,
+        `Replaces HPA`,
+      ],
+      answer: `Adds/removes worker nodes when there is insufficient/excess capacity for Pods`,
+    },
+    {
+      question: `Why install metrics-server in EKS?`,
+      options: [
+        `Collects CPU/memory metrics for kubectl top and HPA`,
+        `Collects logs to S3`,
+        `Creates ALB`,
+        `Encrypts etcd`,
+      ],
+      answer: `Collects CPU/memory metrics for kubectl top and HPA`,
+      explanation: `Without metrics-server, CPU-based HPA does not work out of the box.`,
+    },
+    {
+      question: `How do you update the Kubernetes version in EKS with minimal workload downtime?`,
+      answer: `In stages: update control plane, then node groups (rolling/new group + drain old) with PDB in mind.`,
+    },
   ],
 }
 

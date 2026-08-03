@@ -374,6 +374,42 @@ Example of a restricted key:
       ],
       answer: 'Creates local port forwarding (a tunnel)',
     },
+    {
+      question: 'What does the -R option in ssh do (remote port forwarding)?',
+      options: [
+        'Forwards a port from the remote host back to the local machine',
+        'Recursively copies directories',
+        'Disables compression',
+        'Changes host key algorithm',
+      ],
+      answer: 'Forwards a port from the remote host back to the local machine',
+      explanation: 'Used when you need to give access to a service on your machine from a remote server.',
+    },
+    {
+      question: 'Why verify the host fingerprint on first connection?',
+      options: [
+        'Ensure you are connecting to the correct server, not a MITM',
+        'Speed up handshake',
+        'Enable X11 forwarding',
+        'Create a new SSH key',
+      ],
+      answer: 'Ensure you are connecting to the correct server, not a MITM',
+    },
+    {
+      question: 'How do you add a private key to ssh-agent?',
+      answer: 'ssh-add ~/.ssh/id_ed25519 (or the path to the needed key).',
+    },
+    {
+      question: 'What does PermitRootLogin no in sshd_config do?',
+      options: [
+        'Prohibits direct login as root via SSH',
+        'Disables all keys',
+        'Allows only password',
+        'Enables SFTP-only mode for everyone',
+      ],
+      answer: 'Prohibits direct login as root via SSH',
+      explanation: 'Recommended security practice: sudo after logging in as a regular user.',
+    },
   ],
 }
 

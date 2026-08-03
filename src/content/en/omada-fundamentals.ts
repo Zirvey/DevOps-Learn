@@ -1131,6 +1131,31 @@ Software Linux: \\\`/opt/tplink/EAPController/logs/\\\`. UI: Logs menu. Syslog f
       options: ['Regularly, before changes', 'Never', 'Only when changing ISP'],
       answer: 'Regularly, before changes',
     },
+    {
+      question: 'Omada Discovery Utility is needed to:',
+      options: ['Find devices before adoption', 'Remove VLAN', 'Configure AD', 'Print'],
+      answer: 'Find devices before adoption',
+    },
+    {
+      question: 'Site in Omada Controller is:',
+      options: [
+        'A logical group of devices at one location',
+        'Only one AP',
+        'A DNS zone',
+        'A VPN tunnel',
+      ],
+      answer: 'A logical group of devices at one location',
+      explanation: 'An Organization can contain multiple Sites for branch offices.',
+    },
+    {
+      question: 'Default HTTPS port for Omada Software Controller:',
+      answer: '8043 (or 443 behind a reverse proxy)',
+    },
+    {
+      question: 'Inform URL on an Omada device points to:',
+      options: ['Controller address for adoption', 'ISP DNS', 'Printer', 'RADIUS only'],
+      answer: 'Controller address for adoption',
+    },
   ],
 }
 

@@ -985,6 +985,41 @@ OneDrive not backup for all — know if company uses Veeam endpoint or none; set
       options: ['Standardization of workstations', 'Linux servers only', 'Firewall only'],
       answer: 'Standardization of workstations',
     },
+    {
+      question: 'Safe Mode with Networking is used when:',
+      options: [
+        'Diagnostics with network access but without extra drivers',
+        'BIOS only',
+        'VPN only',
+        'Printer only',
+      ],
+      answer: 'Diagnostics with network access but without extra drivers',
+    },
+    {
+      question: 'Intune (MDM) in the office is used for:',
+      options: [
+        'Managing policies and applications on devices',
+        'DNS only',
+        'VLAN only',
+        'Printing only',
+      ],
+      answer: 'Managing policies and applications on devices',
+    },
+    {
+      question: 'Command to check applied GPO for the current user:',
+      answer: 'gpresult /scope user /v',
+    },
+    {
+      question: 'Teams will not start — clearing this often helps:',
+      options: [
+        'Teams cache (%appdata%\\Microsoft\\Teams)',
+        'AD schema',
+        'VLAN on switch',
+        'DHCP scope',
+      ],
+      answer: 'Teams cache (%appdata%\\Microsoft\\Teams)',
+      explanation: 'Also check WebView2 and network access to Microsoft 365.',
+    },
   ],
 }
 

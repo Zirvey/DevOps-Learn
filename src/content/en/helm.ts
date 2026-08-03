@@ -225,6 +225,42 @@ const translation: ChapterTranslation = {
       ],
       answer: "helm rollback <release> <revision>",
     },
+    {
+      question: "What is a Helm repository (chart repo)?",
+      options: [
+        "HTTP repository with a chart package index for helm repo add/install",
+        "Git main branch",
+        "Docker registry",
+        "Kubernetes Namespace type",
+      ],
+      answer: "HTTP repository with a chart package index for helm repo add/install",
+      explanation: "Lets you version and distribute charts as artifacts.",
+    },
+    {
+      question: "What are helpers in _helpers.tpl used for in a chart?",
+      options: [
+        "Reusable named templates for labels/names",
+        "Storing binary files",
+        "Secrets in plain text",
+        "Only for NOTES.txt",
+      ],
+      answer: "Reusable named templates for labels/names",
+    },
+    {
+      question: "What does helm template do?",
+      options: [
+        "Renders manifests locally without installing to the cluster",
+        "Removes a release",
+        "Creates a new cluster",
+        "Automatically pushes the chart to an OCI registry",
+      ],
+      answer: "Renders manifests locally without installing to the cluster",
+      explanation: "Useful for debugging templates and CI validation before deploy.",
+    },
+    {
+      question: "How do you pass multiple values files when installing a chart?",
+      answer: "helm install -f values.yaml -f prod.yaml <release> <chart> (file order matters — last one overrides).",
+    },
   ],
 }
 

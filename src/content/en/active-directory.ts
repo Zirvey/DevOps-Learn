@@ -1215,6 +1215,26 @@ Monitor Event 4769 for RC4 encryption, service accounts with SPN and weak passwo
       options: ['dcdiag', 'ipconfig', 'docker ps'],
       answer: 'dcdiag',
     },
+    {
+      question: 'A Global Security Group in AD is used for:',
+      options: ['Collecting users by roles/departments', 'Directly assigning NTFS permissions', 'Storing DNS zones', 'Publishing printers only'],
+      answer: 'Collecting users by roles/departments',
+      explanation: 'Per AGDLP, users go into Global groups; permissions go through Domain Local.',
+    },
+    {
+      question: 'A Forest in AD is:',
+      options: ['A security and schema boundary', 'One OU', 'Only a DNS zone', 'A group of printers'],
+      answer: 'A security and schema boundary',
+    },
+    {
+      question: 'Utility to find the source of account lockout:',
+      answer: 'LockoutStatus.exe or Get-ADUser / Event Viewer (ID 4740)',
+    },
+    {
+      question: 'AD replication between DCs uses protocol:',
+      options: ['RPC / SMTP (for inter-site)', 'HTTP only', 'FTP only', 'SNMP only'],
+      answer: 'RPC / SMTP (for inter-site)',
+    },
   ],
 }
 

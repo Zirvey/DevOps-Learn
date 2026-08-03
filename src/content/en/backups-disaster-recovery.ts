@@ -991,6 +991,26 @@ Microsoft: infrastructure. Customer: data protection, retention policy, accident
       options: ['Ransomware', 'Slow Internet', 'VLAN misconfiguration'],
       answer: 'Ransomware',
     },
+    {
+      question: 'RTO (Recovery Time Objective) is:',
+      options: ['Allowable service downtime', 'Allowable data loss', 'Number of backup copies', 'Tape retention period'],
+      answer: 'Allowable service downtime',
+      explanation: 'RPO — how much data can be lost; RTO — how quickly to restore operations.',
+    },
+    {
+      question: 'A restore drill is needed to:',
+      options: ['Verify backups actually work', 'Speed up internet', 'Update GPO', 'Change VLAN'],
+      answer: 'Verify backups actually work',
+    },
+    {
+      question: 'First step when restoring a DC from backup:',
+      answer: 'Boot into Directory Services Restore Mode (DSRM) or restore System State',
+    },
+    {
+      question: 'An offsite backup copy is typically stored:',
+      options: ['In another building/cloud, separate from production', 'On the same NAS as production', 'Only on the admin desktop', 'In Guest VLAN'],
+      answer: 'In another building/cloud, separate from production',
+    },
   ],
 }
 
