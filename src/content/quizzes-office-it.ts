@@ -193,6 +193,18 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Команда просмотра таблицы сессий FortiGate:', answer: 'diagnose sys session list' },
     { question: 'FortiGuard Outbreak Alerts предупреждают о:', options: ['Новых угрозах и zero-day кампаниях', 'Смене пароля AD', 'PoE budget', 'Печати'], answer: 'Новых угрозах и zero-day кампаниях' },
   ],
+  'opnsense-fundamentals': [
+    { question: 'OPNsense основан на:', options: ['FreeBSD и pf', 'Linux и только iptables', 'Windows Server', 'macOS'], answer: 'FreeBSD и pf' },
+    { question: 'Firewall rules в OPNsense обрабатываются:', options: ['Сверху вниз, первое совпадение', 'Снизу вверх только', 'В случайном порядке', 'Только на WAN'], answer: 'Сверху вниз, первое совпадение' },
+    { question: 'Port forward с timeout при работающем NAT обычно означает:', options: ['Нет associated WAN pass rule', 'DHCP pool исчерпан', 'Ошибка DNSSEC', 'CARP split-brain'], answer: 'Нет associated WAN pass rule', explanation: 'DNAT без разрешающего rule на WAN — типичная причина timeout.' },
+    { question: 'Outbound NAT для типового SMB LAN по умолчанию:', options: ['Automatic', 'Disabled', 'Только Manual', 'Bridge mode'], answer: 'Automatic' },
+    { question: 'WireGuard на OPNsense обычно слушает порт:', options: ['51820', '443', '22', '161'], answer: '51820' },
+    { question: 'Пакет os-suricata предоставляет:', options: ['IDS/IPS по сигнатурам', 'Только DHCP', 'Wi‑Fi controller', 'Почтовый relay'], answer: 'IDS/IPS по сигнатурам' },
+    { question: 'CARP в OPNsense используется для:', options: ['HA с общими virtual IP', 'DNS cache', 'LDAP auth', 'PoE budget'], answer: 'HA с общими virtual IP' },
+    { question: 'Полная конфигурация OPNsense хранится в:', options: ['config.xml', 'registry.db', 'etcd', 'GPO Active Directory'], answer: 'config.xml' },
+    { question: 'CLI-команда списка активных firewall states:', answer: 'pfctl -s state', explanation: 'pfctl -vvsr — rules с counters; clog — live filter log.' },
+    { question: 'Best practice для Guest VLAN на OPNsense:', options: ['Block RFC1918, allow только internet', 'Allow все internal subnets', 'Отключить firewall на Guest', 'WAN как gateway Guest'], answer: 'Block RFC1918, allow только internet', explanation: 'Гости не должны достигать внутренние серверы и VLAN.' },
+  ],
   'it-support-foundations': [
     { question: 'L1 support обычно решает:', options: ['Базовые инциденты и эскалирует', 'Только firewall rules', 'Только AD schema'], answer: 'Базовые инциденты и эскалирует' },
     { question: 'Incident vs Service Request:', options: ['Сломалось vs запрос услуги', 'Одно и то же', 'Только для VIP'], answer: 'Сломалось vs запрос услуги' },

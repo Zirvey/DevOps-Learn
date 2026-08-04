@@ -11,6 +11,7 @@ import { sysadminChapters } from './chapters/sysadmin'
 import { officeNetworkChapters } from './chapters/office-network'
 import { omadaChapters } from './chapters/omada'
 import { fortinetChapters } from './chapters/fortinet'
+import { opnsenseChapters } from './chapters/opnsense'
 import { itSupportChapters } from './chapters/it-support'
 import { quizzesBySlug } from './quizzes'
 import { terminalLabsBySlug } from './terminal-labs'
@@ -33,6 +34,7 @@ const rawChapters: Omit<Chapter, 'quiz' | 'terminalLab'>[] = [
   ...officeNetworkChapters,
   ...omadaChapters,
   ...fortinetChapters,
+  ...opnsenseChapters,
   ...itSupportChapters,
 ]
 

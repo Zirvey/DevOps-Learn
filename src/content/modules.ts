@@ -32,7 +32,7 @@ export const modules: Module[] = [
   {
     id: 'cicd',
     title: 'CI/CD',
-    description: 'Автоматизация сборки и доставки',
+    description: 'GitHub Actions, GitLab CI и GitOps',
     icon: 'GitBranch',
     order: 4,
   },
@@ -53,7 +53,7 @@ export const modules: Module[] = [
   {
     id: 'observability',
     title: 'Наблюдаемость',
-    description: 'Мониторинг, логи и алерты',
+    description: 'Prometheus, Grafana, Zabbix, логи и алерты',
     icon: 'Activity',
     order: 7,
   },
@@ -100,10 +100,17 @@ export const modules: Module[] = [
     order: 13,
   },
   {
+    id: 'opnsense',
+    title: 'OPNsense',
+    description: 'Open-source firewall, VPN, Suricata и эксплуатация',
+    icon: 'Shield',
+    order: 14,
+  },
+  {
     id: 'it-support',
     title: 'IT Support',
     description: 'Helpdesk, рабочие станции и playbooks',
     icon: 'Headphones',
-    order: 14,
+    order: 15,
   },
 ]

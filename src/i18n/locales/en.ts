@@ -39,7 +39,7 @@ export const en: Translations = {
     metricProgressDeltaEmpty: 'Mark a chapter when you finish it',
     modulesSectionTitle: 'Courses and modules',
     modulesSectionSub:
-      '15 modules — a structured path from basics to production practice',
+      '16 modules — a structured path from basics to production practice',
     moduleCardFooter: '{{chapters}} chapters · {{done}} completed',
   },
   chapter: {
@@ -103,7 +103,7 @@ export const en: Translations = {
     },
     cicd: {
       title: 'CI/CD',
-      description: 'Build and delivery automation',
+      description: 'GitHub Actions, GitLab CI, and GitOps',
     },
     iac: {
       title: 'Infrastructure as Code',
@@ -115,7 +115,7 @@ export const en: Translations = {
     },
     observability: {
       title: 'Observability',
-      description: 'Monitoring, logs, and alerts',
+      description: 'Prometheus, Grafana, Zabbix, logs, and alerts',
     },
     security: {
       title: 'Security',
@@ -140,6 +140,10 @@ export const en: Translations = {
     fortinet: {
       title: 'Fortinet',
       description: 'FortiGate, firewall, VPN, and operations',
+    },
+    opnsense: {
+      title: 'OPNsense',
+      description: 'Open-source firewall, VPN, Suricata, and operations',
     },
     'it-support': {
       title: 'IT Support',

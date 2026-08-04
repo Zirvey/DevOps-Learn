@@ -37,7 +37,7 @@ export const ru = {
     metricProgressDeltaEmpty: 'Отметь главу после прохождения',
     modulesSectionTitle: 'Курсы и модули',
     modulesSectionSub:
-      '15 модулей — структурированный путь от основ до production-практики',
+      '16 модулей — структурированный путь от основ до production-практики',
     moduleCardFooter: '{{chapters}} глав · {{done}} пройдено',
   },
   chapter: {
@@ -101,7 +101,7 @@ export const ru = {
     },
     cicd: {
       title: 'CI/CD',
-      description: 'Автоматизация сборки и доставки',
+      description: 'GitHub Actions, GitLab CI и GitOps',
     },
     iac: {
       title: 'Infrastructure as Code',
@@ -113,7 +113,7 @@ export const ru = {
     },
     observability: {
       title: 'Наблюдаемость',
-      description: 'Мониторинг, логи и алерты',
+      description: 'Prometheus, Grafana, Zabbix, логи и алерты',
     },
     security: {
       title: 'Безопасность',
@@ -138,6 +138,10 @@ export const ru = {
     fortinet: {
       title: 'Fortinet',
       description: 'FortiGate, firewall, VPN и эксплуатация',
+    },
+    opnsense: {
+      title: 'OPNsense',
+      description: 'Open-source firewall, VPN, Suricata и эксплуатация',
     },
     'it-support': {
       title: 'IT Support',

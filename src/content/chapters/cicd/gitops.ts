@@ -5,7 +5,7 @@ export const gitopsChapter: Chapter = {
   slug: 'gitops',
   title: 'GitOps и ArgoCD',
   moduleId: 'cicd',
-  order: 2,
+  order: 3,
   duration: '4–5 часов',
   level: 'intermediate',
   description:

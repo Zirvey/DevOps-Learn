@@ -16,6 +16,7 @@ import kubernetesAdvanced from './kubernetes-advanced'
 import helm from './helm'
 import cicdBasics from './cicd-basics'
 import githubActions from './github-actions'
+import gitlabCi from './gitlab-ci'
 import gitops from './gitops'
 import terraform from './terraform'
 import ansible from './ansible'
@@ -26,6 +27,7 @@ import certifications from './certifications'
 import monitoring from './monitoring'
 import logging from './logging'
 import incidents from './incidents'
+import zabbix from './zabbix'
 import devsecops from './devsecops'
 import portfolio from './portfolio'
 import interviews from './interviews'
@@ -45,6 +47,7 @@ import fortigateFundamentals from './fortigate-fundamentals'
 import fortigateFirewallPolicies from './fortigate-firewall-policies'
 import fortinetVpn from './fortinet-vpn'
 import fortinetOperations from './fortinet-operations'
+import opnsenseFundamentals from './opnsense-fundamentals'
 import itSupportFoundations from './it-support-foundations'
 import helpdeskAndSla from './helpdesk-and-sla'
 import endpointSupport from './endpoint-support'
@@ -69,6 +72,7 @@ export const enChaptersBySlug: Record<string, ChapterTranslation> = {
   helm,
   'cicd-basics': cicdBasics,
   'github-actions': githubActions,
+  'gitlab-ci': gitlabCi,
   gitops,
   terraform,
   ansible,
@@ -79,6 +83,7 @@ export const enChaptersBySlug: Record<string, ChapterTranslation> = {
   monitoring,
   logging,
   incidents,
+  zabbix,
   devsecops,
   portfolio,
   interviews,
@@ -98,6 +103,7 @@ export const enChaptersBySlug: Record<string, ChapterTranslation> = {
   'fortigate-firewall-policies': fortigateFirewallPolicies,
   'fortinet-vpn': fortinetVpn,
   'fortinet-operations': fortinetOperations,
+  'opnsense-fundamentals': opnsenseFundamentals,
   'it-support-foundations': itSupportFoundations,
   'helpdesk-and-sla': helpdeskAndSla,
   'endpoint-support': endpointSupport,

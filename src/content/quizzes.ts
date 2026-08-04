@@ -1397,6 +1397,92 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
     },
   ],
 
+  'gitlab-ci': [
+    {
+      question: 'Где описывается pipeline в GitLab CI/CD?',
+      options: [
+        '.gitlab-ci.yml в репозитории',
+        '.github/workflows/*.yml',
+        'Только Jenkinsfile',
+        'docker-compose.yml',
+      ],
+      answer: '.gitlab-ci.yml в репозитории',
+    },
+    {
+      question: 'Чем stage отличается от job в GitLab CI?',
+      answer:
+        'Stage — логическая группа; jobs внутри stage идут параллельно, stages — последовательно.',
+    },
+    {
+      question: 'Чем needs отличается от порядка stages по умолчанию?',
+      options: [
+        'needs создаёт DAG: job ждёт только указанные jobs, а не все предыдущие stages',
+        'needs — то же самое, что порядок stages',
+        'needs запускает jobs только на tags',
+        'needs отключает параллельность',
+      ],
+      answer:
+        'needs создаёт DAG: job ждёт только указанные jobs, а не все предыдущие stages',
+      explanation: 'Без needs job ждёт завершения всех jobs предыдущих stages.',
+    },
+    {
+      question: 'Какой executor запускает каждый job в Docker-контейнере?',
+      options: ['docker', 'shell', 'ssh', 'parallels'],
+      answer: 'docker',
+    },
+    {
+      question: 'Как безопасно хранить секреты в GitLab CI?',
+      options: [
+        'CI/CD Variables с masked/protected в настройках проекта',
+        'Хардкод в .gitlab-ci.yml',
+        'Коммит в README',
+        'Только в Dockerfile',
+      ],
+      answer: 'CI/CD Variables с masked/protected в настройках проекта',
+    },
+    {
+      question: 'Для чего нужны artifacts в GitLab CI?',
+      options: [
+        'Передавать файлы (build output) между jobs и stages',
+        'Только кэшировать npm',
+        'Заменять Docker images',
+        'Хранить секреты',
+      ],
+      answer: 'Передавать файлы (build output) между jobs и stages',
+    },
+    {
+      question: 'Чем cache отличается от artifacts?',
+      answer:
+        'Cache ускоряет повторные jobs (зависимости); artifacts — результат сборки для следующих stages/скачивания.',
+    },
+    {
+      question: 'Как ограничить deploy job только веткой main?',
+      options: [
+        'rules: if: $CI_COMMIT_BRANCH == "main"',
+        'only: docker',
+        'image: alpine',
+        'tags: [windows]',
+      ],
+      answer: 'rules: if: $CI_COMMIT_BRANCH == "main"',
+    },
+    {
+      question: 'Что такое GitLab Runner?',
+      options: [
+        'Агент, который выполняет jobs pipeline',
+        'Только веб-UI GitLab',
+        'База данных PostgreSQL',
+        'Docker Hub mirror',
+      ],
+      answer: 'Агент, который выполняет jobs pipeline',
+      explanation: 'Shared, group или project runners; executors: shell, docker, kubernetes и др.',
+    },
+    {
+      question: 'Зачем include / extends в .gitlab-ci.yml?',
+      answer:
+        'Переиспользование шаблонов pipeline (DRY): общие jobs/конфиги из файлов или других проектов.',
+    },
+  ],
+
   gitops: [
     {
       question: 'В чём суть GitOps?',
@@ -2259,6 +2345,88 @@ export const quizzesBySlug: Record<string, QuizQuestion[]> = {
     {
       question: 'Какие action items в postmortem считаются хорошими?',
       answer: 'Конкретные, с владельцем и сроком; направлены на предотвращение повторения, а не наказание.',
+    },
+  ],
+
+  zabbix: [
+    {
+      question: 'Главное отличие модели сбора Zabbix от Prometheus?',
+      options: [
+        'Zabbix поддерживает agents (push/pull) и SNMP; Prometheus в основном pull scrape /metrics',
+        'У Prometheus нет time-series хранилища',
+        'Zabbix не умеет мониторить Linux',
+        'У Prometheus встроенный PHP frontend',
+      ],
+      answer:
+        'Zabbix поддерживает agents (push/pull) и SNMP; Prometheus в основном pull scrape /metrics',
+    },
+    {
+      question: 'Что должно совпадать у Zabbix Agent 2 и в UI для мониторинга хоста?',
+      answer:
+        'Hostname — параметр Hostname агента должен совпадать с именем хоста в Zabbix.',
+    },
+    {
+      question: 'Для чего нужен Zabbix template?',
+      options: [
+        'Переиспользуемый набор items, triggers, graphs для многих хостов',
+        'Только Docker-образ Zabbix Server',
+        'Замена базы данных',
+        'Формат экспорта Grafana',
+      ],
+      answer: 'Переиспользуемый набор items, triggers, graphs для многих хостов',
+    },
+    {
+      question: 'Какая trigger-функция ловит «агент перестал отдавать данные»?',
+      options: ['nodata(10m)', 'last()', 'avg(5m)', 'change()'],
+      answer: 'nodata(10m)',
+      explanation:
+        'nodata() = 1, если за период не пришло новых значений — типичный «agent down».',
+    },
+    {
+      question: 'Что такое Low-Level Discovery (LLD) в Zabbix?',
+      answer:
+        'Автосоздание items/triggers/graphs по discovery rules для динамических объектов (диски, интерфейсы, контейнеры).',
+    },
+    {
+      question: 'Зачем ставить Zabbix Proxy на удалённом сайте?',
+      options: [
+        'Снизить WAN-трафик, буферизовать данные локально, агенты ходят к ближайшему collector',
+        'Полностью заменить Zabbix Server на каждом сайте',
+        'Считать triggers без центрального сервера',
+        'Мониторить только SNMP',
+      ],
+      answer:
+        'Снизить WAN-трафик, буферизовать данные локально, агенты ходят к ближайшему collector',
+    },
+    {
+      question: 'Порт пассивного агента Zabbix по умолчанию?',
+      answer: '10050',
+    },
+    {
+      question: 'Как Actions связаны с Triggers?',
+      options: [
+        'Actions задают уведомления и операции при событиях trigger (problem/recovery) по условиям',
+        'Actions полностью заменяют triggers',
+        'Triggers шлют email без Actions',
+        'Actions работают только с SNMP items',
+      ],
+      answer:
+        'Actions задают уведомления и операции при событиях trigger (problem/recovery) по условиям',
+    },
+    {
+      question: 'Какой Grafana plugin обычно используют для Zabbix?',
+      options: [
+        'alexanderzobnin-zabbix-app',
+        'prometheus-datasource',
+        'loki-datasource',
+        'zabbix-agent2-plugin',
+      ],
+      answer: 'alexanderzobnin-zabbix-app',
+    },
+    {
+      question: 'Какой метод аутентификации у Zabbix JSON-RPC API?',
+      answer:
+        'user.login возвращает auth token для последующих запросов; user.logout его инвалидирует.',
     },
   ],
 
