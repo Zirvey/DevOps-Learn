@@ -11,10 +11,10 @@
   --surface-carbon-card: #ffffff;
   --surface-tonal-wash: #e8e8ed;
 
-  --accent-hover: #6b57a8;
-  --accent-glow: rgba(124, 107, 184, 0.14);
+  --accent-hover: #2fa866;
+  --accent-glow: rgba(63, 203, 127, 0.14);
   --accent-on: #ffffff;
-  --accent-soft-border: rgba(124, 107, 184, 0.45);
+  --accent-soft-border: rgba(63, 203, 127, 0.45);
   --success-bg: rgba(36, 138, 79, 0.12);
   --warning: #c93400;
   --destructive: #d32f2f;
@@ -43,8 +43,8 @@
 
   --gradient-accent: radial-gradient(
     ellipse at 70% 20%,
-    rgba(124, 107, 184, 0.18) 0%,
-    rgba(124, 107, 184, 0.08) 40%,
+    rgba(63, 203, 127, 0.18) 0%,
+    rgba(63, 203, 127, 0.08) 40%,
     transparent 70%
   );
   --infinity-hue: hue-rotate(88deg) saturate(0.85) brightness(0.95);

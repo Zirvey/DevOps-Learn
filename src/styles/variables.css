@@ -7,7 +7,7 @@
   --color-ash-gray: #b3b3b3;
   --color-steel-gray: #808080;
   --color-graphite: #333333;
-  --color-lavender-pulse: #9984d8;
+  --color-lavender-pulse: #3fcb7f;
   --color-mint-signal: #3fcb7f;
 
   /* Typography — Font Families */
@@ -115,17 +115,17 @@
       rgba(0, 0, 0, 0.28) 35%,
       rgba(0, 0, 0, 0.82) 100%
     );
-  --accent: var(--color-lavender-pulse);
-  --accent-hover: #b4a4e8;
-  --accent-glow: rgba(153, 132, 216, 0.1);
+  --accent: var(--color-mint-signal);
+  --accent-hover: #5fd998;
+  --accent-glow: rgba(63, 203, 127, 0.12);
   --accent-on: var(--color-void-black);
-  --accent-soft-border: rgba(153, 132, 216, 0.35);
+  --accent-soft-border: rgba(63, 203, 127, 0.35);
   --success: var(--color-mint-signal);
   --success-bg: rgba(63, 203, 127, 0.1);
   --warning: #ff7539;
   --destructive: #fe5656;
   --beginner: var(--color-mint-signal);
-  --intermediate: var(--color-lavender-pulse);
+  --intermediate: var(--color-mint-signal);
   --advanced: var(--color-bone-white);
   --code-bg: var(--color-carbon-card);
   --code-header: #0a0b0c;
@@ -142,8 +142,8 @@
   --transition: 150ms ease;
   --gradient-accent: radial-gradient(
     ellipse at 70% 20%,
-    rgba(163, 102, 255, 0.22) 0%,
-    rgba(123, 78, 245, 0.12) 40%,
+    rgba(63, 203, 127, 0.2) 0%,
+    rgba(63, 203, 127, 0.1) 40%,
     transparent 70%
   );
   --infinity-hue: hue-rotate(88deg) saturate(0.75) brightness(1.05);
