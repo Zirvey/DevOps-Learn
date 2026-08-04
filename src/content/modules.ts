@@ -102,7 +102,7 @@ export const modules: Module[] = [
   {
     id: 'opnsense',
     title: 'OPNsense',
-    description: 'Open-source firewall, VPN, Suricata и эксплуатация',
+    description: 'Основы, firewall/NAT, VPN, Suricata/плагины и эксплуатация',
     icon: 'Shield',
     order: 14,
   },

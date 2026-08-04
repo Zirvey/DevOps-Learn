@@ -1,10 +1,10 @@
 import type { ChapterTranslation } from '../../i18n/chapterTranslation'
 
 const translation: ChapterTranslation = {
-  title: 'OPNsense — open-source firewall',
-  duration: '5–6 hours',
+  title: 'OPNsense — platform fundamentals',
+  duration: '8–10 hours',
   description:
-    'Installation, interfaces, firewall rules, NAT, aliases, VPN (WireGuard/OpenVPN), packages (Suricata), backups, operations, and comparison with FortiGate/pfSense',
+    'OPNsense ecosystem, editions and releases, sizing, ISO/VM install (Proxmox, ESXi, Hyper-V), first-boot wizard, interfaces (WAN/LAN/OPT/VLAN/bridge/LAGG), static routes and gateways, Multi-WAN, DHCP/Unbound, administration (users/2FA/SSH), packages, updates, certificates, NTP, logs, REST API, config.xml backup, hardening, and connectivity troubleshooting',
   sections: [
     {
       title: 'OPNsense in the ecosystem: from pfSense to open-source NGFW',
@@ -48,7 +48,25 @@ const translation: ChapterTranslation = {
 **When FortiGate/pfSense Plus:**
 - Enterprise support SLA and unified Wi-Fi/switch stack required
 - SSL inspection at high throughput with hardware offload
-- Compliance requires certified NGFW vendor`,
+- Compliance requires certified NGFW vendor
+
+**OPNsense architectural principles:**
+- **L3 routing first** — each logical interface = subnet gateway
+- **Ingress firewall** — rules on inbound traffic per interface
+- **Stateful pf** — return traffic via state table
+- **config.xml** — single source of truth for backup/DR
+- **Plugin model** — os-* packages without forking core
+
+**Typical SMB IT roles:**
+
+| Role | OPNsense tasks |
+|------|----------------|
+| Network admin | Interfaces, VLAN, routing, Multi-WAN |
+| Security admin | Policies (Policies chapter), IDS, hardening |
+| MSP NOC | Monitoring, backup, firmware cadence |
+| DevOps | REST API, config.xml GitOps |
+
+**Documentation:** docs.opnsense.org — primary reference; forum for edge cases; Deciso commercial support for SLA contracts.`,
     },
     {
       title: 'Installation: ISO, VM, and first boot',
@@ -71,13 +89,13 @@ const translation: ChapterTranslation = {
 3. Boot ISO → **Install (UFS)** or ZFS for production
 4. Assign interfaces: WAN, LAN, OPT (optional)
 5. Set LAN IP (default often 192.168.1.1/24)
-6. Open \\\`https://192.168.1.1\\\` → login \\\`root\\\` / password from install
+6. Open \`https://192.168.1.1\` → login \`root\` / password from install
 
 **Typical Proxmox layout:**
-\\\`\\\`\\\`
+\`\`\`
 vmbr0 (WAN) ──► net0 OPNsense
 vmbr1 (LAN) ──► net1 OPNsense
-\\\`\\\`\\\`
+\`\`\`
 
 **Post-install checklist:**
 1. Change root password and create separate admin user (not root for UI)
@@ -89,7 +107,22 @@ vmbr1 (LAN) ──► net1 OPNsense
 7. Enable SSH only from Management subnet
 8. Take first config.xml backup
 
-**Factory / recovery:** console → option 8) Shell → \\\`opnsense-shell\\\` for menu. Full reset: reinstall or restore config.xml.`,
+**Factory / recovery:** console → option 8) Shell → \`opnsense-shell\` for menu. Full reset: reinstall or restore config.xml.
+
+**UFS vs ZFS quick reference:**
+
+| | UFS | ZFS |
+|---|-----|-----|
+| VM lab | ✅ Standard | Optional overhead |
+| Bare metal single disk | OK | — |
+| Bare metal production | OK | ✅ Mirror recommended |
+| Boot environments | No | Yes snapshots |
+
+**USB install:** \`dd if=OPNsense-*.iso of=/dev/sdX bs=4M status=progress\` — verify disk target twice.
+
+**Post-install network order:** assign WAN first → set LAN IP → GUI from LAN → configure WAN DHCP/static → test ping upstream.
+
+**Lab tip:** snapshot hypervisor VM immediately after install as \`clean-install\` before any policy changes.`,
       code: {
         language: 'shell',
         caption: 'OPNsense console: check interfaces and version',
@@ -101,6 +134,438 @@ netstat -rn
 # ping with source interface (LAN)
 ping -S 192.168.1.1 1.1.1.1`,
       },
+    },
+    {
+      title: 'Editions, releases, and update model',
+      content: `**OPNsense — one main edition:** community open-source. No «Plus» tier with closed core features (unlike pfSense). Commercial support through Deciso and partners.
+
+**Release branches:**
+
+| Branch | Purpose | Production? |
+|-------|------------|-------------|
+| **stable** | Current production release | ✅ Yes |
+| **business** | Preview of next stable | ⚠️ Lab only |
+| **devel** | Development snapshots | ❌ No |
+
+**Version number:** \`YY.MM\` (e.g. 24.7). Major every ~6 months.
+
+**Where to check:** opnsense.org/releases, System → Firmware → Status, \`opnsense-version\` on shell.
+
+**Update model:**
+1. Core firmware — System → Firmware → Updates
+2. Plugins — separately after core
+3. FreeBSD base — bundled in firmware
+
+**SMB best practice:** monthly maintenance window, backup config.xml + VM snapshot pre-update, smoke test WAN/DNS/SSH after reboot.
+
+**Downgrade:** not recommended — restore snapshot or reinstall + config restore.
+
+**Long-term support:** each series ~12 months — plan upgrade before EOL.`,
+      code: {
+        language: 'shell',
+        caption: 'Check version and plugins',
+        code: `opnsense-version
+pkg info opnsense
+opnsense-update -c
+pkg query '%n' | grep '^os-' | sort`,
+      },
+    },
+    {
+      title: 'Hardware sizing: bare metal and virtualization',
+      content: `OPNsense has no ASIC offload — **CPU and NIC** determine throughput. Size by lab test and monitoring, not brochure numbers.
+
+| Scenario | Users | vCPU | RAM | Disk |
+|----------|-------|------|-----|------|
+| Homelab | 1–5 | 2 | 2 GB | 20 GB |
+| Small office | 10–30 | 2–4 | 4 GB | 32 GB |
+| SMB 50 users | 30–60 | 4 | 8 GB | 64 GB |
+| SMB + Suricata IPS | 50+ | 4–8 | 16 GB | 128 GB |
+
+**Bare metal:** Intel/AMD with AES-NI; NIC Intel i210/igb; SSD; ZFS mirror for production.
+
+**VM rule:** 4 vCPU / 8 GB for production SMB; monitor CPU during Suricata/VPN peaks.
+
+**Concurrent sessions:** \`pfctl -s info\` — state table on 8 GB RAM typically 500K–2M states.
+
+**Red flags:** CPU > 70% sustained, Suricata drops, VPN throughput < 50% expected.`,
+      code: {
+        language: 'shell',
+        caption: 'Monitor load and state table',
+        code: `top -b -n 1 | head -15
+pfctl -s info
+netstat -ibn`,
+      },
+    },
+    {
+      title: 'Installation on Proxmox VE',
+      content: `**Proxmox** — popular homelab and MSP DC choice.
+
+**VM:** 4 vCPU, 8 GB RAM, 32 GB VirtIO disk, UEFI q35, 2+ VirtIO NIC.
+
+**Bridges:**
+\`\`\`
+vmbr0 (WAN) → net0
+vmbr1 (LAN) → net1 trunk
+vmbr2 (MGMT) → net2 optional
+\`\`\`
+
+Attach ISO → Install UFS → remove ISO. Snapshot before each update.
+
+**Proxmox FW on WAN bridge:** often disable — OPNsense is the firewall.
+
+**PCI passthrough:** dedicated Intel NIC if VirtIO insufficient — advanced.`,
+      code: {
+        language: 'shell',
+        caption: 'Proxmox CLI: create VM (reference)',
+        code: `qm create 200 --name opnsense-hq --memory 8192 --cores 4 \\
+  --net0 virtio,bridge=vmbr0 --net1 virtio,bridge=vmbr1 \\
+  --scsihw virtio-scsi-pci --scsi0 local-lvm:32 \\
+  --ostype l26 --bios ovmf --machine q35`,
+      },
+    },
+    {
+      title: 'Installation on VMware ESXi / vSphere',
+      content: `**ESXi deploy:** Other Linux 6.x 64-bit, 4 vCPU, 8 GB, 32 GB thin, **VMXNET3** NICs.
+
+| vNIC | Port Group | Role |
+|------|------------|------|
+| vmnic0 | WAN-PG | ISP |
+| vmnic1 | LAN-PG | Trunk VLANs |
+| vmnic2 | MGMT-PG | Admin |
+
+VMXNET3 not E1000. Promiscuous mode **not needed** for routing mode.
+
+**vSphere HA:** CARP pair — anti-affinity rule, migrate one node at a time.
+
+**Backup:** Veeam/snapshot + config.xml export.`,
+    },
+    {
+      title: 'Installation on Microsoft Hyper-V',
+      content: `**Gen2 VM**, 4–8 GB RAM, Synthetic NICs, **Secure Boot Off** (critical).
+
+**Switches:** External (WAN), Internal (LAN), Private (lab).
+
+Gen2 + Secure Boot disabled for FreeBSD ISO boot.
+
+**Common issues:** won't boot ISO → disable Secure Boot; poor perf → add vCPU AES-NI.`,
+    },
+    {
+      title: 'First boot wizard and console menu',
+      content: `**Console menu** — out-of-band lifeline.
+
+| Option | Action |
+|--------|----------|
+| 1 Assign interfaces | WAN/LAN/OPT |
+| 2 Set interface IP | LAN IP |
+| 8 Shell | root shell |
+| 13 Restore config.xml | DR |
+
+**GUI wizard:** language, hostname, WAN, LAN, password reminder.
+
+\`opnsense-shell\` from shell returns to menu. Serial 115200 for IPMI.`,
+    },
+    {
+      title: 'First boot and post-install checklist',
+      content: `**SMB checklist:**
+1. Root password 16+ chars
+2. Hostname, timezone, NTP
+3. Firmware update stable
+4. WAN DHCP/static
+5. Ping 1.1.1.1 Diagnostics
+6. Admin user + 2FA, disable root GUI
+7. SSH keys, Mgmt VLAN only
+8. Backup config.xml
+9. Anti-lockout: console open during LAN changes
+
+Smoke: LAN client internet, DNS, NTP \`ntpq -p\`.`,
+    },
+    {
+      title: 'VLAN: segmentation on trunk',
+      content: `**VLAN create:** Other Types → VLAN → parent igb1 tag 10 → Assignments → Enable IP .1/24.
+
+**Switch trunk:** allowed VLANs 10,20,60,99 must match.
+
+| VLAN | Subnet | Use |
+|------|--------|-----|
+| 10 | 192.168.10.0/24 | Servers |
+| 20 | 192.168.20.0/24 | Users |
+| 60 | 192.168.60.0/24 | Guest |
+| 99 | 192.168.99.0/24 | Mgmt |
+
+Inter-VLAN routing on OPNsense — firewall rules per VLAN ingress (Policies chapter).`,
+    },
+    {
+      title: 'Bridge and LAGG (802.3ad)',
+      content: `**LAGG LACP** — dual uplink to switch, match port-channel both ends.
+
+**Bridge** — transparent L2 (rare); routing+VLAN default for SMB.
+
+LAGG: Interfaces → Other Types → LAGG → LACP members.
+
+Mismatch \`laggproto\` → flapping links.`,
+    },
+    {
+      title: 'Static routes and gateways',
+      content: `**System → Routes → Configuration.** Default via WAN gateway.
+
+**Use cases:** remote site 192.168.50.0/24 via 192.168.10.254; VPN routes; blackhole.
+
+**Gateways:** System → Gateways — monitor IP 1.1.1.1 for health.
+
+**Diagnostics:** Diagnostics → Routes, \`netstat -rn\`, traceroute with source IF.`,
+      code: {
+        language: 'shell',
+        caption: 'CLI routing table',
+        code: `netstat -rn
+netstat -rn -f inet | grep '^default'
+traceroute -s 192.168.20.1 8.8.8.8`,
+      },
+    },
+    {
+      title: 'Multi-WAN: failover and load balancing overview',
+      content: `**Components:** WAN2 OPT, per-WAN gateways, gateway group failover/load balance, outbound NAT (NAT chapter).
+
+**Failover:** Tier1 fiber + Tier2 LTE, monitor 1.1.1.1+8.8.8.8, unplug WAN1 test <30s.
+
+**Not LAGG:** Multi-WAN = different ISP paths/IPs.
+
+**VPN:** primary WAN endpoint; backup needs DDNS/second peer.
+
+**CARP HA** — separate Operations chapter.
+
+**Gateway group setup (overview):**
+1. System → Gateways → Add WAN1, WAN2 with monitor IPs
+2. Groups → Failover Tier1 WAN1, Tier2 WAN2
+3. System → Routes → Default → select failover group
+4. Test unplug WAN1 — verify default shifts < 30 sec
+5. Document monthly failover test in runbook
+
+**Load balance:** weights 50/50 only if policy allows asymmetric paths; failover safer for typical SMB.`,
+    },
+    {
+      title: 'Administrators: users, roles, and 2FA',
+      content: `**Users:** System → Access → Users. Groups admins vs read-only.
+
+**2FA TOTP:** user token QR → Administration Backend Local+2FA.
+
+**API keys** per automation script. RADIUS+privacyIDEA for enterprise MFA.
+
+No shared \`admin\` account. Break-glass root password in vault.`,
+    },
+    {
+      title: 'SSH, SCP, and console access',
+      content: `**SSH:** key-only, PermitRootLogin no, listen Mgmt VLAN.
+
+\`ssh-copy-id\` deploy key → disable password auth.
+
+SCP backup: \`scp user@fw:/conf/config.xml ./backup-$(date +%F).xml\`
+
+Bastion jump host — never SSH on WAN.`,
+      code: {
+        language: 'shell',
+        caption: 'SSH key deploy and SCP backup',
+        code: `ssh-copy-id -i ~/.ssh/id_ed25519.pub netadmin@192.168.99.1
+ssh -o PasswordAuthentication=no netadmin@192.168.99.1 opnsense-version
+scp netadmin@192.168.99.1:/conf/config.xml ./opnsense-backup-$(date +%Y%m%d).xml`,
+      },
+    },
+    {
+      title: 'Package overview (os-* plugins)',
+      content: `**Install:** System → Firmware → Plugins.
+
+| Plugin | Use |
+|--------|-----|
+| os-suricata | IDS/IPS |
+| os-wireguard | VPN |
+| os-acme-client | Let's Encrypt |
+| os-zabbix-agent | Monitoring |
+| os-haproxy | LB/reverse proxy |
+
+Update plugins after core firmware. \`pluginctl -s suricata\` status.`,
+    },
+    {
+      title: 'Firmware updates and plugin lifecycle',
+      content: `**Workflow:** read release notes → backup + snapshot → update core → reboot → update plugins → smoke test.
+
+Console: \`opnsense-update\` + reboot.
+
+Rollback: VM snapshot fastest. No auto-update on production without staging.`,
+    },
+    {
+      title: 'Certificates: introduction (CA, GUI, ACME)',
+      content: `**System → Trust:** Internal CA → server cert → Administration SSL cert.
+
+**ACME** os-acme-client: HTTP-01 or DNS-01 for \`vpn.office.com\`.
+
+TLS 1.2+ only. Track expiry — Monit alert.`,
+      code: {
+        language: 'shell',
+        caption: 'Check GUI certificate',
+        code: `openssl s_client -connect 192.168.99.1:443 -servername opnsense.local </dev/null 2>/dev/null \\
+  | openssl x509 -noout -subject -dates`,
+      },
+    },
+    {
+      title: 'NTP and system time',
+      content: `**Critical for:** VPN IKE, TLS, TOTP 2FA, SIEM correlation.
+
+System → Settings → General: timezone, \`pool.ntp.org\`.
+
+Verify \`ntpq -p\` — synced peer marked with asterisk.
+
+Wrong time → 2FA mysterious failures.`,
+    },
+    {
+      title: 'Logging: basics and forwarding',
+      content: `**Sources:** Firewall Live View, System log, DHCP, Unbound, Auth logins.
+
+**Remote syslog** to Graylog/Wazuh. Log deny rules; careful logging all pass — disk fill.
+
+CLI: \`clog -f /var/log/filter\`. SIEM retention 90d hot.`,
+      code: {
+        language: 'shell',
+        caption: 'Firewall log and rule counters',
+        code: `clog -f /var/log/filter | grep 192.168.20.50
+pfctl -vvsr
+pfctl -z`,
+      },
+    },
+    {
+      title: 'REST API: introduction and automation',
+      content: `**Base:** \`https://fw/api/\` — API key auth Basic key:secret.
+
+Read firmware status, download config, list interfaces — automation/GitOps.
+
+Never commit secrets. Test lab before write API calls.
+
+Docs: docs.opnsense.org/development/api.html`,
+      code: {
+        language: 'shell',
+        caption: 'REST API curl examples',
+        code: `OPNSENSE_HOST="192.168.99.1"
+API_KEY="your-api-key"
+API_SECRET="your-api-secret"
+curl -sk -u "\${API_KEY}:\${API_SECRET}" \\
+  "https://\${OPNSENSE_HOST}/api/core/firmware/status"
+curl -sk -u "\${API_KEY}:\${API_SECRET}" \\
+  -o config-backup.xml \\
+  "https://\${OPNSENSE_HOST}/api/core/backup/download/backup" `,
+      },
+    },
+    {
+      title: 'Security hardening checklist',
+      content: `**Access:** admin users, 2FA, SSH keys Mgmt only, HTTPS GUI Mgmt only.
+
+**Network:** WAN default deny, inter-VLAN deny default, disable unused IF.
+
+**Ops:** NTP, DNSSEC Unbound, daily encrypted backup, monthly updates, syslog SIEM.
+
+**Advanced:** IDS after tune (Services chapter), VPN MFA (VPN chapter).`,
+    },
+    {
+      title: 'Lab setup: homelab and MSP staging topology',
+      content: `**Topology:** WAN sim ← OPNsense ← LAN trunk → VLAN VMs.
+
+Proxmox vmbr0 NAT WAN sim best for homelab.
+
+Document IP plan, snapshots \`clean-baseline\`, \`post-vlan\`.
+
+MSP: clone prod config → sanitize → lab test → change window.`,
+    },
+    {
+      title: 'Production case study 1: SOHO → OPNsense SMB migration',
+      content: `**Client:** design studio 28 people, flat network, guest Wi-Fi reached file server.
+
+**Solution:** OPNsense VM Proxmox, VLAN10/20/60/99, Unbound, WireGuard 8 users, Suricata IDS WAN, daily SFTP backup.
+
+**Result:** guest isolated, zero license 3yr TCO vs FortiGate, Suricata caught C2 month 2.
+
+**Lesson:** keep ISP router 1 week emergency bypass.`,
+    },
+    {
+      title: 'Production case study 2: branch Multi-WAN + Zabbix',
+      content: `**Client:** logistics branch 40 users, internet SLA critical.
+
+**Solution:** bare metal whitebox, fiber+LTE failover, os-zabbix-agent → HQ NOC, SSH only via WireGuard.
+
+Failover fiber unplug → LTE 18 sec. MSP manages 12 sites via API backup script.
+
+**Trade-off:** engineer hours vs FortiGate license cost.`,
+    },
+    {
+      title: 'FAQ: 14 common questions (Fundamentals)',
+      content: `**1. OPNsense vs pfSense 2025?** UI/plugins preference; OPNsense BSD community, pfSense Plus commercial.
+
+**2. License for production?** No for core firewall.
+
+**3. RAM for 50 users?** 8 GB min, 16 GB with Suricata IPS.
+
+**4. Wi-Fi controller?** No — use UniFi/Omada APs.
+
+**5. DHCP OPNsense vs DC?** AD → DC DHCP often better.
+
+**6. Update without downtime?** CARP HA; single node maintenance window.
+
+**7. config.xml secrets?** Yes — encrypt backups.
+
+**8. Root GUI?** Lab OK; production disable.
+
+**9. No internet LAN?** Gateway, default route, NAT (NAT chapter), DNS vs \`ping 1.1.1.1\`.
+
+**10. VirtIO Proxmox?** Best perf; em fallback.
+
+**11. ZFS vs UFS?** ZFS mirror prod bare metal; UFS VM.
+
+**12. API vs SSH backup?** Both OK scheduled.
+
+**13. Downgrade firmware?** Snapshot restore preferred.
+
+**14. IPv6 mandatory?** No for typical SMB IPv4-only.
+
+**15. Where to learn after Fundamentals?** Policies (firewall/NAT), VPN, Services (Suricata), Operations (HA/CARP).
+
+**16. GUI on WAN?** No for production — Mgmt VLAN + VPN jump only.
+
+**17. Best hypervisor for lab?** Proxmox (vmbr NAT WAN) or VMware Workstation — fastest onboarding.
+
+**18. config.xml in git?** Private repo + encryption; treat as secrets bundle.`,
+    },
+    {
+      title: 'Interview Q&A: 10 questions (Fundamentals)',
+      content: `**Q1:** OPNsense vs Linux iptables? Purpose-built FreeBSD pf + UI + config.xml.
+
+**Q2:** Why pfSense fork? 2014 commercialization; Deciso BSD model.
+
+**Q3:** Sizing? Throughput, Suricata, VPN, sessions — lab test 70% CPU rule.
+
+**Q4:** config.xml? Single XML all settings backup/restore.
+
+**Q5:** WAN vs LAN vs OPT? Naming; OPT=extra routed IF.
+
+**Q6:** Limit admin? Mgmt VLAN listen, 2FA, SSH keys.
+
+**Q7:** Multi-WAN failover? Gateway groups + monitor IPs.
+
+**Q8:** Unbound vs ISP DNS? DNSSEC, overrides, DHCP register.
+
+**Q9:** No internet first steps? Gateway status, default route, ping 1.1.1.1.
+
+**Q10:** CARP when? Sub-minute HA two-node + pfsync.`,
+    },
+    {
+      title: 'Lab: full initial setup from scratch',
+      content: `**Goal:** VM + VLAN + DHCP + Unbound + hardening + backup.
+
+1. VM 4vCPU/8GB/3NIC install UFS
+2. Firmware update, hostname \`opnsense-lab01\`
+3. VLAN10/20/60 on LAN parent
+4. DHCP VLAN20/60, Unbound all VLANs
+5. Admin \`netadmin\` + 2FA, SSH keys Mgmt
+6. Baseline firewall (Policies chapter): Guest deny RFC1918
+7. Tests: VLAN20 internet, VLAN60 no VLAN10, SSH WAN blocked
+8. Backup config.xml, snapshot \`baseline-v1\`
+
+**Acceptance table documented in lab journal.**`,
     },
     {
       title: 'Interfaces: WAN, LAN, OPT, and VLAN',
@@ -124,7 +589,7 @@ ping -S 192.168.1.1 1.1.1.1`,
 - Block bogon networks — **enable**
 
 **Typical SMB topology (50 users):**
-\\\`\\\`\\\`
+\`\`\`
 WAN (igb0)     → ISP DHCP / static
 LAN (igb1)     → trunk to core switch
   VLAN10 Servers    192.168.10.1/24
@@ -132,7 +597,7 @@ LAN (igb1)     → trunk to core switch
   VLAN60 Guest      192.168.60.1/24
   VLAN99 Mgmt       192.168.99.1/24
 OPT1 (igb2)    → DMZ (web server)
-\\\`\\\`\\\`
+\`\`\`
 
 **VLAN on OPNsense:**
 1. Interfaces → Other Types → VLAN → Parent = LAN physical, tag 10
@@ -145,43 +610,16 @@ OPT1 (igb2)    → DMZ (web server)
     },
     {
       title: 'Firewall rules: order, states, and best practices',
-      content: `OPNsense uses **pf** — rules are processed **top to bottom, first match wins**. Implicit deny on everything not explicitly allowed (unlike legacy «allow all LAN» on some consumer routers).
+      content: `**Firewall rules** — ingress matching on each interface, first match wins. Stateful pf creates state on Pass.
 
-**Rule structure:**
+Key topics (full coverage — **OPNsense — firewall, NAT, and policies** chapter):
+- Interface vs Floating rules
+- Pass/Block/Reject, direction in
+- Rule order, aliases, schedules
+- Guest VLAN deny RFC1918 pattern
+- Diagnostics: \`pfctl -vvsr\`, Live View log
 
-| Field | Description |
-|------|----------|
-| **Action** | Pass, Block, Reject |
-| **Interface** | WAN, LAN, VLAN10 — rule applies on ingress of this interface |
-| **Direction** | in (typical) — traffic entering the interface |
-| **Protocol** | TCP/UDP/ICMP/any |
-| **Source/Destination** | IP, subnet, alias |
-| **Port** | Service or custom |
-| **Log** | Enable for audit and troubleshooting |
-
-**Critical: understand direction:**
-- Rule on **LAN** with source LAN net → internet: catches traffic **from clients** entering the LAN interface
-- Rule on **WAN** for port forward: destination WAN address, port 443
-
-**Quick rules after install (production):**
-1. Remove or restrict default «LAN → any» if segmentation is needed
-2. Guest VLAN: block to RFC1918, allow WAN only
-3. Management VLAN: allow HTTPS/SSH only from admin workstations alias
-4. WAN: no allow inbound except explicit port forwards / VPN
-
-**Stateful firewall:** Pass creates state — return traffic is automatically allowed. Block/Reject do not create state.
-
-**Floating rules:** apply to all or selected interfaces — use for global block or emergency deny.
-
-**Order optimization:**
-1. Most specific rules at top
-2. Alias-based rules for readability
-3. Log only on deny rules (or temporarily for debug) — otherwise disk fill
-
-**Anti-patterns:**
-- Duplicate rules «just in case»
-- Any/any on WAN «for testing» — forgotten and left open
-- Rule on wrong interface (common port forward troubleshooting mistake)`,
+**Here:** remember that without explicit rule traffic is blocked (implicit deny). After VLAN setup — rules on each segment ingress.`,
       code: {
         language: 'shell',
         caption: 'pfctl: view active rules and counters',
@@ -200,81 +638,26 @@ pfctl -s info`,
     },
     {
       title: 'NAT: outbound, port forwarding, and reflection',
-      content: `**NAT in OPNsense** — section **Firewall → NAT**.
+      content: `**NAT** — Firewall → NAT. Outbound SNAT automatic for LAN; port forward requires associated filter rule.
 
-**Outbound NAT (SNAT):**
-- Default: **Automatic** — LAN/VLAN subnets exit to internet via WAN IP
-- **Hybrid:** manual rules + automatic for the rest
-- **Manual:** full control (multi-WAN, policy NAT)
+Details on outbound/hybrid, 1:1, hairpin, Multi-WAN NAT — **firewall, NAT, and policies** chapter.
 
-Typical SMB: Automatic is enough. Multi-WAN failover: hybrid with rule per WAN.
-
-**Port Forward (DNAT / Inbound):**
-1. Firewall → NAT → Port Forward → Add
-2. Interface: WAN
-3. Destination: WAN address
-4. Destination port: 443 (or custom)
-5. Redirect target IP: internal server 192.168.10.50
-6. Redirect target port: 443
-7. **Filter rule association:** Add associated filter rule — auto-creates WAN pass rule
-
-**Without associated rule** packet arrives on WAN, NAT applies, but firewall blocks — typical «NAT works but connection timeout».
-
-**1:1 NAT:** mapping external IP ↔ internal (DMZ host).
-
-**NAT reflection (hairpin):** access internal service via public DNS from LAN — enable only if needed; alternative is split DNS on Unbound.
-
-**Multi-WAN NAT:**
-- Each WAN can have its own outbound rule
-- Failover: Monitor IPs on WAN gateways (System → Gateways → Status)
-
-**Verification:**
-- Diagnostics → States — see NAT translation
-- tcpdump on WAN and LAN simultaneously`,
+**Troubleshooting hint:** NAT works but timeout = missing WAN pass rule.`,
     },
     {
       title: 'Aliases, schedules, and policy organization',
-      content: `**Aliases** — named groups of objects for rules and NAT. Simplify audit and change management.
+      content: `**Aliases** — named Host/Network/Port/URL objects for rules. Schedules — time windows.
 
-**Alias types:**
+Full tiered access pattern, GeoIP, URL feeds — **firewall, NAT, and policies** chapter.
 
-| Type | Example |
-|-----|--------|
-| **Host(s)** | srv-dc01 → 192.168.10.10 |
-| **Network(s)** | RFC1918 → 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 |
-| **Port(s)** | WEB → 80, 443 |
-| **URL** | External feed (updated by cron) |
-| **GeoIP** | os-geoip plugin |
-
-**Creation:** Firewall → Aliases → Add. Use in rules: Source → Single host or alias → select alias.
-
-**Schedules (Firewall → Schedules):**
-- Time windows for rules (business hours, maintenance window)
-- Rule → Advanced → Schedule → select schedule
-- Example: deny social media ports in business hours only
-
-**«Tiered access» pattern:**
-\\\`\\\`\\\`
-Alias ADMINS     → 192.168.99.10-20
-Alias SERVERS    → 192.168.10.0/24
-Alias GUEST_NET  → 192.168.60.0/24
-
-Rule: GUEST_NET → SERVERS : Block (log)
-Rule: ADMINS → any : Pass
-\\\`\\\`\\\`
-
-**URL alias / external feeds:** for malware domain blocklists — cron updates. Watch size — large lists slow rule evaluation.
-
-**Naming convention:** prefixes \\\`HOST_\\\`, \\\`NET_\\\`, \\\`PORT_\\\` — easier search with 50+ aliases.
-
-**Export/import:** aliases live in config.xml — backup critical before bulk edit.`,
+Naming: \`HOST_\`, \`NET_\`, \`PORT_\` prefixes for audit.`,
     },
     {
       title: 'DHCP and DNS (Unbound)',
       content: `**DHCP server:** Services → ISC DHCPv4 → LAN (or per-VLAN interface).
 
 **Typical VLAN Users setup:**
-- Enable DHCP on \\\`vlan0.20\\\`
+- Enable DHCP on \`vlan0.20\`
 - Range: 192.168.20.100 – 192.168.20.200
 - Gateway: 192.168.20.1 (interface IP)
 - DNS servers: 192.168.20.1 (Unbound on OPNsense) or internal DC
@@ -290,11 +673,11 @@ Rule: ADMINS → any : Pass
 - **DNS over TLS** upstream (optional privacy): Cloudflare, Quad9
 - **Split horizon:** host overrides for internal names
 
-\\\`\\\`\\\`
+\`\`\`
 Host override:
   app.office.local → 192.168.10.50
   vpn.office.local → WAN public IP (for external users)
-\\\`\\\`\\\`
+\`\`\`
 
 **DNS security:**
 - Block DNS over HTTPS bypass — firewall rule block known DoH providers (or client policy)
@@ -302,134 +685,34 @@ Host override:
 
 **DNS troubleshooting:**
 - Diagnostics → DNS Lookup
-- \\\`unbound-control status\\\` on shell
+- \`unbound-control status\` on shell
 - tcpdump port 53 on LAN
 
 **AD integration:** DC as DNS for domain; OPNsense Unbound forwards office.local → DC IP, recursive for the rest.`,
     },
     {
       title: 'VPN: WireGuard and OpenVPN',
-      content: `**WireGuard** — preferred VPN for remote access and site-to-site in 2024+ (simplicity, performance, modern crypto).
+      content: `**VPN on OPNsense** — tunnel interfaces (wg0, ovpns1) + routes + firewall.
 
-**Remote access (road warrior) on OPNsense:**
+WireGuard road warrior, site-to-site, OpenVPN, IPsec, MFA, split tunnel — **OPNsense — VPN** chapter.
 
-1. **VPN → WireGuard → Local** → Add instance (wg0)
-2. Listen port: 51820
-3. Tunnel address: 10.255.0.1/24 (VPN subnet)
-4. **Peers → Add:** client public key, client allowed IPs
-5. **Endpoints → Add:** peer per user/device
-6. Firewall → WireGuard: Pass from WireGuard net → LAN net (or specific)
-7. Outbound NAT: automatic usually covers WG subnet
-
-**Site-to-site WireGuard:** peer with remote public IP, allowed IPs = remote LAN subnet. Mirror config on both ends.
-
-**OpenVPN** (legacy, but needed for some clients):
-- VPN → OpenVPN → Servers — road warrior or site-to-site
-- Certificates: System → Trust → CA → Server cert → User certs
-- Client: exported .ovpn profile
-- Performance lower than WireGuard on same CPU
-
-**SMB comparison:**
-
-| | WireGuard | OpenVPN |
-|---|-----------|---------|
-| Setup | Minimal | CA, certs, more options |
-| Mobile | Official apps | OpenVPN Connect |
-| Firewall | UDP 51820 | UDP 1194 default |
-| Throughput | High | Medium |
-
-**Security:**
-- MFA not built into WG — combine with RADIUS + 2FA or per-device keys
-- Least privilege: Allowed IPs only for needed subnets
-- Disable full tunnel if not needed: split tunnel via Allowed IPs`,
-      code: {
-        language: 'text',
-        caption: 'Example WireGuard peer config (client)',
-        code: `[Interface]
-PrivateKey = <client-private-key>
-Address = 10.255.0.2/32
-DNS = 192.168.20.1
-
-[Peer]
-PublicKey = <opnsense-public-key>
-Endpoint = vpn.office.local:51820
-AllowedIPs = 192.168.20.0/24, 192.168.10.0/24
-PersistentKeepalive = 25`,
-      },
+**Fundamentals scope:** ensure WAN UDP 51820 (WG) or 1194 (OVPN) allowed if VPN termination on OPNsense.`,
     },
     {
       title: 'IDS/IPS: Suricata package',
-      content: `**Suricata** — IDS/IPS plugin (\\\`os-suricata\\\`) for signature-based threat detection on WAN/LAN.
+      content: `**Suricata** (\`os-suricata\`) — IDS/IPS plugin. Install via System → Firmware → Plugins.
 
-**Installation:**
-1. System → Firmware → Plugins → Install **os-suricata**
-2. Services → Intrusion Detection → Administration → Enable
-3. Select interfaces for inspection (WAN for inbound threats, LAN for east-west)
-4. Download rulesets: ET Open (free), Snort registered, or commercial
+IDS alert mode → tune → IPS. CPU hungry at >500 Mbps. Alternative: Zenarmor (L7).
 
-**Modes:**
-
-| Mode | Action |
-|------|----------|
-| **IDS** | Detect + alert (does not block) |
-| **IPS** | Inline block matching signatures |
-| **IPS with drop** | Active rejection |
-
-**Production SMB recommendation:**
-- Start with **IDS on WAN** — alerts only, tune 2 weeks
-- Whitelist false positives (Services → Suricata → Alerts → toggle)
-- Enable IPS on WAN after tuning
-- Monitor CPU — Suricata is hungry above ~500 Mbps
-
-**Rule categories:** disable noisy categories (POLICY, P2P) if not needed.
-
-**Logs:** Services → Suricata → Alerts; forward to remote syslog/SIEM.
-
-**Limits vs FortiGate IPS:**
-- Suricata — excellent open signatures, manual tuning
-- FortiGuard IPS — auto-updates, lower admin overhead, hardware accel
-- OPNsense does not replace enterprise SOC workflow without external SIEM
-
-**Alternative:** **Zenarmor** (formerly Sensei) — L7 filtering plugin, different licensing model.`,
+Operational tuning and SOC workflow — **Services** and **Operations** chapters. Here: account for Suricata in sizing RAM/CPU.`,
     },
     {
       title: 'High availability: CARP overview',
-      content: `**CARP (Common Address Redundancy Protocol)** — FreeBSD equivalent of VRRP for OPNsense HA pair.
+      content: `**CARP + pfsync** — HA pair active/passive, shared VIP. Config sync XMLRPC master→backup.
 
-**Topology:**
-\\\`\\\`\\\`
-        ISP
-          │
-    ┌─────┴─────┐
-  FW1 (MASTER) FW2 (BACKUP)
-    └─────┬─────┘
-       LAN switch
-\\\`\\\`\\\`
+Setup: Virtual IPs CARP, System → High Availability, firewall allow pfsync/CARP.
 
-**Components:**
-- **CARP VIP** — shared virtual IP on LAN/WAN (clients use VIP as gateway)
-- **pfsync** — state table sync between nodes
-- **config sync** — XMLRPC sync of configuration (master → backup)
-
-**Requirements:**
-- 3+ interfaces per node (WAN, LAN, sync optional on dedicated link)
-- Same/similar hardware performance
-- Unique real IPs per node + shared VIPs
-- **Advskew** — determines master (lower = master)
-
-**Setup (overview):**
-1. Interfaces → Virtual IPs → Add CARP VIP on LAN and WAN
-2. System → High Availability → Enable pfsync + config sync peer IP
-3. Firewall rules allow CARP/pfsync between nodes
-4. Test failover: shutdown master → backup takes VIP < 3 sec
-
-**Limitations:**
-- 2 nodes active/passive (not active-active for classic CARP)
-- Stateful failover requires pfsync — sessions survive
-- **Split-brain** risk if sync link down — document procedure
-- Cloud HA harder (no CARP on some hypervisors MAC — check virtio)
-
-**Alternatives:** external load balancer, BGP with two public IPs, or cold standby with manual DNS failover — for cloud-only deployments.`,
+Full failover runbook, split-brain, cloud limitations — **Operations** chapter. Multi-WAN failover (without CARP) — earlier in this chapter.`,
     },
     {
       title: 'Backup, config.xml, and updates',
@@ -441,7 +724,7 @@ PersistentKeepalive = 25`,
 |-------|------|
 | **GUI** | System → Configuration → Backups → Download |
 | **Scheduled** | System → Configuration → Backups → Google Drive/SFTP |
-| **CLI** | \\\`cp /conf/config.xml /root/backup-$(date +%F).xml\\\` |
+| **CLI** | \`cp /conf/config.xml /root/backup-$(date +%F).xml\` |
 
 **Restore:**
 1. System → Configuration → Backups → Restore
@@ -490,13 +773,13 @@ diff -u config-old.xml config-new.xml | less`,
 
 | Command | Purpose |
 |---------|------------|
-| \\\`pfctl -vvsr\\\` | Rules with counters |
-| \\\`pfctl -s state\\\` | Active sessions |
-| \\\`tcpdump -ni lan host X and port Y\\\` | Live capture |
-| \\\`clog -f /var/log/filter\\\` | Firewall log tail |
-| \\\`arp -a\\\` | ARP table |
+| \`pfctl -vvsr\` | Rules with counters |
+| \`pfctl -s state\` | Active sessions |
+| \`tcpdump -ni lan host X and port Y\` | Live capture |
+| \`clog -f /var/log/filter\` | Firewall log tail |
+| \`arp -a\` | ARP table |
 
-**Packet capture GUI:** Diagnostics → Packet Capture — select interface, filter \\\`host 192.168.10.50 and port 443\\\`.
+**Packet capture GUI:** Diagnostics → Packet Capture — select interface, filter \`host 192.168.10.50 and port 443\`.
 
 **Common issues:**
 
@@ -539,16 +822,260 @@ clog -f /var/log/filter | grep 192.168.20.50
 pfctl -z`,
       },
     },
+    {
+      title: 'Troubleshooting connectivity: step-by-step workflow',
+      content: `**«No connectivity» workflow** — systematic isolation DNS vs routing vs firewall.
+
+**Step 1 — Scope:** one client or all? one destination or all internet?
+
+**Step 2 — L1/L2:** link up? correct VLAN on switch port? \`ifconfig\` errors/drops?
+
+**Step 3 — L3 client:** gateway = OPNsense interface IP? DHCP option correct?
+
+**Step 4 — Routing:** Diagnostics → Routes; default route via WAN? \`netstat -rn\`
+
+**Step 5 — Gateway health:** System → Gateways → Status — WAN monitor green?
+
+**Step 6 — DNS isolate:** \`ping 1.1.1.1\` OK but name fails → Unbound listen interfaces, \`drill @192.168.20.1 host\`
+
+**Step 7 — Firewall:** Live View + temporary log on suspected deny rule
+
+**Step 8 — NAT:** outbound issue → NAT chapter; states show translation?
+
+**Step 9 — Capture:** Diagnostics Packet Capture or \`tcpdump -ni vlan0.20 host X\`
+
+**Typical matrix:**
+
+| Symptom | Layer | First check |
+|---------|-------|-------------|
+| No internet all LAN | WAN | Gateway status |
+| One VLAN only | VLAN IF | Interface enabled + IP |
+| DNS only broken | DNS | Unbound listen |
+| Inter-VLAN | Firewall | Rule on source VLAN in |
+| Intermittent | WAN/LTE | Monitor IP reachability |
+| SSH/GUI timeout | Mgmt rule | Firewall allow Mgmt |
+
+**Escalation pack for forum:** \`opnsense-version\`, rule counters, capture, steps to reproduce — no secrets from config.xml.`,
+    },
+    {
+      title: 'DHCP server: advanced SMB configuration',
+      content: `**Services → ISC DHCPv4** per interface — do not enable on WAN.
+
+**Pool design VLAN20 Users:**
+- Range 192.168.20.100–200 (100 leases)
+- Gateway 192.168.20.1
+- DNS 192.168.20.1 (Unbound) or DC
+- Domain office.local
+- Lease 86400 sec
+
+**Static mappings:** printers, AP, cameras — document MAC in IP plan spreadsheet.
+
+**Custom options:** VoIP option 66/150; PXE 66/67 — advanced integrations.
+
+**DHCP relay path:** DC holds DHCP → disable OPNsense DHCP on subnet → Services DHCP Relay → upstream DC IP OR switch ip helper-address.
+
+**Failover:** CARP shared IP + DHCP failover advanced — Operations chapter.
+
+**Troubleshooting:**
+- No OFFER: firewall UDP 67/68 blocked on interface
+- Wrong gateway: pool misconfiguration
+- Duplicate IP: static mapping conflict with dynamic pool
+- \`tcpdump -ni vlan0.20 port 67 or port 68\`
+
+**IPv6:** Router Advertisements + DHCPv6 separate menu — plan if ISP PD.`,
+    },
+    {
+      title: 'Unbound DNS: resolver, forwarders, and split horizon',
+      content: `**Services → Unbound DNS → General:** enable, listen LAN+VLAN interfaces only.
+
+**Register DHCP leases** — automatic local hostnames for clients.
+
+**Mode selection:**
+
+| Mode | When |
+|------|------|
+| Root recursion | Default, no ISP DNS dependency |
+| Forward all | Upstream 1.1.1.1 / 8.8.8.8 |
+| Split forward | AD domain → DC; rest recursive |
+
+**Host overrides:**
+\`\`\`
+app.office.local → 192.168.10.50
+vpn.office.com → public WAN IP
+\`\`\`
+
+**DNS over TLS:** optional upstream privacy to Cloudflare/Quad9.
+
+**DNSSEC validation:** enable — validates chain of trust.
+
+**AD integration:** domain override office.local → forward to DC IP; clients use OPNsense or DC as DNS per design.
+
+**Security:** block client DoH to known providers if policy requires; sinkhole via blocklist plugin.
+
+**Debug:** Diagnostics DNS Lookup; \`unbound-control status\`; \`tcpdump -ni lan port 53\``,
+    },
+    {
+      title: 'config.xml: structure, secrets, and DR',
+      content: `**Single XML** — interfaces, routes, users, rules, VPN keys, API secrets.
+
+**Locations:** \`/conf/config.xml\` live; download via GUI/API/SCP.
+
+**Restore paths:**
+1. System → Configuration → Backups → Restore
+2. Console option 13
+3. Clean install + restore (DR VM)
+
+**Version rules:** restore same or newer firmware usually OK; downgrade risky.
+
+**Revision history:** System → Configuration → History — UI diff rollback.
+
+**Secrets handling:** treat backup as credential-equivalent — GPG encrypt offsite:
+\`\`\`
+tar czf - /conf/config.xml | gpg -c > backup.tar.gz.gpg
+\`\`\`
+
+**GitOps caution:** private repo + git-crypt; never public commit.
+
+**Quarterly DR test:** lab VM restore timed — target RTO 30 min documented.
+
+**Change management:** pre-change backup filename includes ticket ID \`config-CHG-1234.xml\`.`,
+    },
+    {
+      title: 'Console menu and out-of-band access reference',
+      content: `**Console menu options (reference):**
+
+| # | Function | When to use |
+|---|----------|-------------|
+| 1 | Assign interfaces | Initial / hardware change |
+| 2 | Set interface IP | Locked out GUI wrong LAN IP |
+| 3 | Reset root password | Emergency lockout |
+| 4 | Factory reset | ⚠️ Total config wipe |
+| 7 | Ping | Test WAN without GUI |
+| 8 | Shell | Advanced debug |
+| 9 | pfTop | Live state table |
+| 10 | Firewall log | Quick block visibility |
+| 11 | Reload services | Apply without reboot |
+| 12 | Firmware update | No GUI access |
+| 13 | Restore config.xml | DR |
+
+**Out-of-band paths:** hypervisor console, IPMI/iLO serial, physical KVM.
+
+**opnsense-shell** from shell returns to menu.
+
+**Serial:** \`/boot/loader.conf\` console speed 115200 for datacenter appliances.
+
+**Break-glass:** documented root password in vault; test quarterly.`,
+    },
+    {
+      title: 'IPv6 on OPNsense: SMB overview',
+      content: `**IPv6 support:** DHCPv6-PD from ISP, static, track interface.
+
+**When to enable:** ISP provides PD; compliance; dual-stack apps.
+
+**When skip:** IPv4-only SMB — majority 2026; enable later without redesign if VLAN/IP plan clean.
+
+**Firewall:** separate IPv6 rule tab — don't assume v4 rules cover v6.
+
+**Unbound:** v6 listening if clients query AAAA.
+
+**Common issues:** ISP PD not propagated; missing v6 default route; v6 rules default deny.
+
+**Lab:** enable v6 on WAN PD sim if learning; production plan addressing scheme first.`,
+    },
+    {
+      title: 'MSP model: central management without FortiManager',
+      content: `**MSP managing 10+ OPNsense:**
+
+| Function | Tool |
+|----------|------|
+| Monitoring | Zabbix / Prometheus node_exporter |
+| Backup | Scheduled API/SCP script per site |
+| Config drift | diff config.xml weekly |
+| Updates | staged: lab → pilot site → fleet |
+| Access | WireGuard hub → SSH Mgmt VLAN |
+
+**No single-vendor orchestrator** — scripts + SIEM + ticketing integration.
+
+**Per-customer:** separate config.xml backup encrypted; API keys per tenant.
+
+**Documentation:** standard IP plan template VLAN10/20/60/99.
+
+**Onboarding runbook:** ISO deploy checklist + import baseline policies (Policies chapter).`,
+    },
+    {
+      title: 'Sizing walkthrough: 50-user office example',
+      content: `**Input:** 50 users, 500 Mbps fiber WAN, Suricata IDS WAN only, 20 WireGuard users, no SSL inspection.
+
+**Step 1 — Sessions:** 50 × 50 = 2500 concurrent sessions peak estimate.
+
+**Step 2 — CPU:** IDS adds ~30% CPU at 500 Mbps — plan 4 vCPU minimum.
+
+**Step 3 — RAM:** 8 GB base + IDS buffer → 8–16 GB.
+
+**Step 4 — Disk:** 64 GB SSD; logs local 30d + remote syslog.
+
+**Step 5 — NIC:** 2× GE sufficient; 10GE if internal trunk >1 Gbps aggregate.
+
+**Step 6 — Validate:** lab traffic generator or peak hour \`top\` + \`pfctl -s info\`.
+
+**Rule 70%:** sustained CPU under 70% at peak — if higher, upgrade vCPU/RAM or reduce IDS scope.
+
+**Document:** sizing memo in change folder for future audits.`,
+    },
+    {
+      title: 'pfSense → OPNsense migration: overview',
+      content: `**Possible** via config import with limitations — not 1:1 plugins.
+
+**Process:**
+1. Export pfSense config.xml
+2. OPNsense import tool / manual migration (check release notes)
+3. Verify interfaces mapping (NIC order may differ)
+4. Reinstall plugins os-* equivalents
+5. Parallel run cutover weekend
+
+**Watch:** NAT rule format, OpenVPN cert paths, Suricata rule paths differ.
+
+**Rollback:** keep pfSense VM snapshot until 1 week stable.
+
+**FortiGate migration:** no auto-import — manual policy rewrite 2–4 weeks office 50 users.`,
+    },
+    {
+      title: 'Fundamentals glossary (quick reference)',
+      content: `| Term | Meaning |
+|------|---------|
+| **pf** | FreeBSD packet filter engine |
+| **OPT** | Additional routed interface |
+| **config.xml** | Single configuration file |
+| **Unbound** | Validating DNS resolver |
+| **CARP** | HA virtual IP failover |
+| **pfsync** | State table sync between HA nodes |
+| os-* packages | OPNsense plugin package prefix |
+| **Gateway group** | Failover/load balance WAN paths |
+| **Alias** | Named object group for rules |
+| **Ingress rule** | Firewall rule on traffic entering interface |
+| **Implicit deny** | Unmatched traffic blocked |
+| **Bogon** | Invalid/unallocated IP space |
+| **Split DNS** | Different answers inside vs outside |
+| **2FA TOTP** | Time-based one-time password |
+| **REST API** | HTTP API for automation |
+| **VirtIO** | Paravirtual NIC for VMs |
+| **LAGG** | FreeBSD link aggregation |
+| **PD** | IPv6 prefix delegation from ISP |
+
+**Tip:** keep this glossary handy when reading Policies, VPN, and Operations chapters — shared vocabulary speeds onboarding for new engineers.`,
+    },
   ],
   practice: [
-    'Deploy OPNsense in Proxmox/VMware: 2 NICs (WAN+LAN), install from ISO, set hostname opnsense-lab01',
-    'Configure WAN DHCP and LAN 192.168.1.1/24; verify ping 1.1.1.1 from Diagnostics and from LAN client',
-    'Create VLAN20 (Users) and VLAN60 (Guest) on trunk; firewall: Guest block RFC1918, allow WAN',
-    'Set up port forward WAN:443 → internal web server; test from external and fix missing rule if needed',
-    'Create aliases NET_SERVERS, PORT_WEB, ADMINS; rewrite 3 rules using aliases',
-    'Set up WireGuard road warrior: peer for laptop, verify access to LAN subnet',
-    'Install os-suricata, enable IDS on WAN, generate test alert and find it in Suricata logs',
-    'Backup config.xml, change hostname, restore backup and confirm hostname rolled back',
+    'Deploy OPNsense in Proxmox/VMware/Hyper-V: 2–3 NIC, ISO install, hostname opnsense-lab01',
+    'Post-install: firmware, NTP, admin+2FA, disable root GUI, backup config.xml',
+    'VLAN10/20/60 on LAN trunk with IP .1 on each',
+    'Static route 192.168.50.0/24 — verify netstat -rn',
+    'DHCP VLAN20 + Unbound host override lab.local',
+    'SSH ed25519 key, password auth off, Mgmt VLAN only',
+    'Install os-wireguard + os-acme-client (or os-zabbix-agent)',
+    'REST API curl firmware status + config download (no secrets in git)',
+    'Troubleshoot injected no-internet fault',
+    'Snapshot baseline; restore config.xml rollback test',
   ],
   resources: [
     { title: 'OPNsense Official Documentation', url: 'https://docs.opnsense.org/' },
@@ -557,6 +1084,9 @@ pfctl -z`,
     { title: 'WireGuard on OPNsense (docs)', url: 'https://docs.opnsense.org/manual/how-tos/wireguard-client.html' },
     { title: 'Suricata plugin guide', url: 'https://docs.opnsense.org/manual/ips.html' },
     { title: 'Hardening OPNsense', url: 'https://docs.opnsense.org/manual/hardening.html' },
+    { title: 'OPNsense Virtualization Guide', url: 'https://docs.opnsense.org/manual/virtuals.html' },
+    { title: 'OPNsense REST API Documentation', url: 'https://docs.opnsense.org/development/api.html' },
+    { title: 'OPNsense Release Notes', url: 'https://opnsense.org/releases/' },
   ],
   quiz: [
     {

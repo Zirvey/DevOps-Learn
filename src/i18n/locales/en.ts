@@ -143,7 +143,7 @@ export const en: Translations = {
     },
     opnsense: {
       title: 'OPNsense',
-      description: 'Open-source firewall, VPN, Suricata, and operations',
+      description: 'Fundamentals, firewall/NAT, VPN, Suricata/plugins, and operations',
     },
     'it-support': {
       title: 'IT Support',

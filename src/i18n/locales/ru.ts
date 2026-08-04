@@ -141,7 +141,7 @@ export const ru = {
     },
     opnsense: {
       title: 'OPNsense',
-      description: 'Open-source firewall, VPN, Suricata и эксплуатация',
+      description: 'Основы, firewall/NAT, VPN, Suricata/плагины и эксплуатация',
     },
     'it-support': {
       title: 'IT Support',

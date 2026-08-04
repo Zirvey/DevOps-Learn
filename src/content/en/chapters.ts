@@ -48,6 +48,10 @@ import fortigateFirewallPolicies from './fortigate-firewall-policies'
 import fortinetVpn from './fortinet-vpn'
 import fortinetOperations from './fortinet-operations'
 import opnsenseFundamentals from './opnsense-fundamentals'
+import opnsenseFirewallNat from './opnsense-firewall-nat'
+import opnsenseVpn from './opnsense-vpn'
+import opnsenseServices from './opnsense-services'
+import opnsenseOperations from './opnsense-operations'
 import itSupportFoundations from './it-support-foundations'
 import helpdeskAndSla from './helpdesk-and-sla'
 import endpointSupport from './endpoint-support'
@@ -104,6 +108,10 @@ export const enChaptersBySlug: Record<string, ChapterTranslation> = {
   'fortinet-vpn': fortinetVpn,
   'fortinet-operations': fortinetOperations,
   'opnsense-fundamentals': opnsenseFundamentals,
+  'opnsense-firewall-nat': opnsenseFirewallNat,
+  'opnsense-vpn': opnsenseVpn,
+  'opnsense-services': opnsenseServices,
+  'opnsense-operations': opnsenseOperations,
   'it-support-foundations': itSupportFoundations,
   'helpdesk-and-sla': helpdeskAndSla,
   'endpoint-support': endpointSupport,
