@@ -188,6 +188,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How is StatefulSet different from Deployment?",
+      options: [
+        "StatefulSet provides stable Pod names, ordered rollouts, and bound PVCs for stateful applications.",
+        "Deployment always provides stable Pod names and ordered startup.",
+        "StatefulSet is only for DaemonSets on every node.",
+        "StatefulSet cannot use persistent volumes.",
+      ],
       answer: "StatefulSet provides stable Pod names, ordered rollouts, and bound PVCs for stateful applications.",
     },
     {
@@ -202,6 +208,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "What are taints and tolerances?",
+      options: [
+        "Taints push Pod away from the node; tolerations allow Pods to be scheduled on tainted nodes.",
+        "Taints attract Pods; tolerations block scheduling",
+        "Taints label Services; tolerations label Ingress rules",
+        "Taints encrypt node traffic; tolerations open all ports",
+      ],
       answer: "Taints push Pod away from the node; tolerations allow Pods to be scheduled on tainted nodes.",
     },
     {
@@ -216,6 +228,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "What does kubectl drain node do?",
+
+      options: [
+        "Evacuates a Pod from a node (taking into account the PDB) for maintenance or removal of the node from the cluster.",
+        "Removes a node from the cluster without recreating Pods",
+        "Formats the disk on a worker node",
+        "Adds NoSchedule taint to all Pods",
+      ],
       answer: "Evacuates a Pod from a node (taking into account the PDB) for maintenance or removal of the node from the cluster.",
     },
     {
@@ -252,6 +271,14 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How do you view logs from a previous crashed container in a Pod?",
+
+
+      options: [
+        "kubectl logs <pod> -c <container> --previous",
+        "kubectl logs <pod> --tail=100",
+        "kubectl describe pod <pod>",
+        "kubectl exec -it <pod> -- sh",
+      ],
       answer: "kubectl logs <pod> -c <container> --previous",
     },
   ],

@@ -999,6 +999,12 @@ set username admin password YourStrongPassword
     },
     {
       question: 'Port mirroring is used for:',
+      options: [
+        'Copying port traffic to an analyzer for diagnostics',
+        'Doubling PoE budget on a switch',
+        'Automatically creating VLANs from MAC addresses',
+        'Blocking broadcast storms permanently',
+      ],
       answer: 'Copying port traffic to an analyzer for diagnostics',
     },
     {

@@ -1124,6 +1124,7 @@ AGPM — version control workflow in production. Backup-GPO — point-in-time ba
     },
     {
       question: 'Command to force GPO update on client:',
+      options: ['gpupdate /force', 'gpoedit /force', 'gpresult /force', 'rsop /reload'],
       answer: 'gpupdate /force',
     },
     {
@@ -1148,11 +1149,22 @@ AGPM — version control workflow in production. Backup-GPO — point-in-time ba
     },
     {
       question: 'Command to view applied GPOs with an HTML report:',
+      options: [
+        'gpresult /h report.html',
+        'gpupdate /h report.html',
+        'gpresult /html without filename',
+        'gpreport /export report.xml',
+      ],
       answer: 'gpresult /h report.html',
     },
     {
       question: 'Loopback Processing in GPO is needed when:',
-      options: ['User settings are needed regardless of the physical PC location', 'Disable all GPOs', 'DC only', 'Printers only'],
+      options: [
+        'User settings are needed regardless of the physical PC location',
+        'Disable all GPO',
+        'Only for DC',
+        'Only for printers',
+      ],
       answer: 'User settings are needed regardless of the physical PC location',
       explanation: 'Merge or Replace mode—for terminals, kiosks, labs.',
     },

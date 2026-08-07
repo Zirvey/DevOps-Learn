@@ -1029,6 +1029,12 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
     },
     {
       question: 'Runbook for onboarding a new employee includes:',
+      options: [
+        'Create AD account, M365 licenses, equipment, access, security briefing',
+        'Only reset the printer and close the ticket',
+        'Skip security briefing to save time',
+        'Grant domain admin to every new hire',
+      ],
       answer: 'Create AD account, M365 licenses, equipment, access, security briefing',
     },
     {

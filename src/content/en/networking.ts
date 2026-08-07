@@ -388,6 +388,12 @@ The foundation from this chapter underpins all of these abstractions.`,
     },
     {
       question: 'What is CIDR and why is it needed?',
+      options: [
+        'Notation for an IP address range, e.g. 10.0.0.0/24.',
+        'A hostname alias for DNS only.',
+        'A type of VLAN tag on switches.',
+        'An encrypted tunnel protocol.',
+      ],
       answer: 'Notation for an IP address range, e.g. 10.0.0.0/24.',
     },
     {
@@ -407,6 +413,12 @@ The foundation from this chapter underpins all of these abstractions.`,
     },
     {
       question: 'Explain the difference between a reverse proxy and a forward proxy.',
+      options: [
+        'A forward proxy represents clients outbound; a reverse proxy accepts client requests and forwards them to backend servers.',
+        'A reverse proxy represents clients outbound; a forward proxy serves backend servers only',
+        'They are the same; only the port number differs',
+        'A forward proxy load-balances servers; a reverse proxy hides client IPs from the internet',
+      ],
       answer:
         'A forward proxy represents clients outbound; a reverse proxy accepts client requests and forwards them to backend servers.',
     },
@@ -443,6 +455,13 @@ The foundation from this chapter underpins all of these abstractions.`,
     },
     {
       question: 'Describe what happens during TCP three-way handshake (SYN, SYN-ACK, ACK).',
+
+      options: [
+        'Client sends SYN, server responds SYN-ACK, client confirms with ACK — connection is established with agreed parameters.',
+        'Server sends SYN, client responds FIN, connection closes',
+        'Client and server simultaneously send ACK without SYN',
+        'Handshake consists of two steps: SYN and FIN',
+      ],
       answer:
         'Client sends SYN, server responds SYN-ACK, client confirms with ACK — connection is established with agreed parameters.',
     },

@@ -496,6 +496,12 @@ Avoid: killing all replicas at once, incompatible schema flips, long startup wit
     },
     {
       question: `What should you ask the interviewer about the team and processes?`,
+      options: [
+        `On-call, CI/CD maturity, IaC, postmortem culture, expectations for the role in the first 90 days.`,
+        `Only salary and vacation days.`,
+        `Whether the team uses a specific editor theme.`,
+        `How to avoid all production incidents forever.`,
+      ],
       answer: `On-call, CI/CD maturity, IaC, postmortem culture, expectations for the role in the first 90 days.`,
     },
     {
@@ -510,6 +516,12 @@ Avoid: killing all replicas at once, incompatible schema flips, long startup wit
     },
     {
       question: `Why clarify requirements in system design?`,
+      options: [
+        `SLA, RPS, budget, compliance, and timelines change the choice between managed/self-hosted and the architecture.`,
+        `Requirements never matter once you pick Kubernetes`,
+        `Only the programming language defines the architecture`,
+        `Timelines are irrelevant if you use microservices`,
+      ],
       answer: `SLA, RPS, budget, compliance, and timelines change the choice between managed/self-hosted and the architecture.`,
     },
     {
@@ -524,6 +536,13 @@ Avoid: killing all replicas at once, incompatible schema flips, long startup wit
     },
     {
       question: `Which topics appear most often in junior/middle DevOps interviews?`,
+
+      options: [
+        `Linux, networking, Git, CI/CD, Docker/K8s basics, troubleshooting, cloud fundamentals.`,
+        `UI design and marketing only`,
+        `1C and accounting exclusively`,
+        `COBOL and mainframe knowledge only`,
+      ],
       answer: `Linux, networking, Git, CI/CD, Docker/K8s basics, troubleshooting, cloud fundamentals.`,
     },
     {
@@ -559,6 +578,13 @@ Avoid: killing all replicas at once, incompatible schema flips, long startup wit
     },
     {
       question: `How do you briefly explain the difference between IaC and configuration management?`,
+
+      options: [
+        `IaC (Terraform) provisions infrastructure; CM (Ansible) configures OS and packages on existing hosts.`,
+        `IaC and CM are the same; both only install packages.`,
+        `IaC configures OS on servers; CM creates VPC and subnet.`,
+        `CM is only for containers; IaC is only for databases.`,
+      ],
       answer: `IaC (Terraform) provisions infrastructure; CM (Ansible) configures OS and packages on existing hosts.`,
     },
   ],

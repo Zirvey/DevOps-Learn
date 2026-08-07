@@ -288,6 +288,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How is a Pod different from a container?",
+      options: [
+        "Pod is the minimum scheduling unit in K8s; it can contain one or more containers with a common network/volume.",
+        "Pod and container are always the same single process.",
+        "A container schedules Pods, not the other way around.",
+        "Pods cannot share network namespaces.",
+      ],
       answer: "Pod is the minimum scheduling unit in K8s; it can contain one or more containers with a common network/volume.",
     },
     {
@@ -312,6 +318,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "Which command will show the Pod in all namespaces?",
+      options: [
+        "kubectl get pods -A or kubectl get pods --all-namespaces",
+        "kubectl get pod",
+        "kubectl describe node",
+        "kubectl config view",
+      ],
       answer: "kubectl get pods -A or kubectl get pods --all-namespaces",
     },
     {
@@ -326,6 +338,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "Why are labels and selectors needed?",
+      options: [
+        "Link objects (Service, Deployment) to the Pod group using labels.",
+        "Store passwords in Pod annotations",
+        "Replace kubeconfig files on every node",
+        "Disable DNS for Services",
+      ],
       answer: "Link objects (Service, Deployment) to the Pod group using labels.",
     },
     {
@@ -351,6 +369,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "Describe the difference between readiness and liveness probes.",
+
+      options: [
+        "Readiness determines whether the Pod is ready to receive traffic; liveness checks if the container is alive (on fail — restart).",
+        "Liveness checks readiness for traffic; readiness restarts the Pod",
+        "Both probes only log metrics without taking action",
+        "Readiness restarts the container on any HTTP error",
+      ],
       answer: "Readiness determines whether the Pod is ready to receive traffic; liveness checks if the container is alive (on fail — restart).",
     },
   ],

@@ -1281,6 +1281,12 @@ diagnose vpn ike gateway list
     },
     {
       question: 'FortiClient EMS is used for:',
+      options: [
+        'Centralized deployment, profiles, and reporting for FortiClient',
+        'Antivirus only on FortiGate',
+        'GPO editing in AD',
+        'DNS configuration on DC',
+      ],
       answer: 'Centralized deployment, profiles, and reporting for FortiClient',
     },
     {

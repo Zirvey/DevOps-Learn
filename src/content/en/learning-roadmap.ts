@@ -246,6 +246,13 @@ Learning in this handbook follows a **bottom-up** logic:
     },
     {
       question: 'Why are pet projects and a homelab important in a roadmap?',
+
+      options: [
+        'They give practical experience with deploy, debugging, and automation outside workplace constraints.',
+        'They replace the need to study theory and documentation',
+        'They are only needed to obtain certifications',
+        'They are used exclusively on workplace projects under NDA',
+      ],
       answer:
         'They give practical experience with deploy, debugging, and automation outside workplace constraints.',
       explanation: 'Employers value demonstrated skills, not theory alone.',
@@ -272,6 +279,12 @@ Learning in this handbook follows a **bottom-up** logic:
     },
     {
       question: 'Which soft skills are useful for a DevOps engineer?',
+      options: [
+        'Cross-team communication, documentation, incident work, and learnability.',
+        'Only memorizing CLI commands without collaboration.',
+        'Avoiding on-call and postmortems entirely.',
+        'Working in isolation from developers and ops.',
+      ],
       answer:
         'Cross-team communication, documentation, incident work, and learnability.',
     },
@@ -319,6 +332,12 @@ Learning in this handbook follows a **bottom-up** logic:
     },
     {
       question: 'Name three ways to document DevOps learning progress for yourself and recruiters.',
+      options: [
+        'Pet projects in Git, notes/blog, certificates or checklist of completed topics with demos.',
+        'Keep all learning private with no artifacts.',
+        'Only watch videos with no practice or documentation.',
+        'Rely solely on certifications without hands-on work.',
+      ],
       answer: 'Pet projects in Git, notes/blog, certificates or checklist of completed topics with demos.',
     },
   ],

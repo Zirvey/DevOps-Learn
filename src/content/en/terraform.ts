@@ -915,6 +915,12 @@ Import and moved are key tools for evolving infrastructure without downtime.`,
     },
     {
       question: `What does Terraform state store?`,
+      options: [
+        `The mapping of resources in code to real IDs in the provider, plus dependency metadata.`,
+        `Only the Terraform CLI version and provider download URLs`,
+        `Encrypted copies of all .tf source files`,
+        `Live runtime metrics from managed resources`,
+      ],
       answer: `The mapping of resources in code to real IDs in the provider, plus dependency metadata.`,
     },
     {
@@ -939,6 +945,13 @@ Import and moved are key tools for evolving infrastructure without downtime.`,
     },
     {
       question: `What does terraform import do?`,
+
+      options: [
+        `Adds an existing infrastructure object into state under Terraform management.`,
+        `Creates a new cloud resource from a .tf file template.`,
+        `Exports state to JSON without changing infrastructure.`,
+        `Deletes the resource from the cloud and leaves it in state.`,
+      ],
       answer: `Adds an existing infrastructure object into state under Terraform management.`,
     },
     {
@@ -985,6 +998,13 @@ Import and moved are key tools for evolving infrastructure without downtime.`,
     },
     {
       question: `How do you pass an output value from one module to another?`,
+
+      options: [
+        `Via output in the child module and reference module.<name>.<output> in the parent code.`,
+        `Via direct import of .tf files from child module into parent`,
+        `Only via terraform.tfvars in root without outputs`,
+        `Via remote exec provisioner on every output`,
+      ],
       answer: `Via output in the child module and reference module.<name>.<output> in the parent code.`,
     },
   ],

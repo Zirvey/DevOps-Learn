@@ -421,6 +421,13 @@ spec:
     },
     {
       question: 'What does the proxy_pass directive do?',
+
+      options: [
+        'Proxies requests to the specified upstream (backend).',
+        'Sets the virtual host name',
+        'Enables gzip compression',
+        'Opens the listen port',
+      ],
       answer: 'Proxies requests to the specified upstream (backend).',
     },
     {
@@ -445,6 +452,12 @@ spec:
     },
     {
       question: 'How do you check nginx config syntax before reload?',
+      options: [
+        'nginx -t',
+        'nginx -s stop',
+        'systemctl disable nginx',
+        'kill -9 $(pidof nginx)',
+      ],
       answer: 'nginx -t',
     },
     {
@@ -491,6 +504,12 @@ spec:
     },
     {
       question: 'How do you safely apply a new nginx configuration without downtime for active connections?',
+      options: [
+        'nginx -t && nginx -s reload (or systemctl reload nginx after successful check).',
+        'nginx -s stop && nginx',
+        'Edit config and kill -HUP without testing.',
+        'systemctl restart nginx without syntax check.',
+      ],
       answer: 'nginx -t && nginx -s reload (or systemctl reload nginx after successful check).',
     },
   ],

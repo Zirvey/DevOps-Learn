@@ -473,6 +473,13 @@ Apply to: CPU, memory, disk, network interfaces.
     },
     {
       question: `What are SLI and SLO?`,
+
+      options: [
+        `SLI is a measurable quality indicator; SLO is the target SLI value over a period.`,
+        `SLI — cloud budget; SLO — on-call team name`,
+        `SLI and SLO — alert types in PagerDuty`,
+        `SLO replaces the need for metrics`,
+      ],
       answer: `SLI is a measurable quality indicator; SLO is the target SLI value over a period.`,
     },
     {
@@ -497,6 +504,14 @@ Apply to: CPU, memory, disk, network interfaces.
     },
     {
       question: `Name the four golden monitoring signals (Google SRE).`,
+
+
+      options: [
+        `Latency, Traffic, Errors, Saturation.`,
+        `CPU, Memory, Disk, Network only`,
+        `Logs, Traces, Metrics, Profiles`,
+        `Uptime, Cost, Users, Revenue`,
+      ],
       answer: `Latency, Traffic, Errors, Saturation.`,
     },
     {
@@ -543,6 +558,12 @@ Apply to: CPU, memory, disk, network interfaces.
     },
     {
       question: `Name three signs of a "noisy" alert worth revisiting.`,
+      options: [
+        `Fires without actionable steps, doesn't correlate with user impact, duplicates other alerts.`,
+        `Always pages on-call with clear runbooks.`,
+        `Only triggers during planned maintenance windows.`,
+        `Correlates strongly with customer-facing outages every time.`,
+      ],
       answer: `Fires without actionable steps, doesn't correlate with user impact, duplicates other alerts.`,
     },
   ],

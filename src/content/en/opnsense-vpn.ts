@@ -1143,12 +1143,18 @@ tcpdump on WAN and VPN IF
     },
     {
       question: 'CLI command to show WireGuard peers and handshakes:',
+      options: ['wg show', 'ipsec statusall', 'openvpn --status', 'ifconfig wg0 down'],
       answer: 'wg show',
       explanation: 'Use wg show wg0 latest-handshakes for per-peer timing; wg show all dump for deep debug.',
     },
     {
       question: 'MFA for remote VPN in production:',
-      options: ['Mandatory — password alone is unacceptable', 'Optional for all users', 'Only for IPsec site-to-site', 'Not needed with WireGuard keys'],
+      options: [
+        'Mandatory — password alone is unacceptable',
+        'Optional for admins only',
+        'Not needed with WireGuard keys',
+        'Replaced by split tunnel',
+      ],
       answer: 'Mandatory — password alone is unacceptable',
       explanation: 'WireGuard has no native MFA; use RADIUS overlay, managed devices, or gate access via portal.',
     },

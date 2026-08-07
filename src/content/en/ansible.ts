@@ -814,6 +814,12 @@ ansible-lint playbooks/site.yml
     },
     {
       question: `How does a playbook differ from an ad-hoc command?`,
+      options: [
+        `A playbook is a declarative YAML scenario with roles and idempotent tasks; ad-hoc is a one-off command.`,
+        `A playbook runs only on Windows; ad-hoc runs only on Linux.`,
+        `Ad-hoc commands are stored in Git; playbooks are never versioned.`,
+        `There is no difference; both are shell scripts.`,
+      ],
       answer: `A playbook is a declarative YAML scenario with roles and idempotent tasks; ad-hoc is a one-off command.`,
     },
     {
@@ -838,6 +844,12 @@ ansible-lint playbooks/site.yml
     },
     {
       question: `What does idempotency mean in Ansible?`,
+      options: [
+        `Re-running converges the system to the desired state without unnecessary changes.`,
+        `Every run must delete and recreate all resources.`,
+        `Tasks can only run once ever.`,
+        `Idempotency means ignoring changed files.`,
+      ],
       answer: `Re-running converges the system to the desired state without unnecessary changes.`,
     },
     {
@@ -884,6 +896,12 @@ ansible-lint playbooks/site.yml
     },
     {
       question: `How do you check a playbook without making changes on hosts?`,
+      options: [
+        `ansible-playbook site.yml --check (optionally --diff to view diffs).`,
+        `ansible-playbook site.yml --force`,
+        `ansible-doc site.yml`,
+        `ansible-vault edit site.yml`,
+      ],
       answer: `ansible-playbook site.yml --check (optionally --diff to view diffs).`,
     },
   ],

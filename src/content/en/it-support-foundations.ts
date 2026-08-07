@@ -1020,6 +1020,12 @@ ITIL 4 Foundation book (ch 1–4), «The Phoenix Project» fiction for DevOps mi
     },
     {
       question: 'In ITIL, Problem differs from Incident because:',
+      options: [
+        'Incident—restore service now; Problem—find and eliminate the root cause',
+        'Incident—root cause analysis; Problem—user training only',
+        'They are identical ITIL terms',
+        'Problem—restore service now; Incident—long-term prevention',
+      ],
       answer: 'Incident—restore service now; Problem—find and eliminate the root cause',
     },
     {

@@ -536,6 +536,12 @@ These topics deepen in the Security and SSH modules.`,
     },
     {
       question: 'How does a hard link differ from a symbolic link (symlink)?',
+      options: [
+        'A hard link points to the same inode; a symlink is a separate file with a path to the target.',
+        'A hard link is always a directory; a symlink is always a file',
+        'A symlink points to the same inode; a hard link stores only a path',
+        'There is no difference on Linux',
+      ],
       answer:
         'A hard link points to the same inode; a symlink is a separate file with a path to the target.',
     },
@@ -561,6 +567,13 @@ These topics deepen in the Security and SSH modules.`,
     },
     {
       question: 'How do you view the last 50 lines of a log file in real time?',
+
+      options: [
+        'tail -f -n 50 /path/to/log or tail -n 50 -f /path/to/log',
+        'head -n 50 /path/to/log',
+        'cat /path/to/log | grep ERROR',
+        'less /path/to/log without follow',
+      ],
       answer: 'tail -f -n 50 /path/to/log or tail -n 50 -f /path/to/log',
     },
     {
@@ -597,6 +610,14 @@ These topics deepen in the Security and SSH modules.`,
     },
     {
       question: 'How do you restart the nginx systemd service and check its status?',
+
+
+      options: [
+        'sudo systemctl restart nginx && sudo systemctl status nginx',
+        'sudo service nginx reload && ps aux | grep nginx',
+        'sudo killall nginx && nginx -t',
+        'sudo systemctl enable nginx && journalctl -f',
+      ],
       answer: 'sudo systemctl restart nginx && sudo systemctl status nginx',
     },
   ],

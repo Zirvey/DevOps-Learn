@@ -518,6 +518,12 @@ This lab combines EKS, ECR, ALB, Route 53, Helm — a full production workflow.`
     },
     {
       question: `Who manages the control plane in EKS?`,
+      options: [
+        `AWS; the customer manages worker nodes, add-ons, and workloads.`,
+        `The customer manages the entire control plane on EC2.`,
+        `AWS manages only worker nodes; customers run etcd.`,
+        `Neither party manages the control plane.`,
+      ],
       answer: `AWS; the customer manages worker nodes, add-ons, and workloads.`,
     },
     {
@@ -542,6 +548,12 @@ This lab combines EKS, ECR, ALB, Route 53, Helm — a full production workflow.`
     },
     {
       question: `How does a Pod get IAM permissions in EKS?`,
+      options: [
+        `Via IRSA (IAM Roles for Service Accounts) with the cluster OIDC provider.`,
+        `Attach an IAM user access key as a Pod Secret`,
+        `Assign IAM policies only to the node instance profile`,
+        `Use AWS SSO login from inside every container`,
+      ],
       answer: `Via IRSA (IAM Roles for Service Accounts) with the cluster OIDC provider.`,
     },
     {
@@ -588,6 +600,13 @@ This lab combines EKS, ECR, ALB, Route 53, Helm — a full production workflow.`
     },
     {
       question: `How do you update the Kubernetes version in EKS with minimal workload downtime?`,
+
+      options: [
+        `In stages: update control plane, then node groups (rolling/new group + drain old) with PDB in mind.`,
+        `Delete all node groups at once and create a new cluster`,
+        `Update only worker nodes without the control plane`,
+        `Recreate the cluster without drain and without considering PDB`,
+      ],
       answer: `In stages: update control plane, then node groups (rolling/new group + drain old) with PDB in mind.`,
     },
   ],

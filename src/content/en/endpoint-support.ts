@@ -1007,6 +1007,7 @@ OneDrive not backup for all — know if company uses Veeam endpoint or none; set
     },
     {
       question: 'Command to check applied GPO for the current user:',
+      options: ['gpresult /scope user /v', 'gpupdate /force', 'dcdiag /v', 'rsop.msc /computer'],
       answer: 'gpresult /scope user /v',
     },
     {

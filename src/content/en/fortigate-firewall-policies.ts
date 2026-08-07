@@ -1304,6 +1304,12 @@ show firewall policy | grep -E "ALL|any.*any"
     },
     {
       question: 'CLI for tracing why traffic is blocked:',
+      options: [
+        'diagnose debug flow (or diagnose firewall iprope lookup)',
+        'get system status',
+        'execute ping-options',
+        'config system interface',
+      ],
       answer: 'diagnose debug flow (or diagnose firewall iprope lookup)',
     },
     {

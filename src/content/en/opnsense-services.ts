@@ -1199,6 +1199,12 @@ Users → OPNsense Unbound (blocklist + force DNS)
     },
     {
       question: 'Command to list installed os-* OPNsense plugins:',
+      options: [
+        'pkg info | grep \'^os-\'',
+        'configctl list plugins',
+        'opnsense-plugin -l',
+        'pkg search os-',
+      ],
       answer: 'pkg info | grep \'^os-\'',
       explanation: 'Also use configctl status <service> for plugin-managed daemons.',
     },

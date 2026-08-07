@@ -265,6 +265,12 @@ Less critical for: rare embedded releases, desktop software without a server sid
     },
     {
       question: 'What is a blameless postmortem?',
+      options: [
+        'An incident review without hunting for someone to blame, focused on systemic causes and process improvements.',
+        'A meeting to assign individual fault for outages.',
+        'A postmortem that avoids documenting any action items.',
+        'A review used only for performance punishments.',
+      ],
       answer:
         'An incident review without hunting for someone to blame, focused on systemic causes and process improvements.',
       explanation:
@@ -292,6 +298,12 @@ Less critical for: rare embedded releases, desktop software without a server sid
     },
     {
       question: 'Name three key anti-patterns of the traditional "wall between dev and ops" model.',
+      options: [
+        'Long releases, manual non-reproducible deploys, mutual blame during incidents.',
+        'Fast feedback, shared ownership, automated testing',
+        'Infrastructure as code, trunk-based development, blameless postmortems',
+        'Continuous delivery, cross-functional teams, observability',
+      ],
       answer:
         'Long releases, manual non-reproducible deploys, mutual blame during incidents.',
     },
@@ -329,6 +341,13 @@ Less critical for: rare embedded releases, desktop software without a server sid
     },
     {
       question: 'Describe how production feedback helps the team improve the product in DevOps culture.',
+
+      options: [
+        'Metrics, alerts, and postmortems provide data for prioritizing reliability, automation, and reducing lead time.',
+        'Only for management reporting once a quarter without affecting the backlog',
+        'To find culprits after every incident and punish developers',
+        'To fully automate all decisions without human involvement',
+      ],
       answer: 'Metrics, alerts, and postmortems provide data for prioritizing reliability, automation, and reducing lead time.',
     },
   ],

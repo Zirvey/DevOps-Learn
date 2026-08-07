@@ -1004,6 +1004,12 @@ Microsoft: infrastructure. Customer: data protection, retention policy, accident
     },
     {
       question: 'First step when restoring a DC from backup:',
+      options: [
+        'Boot into Directory Services Restore Mode (DSRM) or restore System State',
+        'Run dcpromo immediately on a fresh VM',
+        'Restore only SYSVOL from a file share without DSRM',
+        'Promote a member server to DC without backups',
+      ],
       answer: 'Boot into Directory Services Restore Mode (DSRM) or restore System State',
     },
     {

@@ -1165,11 +1165,22 @@ Migrate roles/data, remove from Veeam, disable AD computer, remove DNS records, 
     },
     {
       question: 'What are Windows services managed from the command line?',
+      options: [
+        'Get-Service, Start-Service, Stop-Service, Restart-Service (PowerShell) or sc.exe',
+        'net start and net stop in cmd only without PowerShell',
+        'services.msc exclusively via GUI without CLI',
+        'wmic process only for process management, not services',
+      ],
       answer: 'Get-Service, Start-Service, Stop-Service, Restart-Service (PowerShell) or sc.exe',
     },
     {
       question: 'Why shouldn\'t RDP be opened directly to the Internet?',
-      options: ['High risk of brute-force and exploits', 'RDP doesn\'t work over NAT', 'Only UDP required'],
+      options: [
+        'High risk of brute-force and exploits',
+        'RDP does not work through NAT',
+        'Requires UDP only',
+        'Windows blocks RDP on WAN by default',
+      ],
       answer: 'High risk of brute-force and exploits',
     },
     {
@@ -1195,6 +1206,12 @@ Migrate roles/data, remove from Veeam, disable AD computer, remove DNS records, 
     },
     {
       question: 'Command to rename Windows Server in PowerShell:',
+      options: [
+        'Rename-Computer -NewName "name" -Restart',
+        'hostname name',
+        'net user administrator /active:yes',
+        'sconfig',
+      ],
       answer: 'Rename-Computer -NewName "name" -Restart',
     },
     {

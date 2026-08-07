@@ -341,6 +341,13 @@ Example of a restricted key:
     },
     {
       question: 'What does ssh-agent do?',
+
+      options: [
+        'Keeps decrypted private keys in memory so you do not enter the passphrase on every connection.',
+        'Generates a new key pair on every ssh connection',
+        'Encrypts all network traffic between client and server',
+        'Automatically adds public keys to authorized_keys on the server',
+      ],
       answer:
         'Keeps decrypted private keys in memory so you do not enter the passphrase on every connection.',
     },
@@ -361,6 +368,13 @@ Example of a restricted key:
     },
     {
       question: 'Why is password login riskier than keys?',
+
+      options: [
+        'It is exposed to brute force and leaks; keys with a passphrase are more reliable when configured correctly.',
+        'A password is always more reliable than a long RSA key',
+        'SSH keys work only without a passphrase',
+        'Passwords cannot be brute-forced at 6 characters long',
+      ],
       answer:
         'It is exposed to brute force and leaks; keys with a passphrase are more reliable when configured correctly.',
     },
@@ -397,6 +411,12 @@ Example of a restricted key:
     },
     {
       question: 'How do you add a private key to ssh-agent?',
+      options: [
+        'ssh-add ~/.ssh/id_ed25519 (or the path to the needed key).',
+        'ssh-keygen -R hostname',
+        'scp id_ed25519 to /tmp',
+        'chmod 777 ~/.ssh',
+      ],
       answer: 'ssh-add ~/.ssh/id_ed25519 (or the path to the needed key).',
     },
     {

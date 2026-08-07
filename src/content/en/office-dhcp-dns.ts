@@ -984,6 +984,7 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
     },
     {
       question: 'Command to flush DNS cache on a Windows client:',
+      options: ['ipconfig /flushdns', 'ipconfig /renew', 'nslookup /flush', 'netsh dns reset'],
       answer: 'ipconfig /flushdns',
     },
     {

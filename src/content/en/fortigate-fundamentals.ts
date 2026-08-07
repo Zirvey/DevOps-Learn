@@ -1386,6 +1386,12 @@ diagnose sys fortiguard-service rating
     },
     {
       question: 'CLI command to view CPU load and sessions:',
+      options: [
+        'get system performance status or diagnose sys top',
+        'execute reboot',
+        'config vpn ipsec phase1-interface',
+        'diagnose sniffer packet any',
+      ],
       answer: 'get system performance status or diagnose sys top',
     },
     {

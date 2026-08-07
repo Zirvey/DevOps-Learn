@@ -1147,6 +1147,12 @@ tar czf - /conf/config.xml | gpg -c > backup.tar.gz.gpg
     },
     {
       question: 'CLI command to list active firewall states:',
+      options: [
+        'pfctl -s state',
+        'pfctl -F all',
+        'configctl interface list',
+        'opnsense-shell reboot',
+      ],
       answer: 'pfctl -s state',
       explanation: 'Use pfctl -vvsr for rules with hit counters; clog for live filter log.',
     },

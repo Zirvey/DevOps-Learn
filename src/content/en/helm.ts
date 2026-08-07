@@ -189,6 +189,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "Where are chart parameters usually overridden during installation?",
+
+      options: [
+        "In values.yaml or via --set / -f custom-values.yaml during helm install/upgrade.",
+        "Only in Kubernetes Secret without values",
+        "In /etc/hosts on the cluster node",
+        "Via manual kubectl edit deployment",
+      ],
       answer: "In values.yaml or via --set / -f custom-values.yaml during helm install/upgrade.",
     },
     {
@@ -213,6 +220,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "Why use hooks (pre-install, post-upgrade)?",
+      options: [
+        "Execute Job or other resources before/after main manifests (migrations, tests).",
+        "Skip all chart dependencies permanently.",
+        "Replace Kubernetes RBAC with Helm only.",
+        "Delete releases automatically after install.",
+      ],
       answer: "Execute Job or other resources before/after main manifests (migrations, tests).",
     },
     {
@@ -259,6 +272,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How do you pass multiple values files when installing a chart?",
+      options: [
+        "helm install -f values.yaml -f prod.yaml <release> <chart> (file order matters — last one overrides).",
+        "helm install --values-only prod.yaml (first file always wins).",
+        "helm install with no -f flags merges all YAML on disk automatically.",
+        "Values files cannot be combined; only one is allowed.",
+      ],
       answer: "helm install -f values.yaml -f prod.yaml <release> <chart> (file order matters — last one overrides).",
     },
   ],

@@ -572,6 +572,13 @@ api("user.logout", {}, auth=token)`,
     },
     {
       question: `What must match between Zabbix Agent 2 config and the Zabbix UI for monitoring to work?`,
+
+      options: [
+        `Hostname — the agent Hostname parameter must match the host name configured in Zabbix.`,
+        `Agent IP address must match the domain DNS zone`,
+        `Zabbix Server version must match agent version bit-for-bit`,
+        `Network card MAC address must match the template name`,
+      ],
       answer: `Hostname — the agent Hostname parameter must match the host name configured in Zabbix.`,
     },
     {
@@ -597,6 +604,12 @@ api("user.logout", {}, auth=token)`,
     },
     {
       question: `What is Low-Level Discovery (LLD) in Zabbix?`,
+      options: [
+        `Automatic creation of items, triggers, and graphs from discovery rules for dynamic objects (disks, interfaces, containers).`,
+        `A manual-only way to delete all triggers.`,
+        `Low-level encryption for agent traffic.`,
+        `A backup tool unrelated to monitoring.`,
+      ],
       answer: `Automatic creation of items, triggers, and graphs from discovery rules for dynamic objects (disks, interfaces, containers).`,
     },
     {
@@ -611,6 +624,12 @@ api("user.logout", {}, auth=token)`,
     },
     {
       question: `What is the default passive agent listen port?`,
+      options: [
+        `10050`,
+        `443`,
+        `22`,
+        `161`,
+      ],
       answer: `10050`,
     },
     {
@@ -635,6 +654,12 @@ api("user.logout", {}, auth=token)`,
     },
     {
       question: `What authentication method does the Zabbix JSON-RPC API use?`,
+      options: [
+        `user.login returns an auth token passed in subsequent API requests; user.logout invalidates it.`,
+        `HTTP Basic auth with the Zabbix admin password on every call`,
+        `OAuth2 client credentials with rotating JWT cookies`,
+        `Kerberos SPNEGO without any session token`,
+      ],
       answer: `user.login returns an auth token passed in subsequent API requests; user.logout invalidates it.`,
     },
   ],

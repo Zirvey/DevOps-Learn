@@ -173,6 +173,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How to associate services by name in Compose?",
+
+      options: [
+        "Services in the same user-defined network refer to each other by service name as a DNS name.",
+        "You must use hardcoded container IP addresses",
+        "Services connect via links: in Compose v3",
+        "Service name is available only in host network mode",
+      ],
       answer: "Services in the same user-defined network refer to each other by service name as a DNS name.",
     },
     {
@@ -197,6 +204,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How to override environment variables for local development?",
+
+      options: [
+        "Via .env file, environment in compose or docker compose --env-file.",
+        "Only by editing Dockerfile without compose",
+        "Via git commit message",
+        "By renaming the container with docker rename",
+      ],
       answer: "Via .env file, environment in compose or docker compose --env-file.",
     },
     {
@@ -243,6 +257,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How do you start only one service from a multi-service compose file?",
+      options: [
+        "docker compose up -d service_name",
+        "docker compose down service_name",
+        "docker compose restart --all",
+        "docker run service_name",
+      ],
       answer: "docker compose up -d service_name",
     },
   ],

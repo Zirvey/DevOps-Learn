@@ -5,36 +5,36 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Какой инструмент — центральная консоль управления ролями Windows Server?', options: ['Server Manager', 'Device Manager', 'Task Scheduler', 'Regedit'], answer: 'Server Manager' },
     { question: 'Почему Domain Controller не должен получать IP через DHCP?', options: ['Стабильный адрес критичен для DNS и AD', 'DHCP запрещён Microsoft', 'Это только рекомендация для Wi‑Fi'], answer: 'Стабильный адрес критичен для DNS и AD' },
     { question: 'Какая edition Windows Server подходит типичному офису с несколькими VM?', options: ['Standard', 'Datacenter', 'Home', 'Embedded'], answer: 'Standard' },
-    { question: 'Чем управляют службы Windows из командной строки?', answer: 'Get-Service, Start-Service, Stop-Service, Restart-Service (PowerShell) или sc.exe' },
+    { question: 'Чем управляют службы Windows из командной строки?', options: ['Get-Service, Start-Service, Stop-Service, Restart-Service (PowerShell) или sc.exe', 'net start и net stop только в cmd без PowerShell', 'services.msc исключительно через GUI без CLI', 'wmic process только для управления процессами, не службами'], answer: 'Get-Service, Start-Service, Stop-Service, Restart-Service (PowerShell) или sc.exe' },
     { question: 'Почему RDP не следует открывать напрямую в интернет?', options: ['Высокий риск brute-force и эксплойтов', 'RDP не работает через NAT', 'Требуется только UDP'], answer: 'Высокий риск brute-force и эксплойтов' },
     { question: 'Hyper-V на Windows Server используется для:', options: ['Виртуализации серверов и lab', 'Только контейнеров Docker', 'Только файлового сервера'], answer: 'Виртуализации серверов и lab' },
     { question: 'WSUS на Windows Server нужен для:', options: ['Централизованного управления обновлениями', 'Только DNS', 'Только VPN', 'Только печати'], answer: 'Централизованного управления обновлениями' },
     { question: 'Windows Server Core выбирают потому что:', options: ['Меньше поверхность атаки и патчей', 'Нет поддержки AD', 'Нельзя использовать RDP', 'Только для Linux VM'], answer: 'Меньше поверхность атаки и патчей', explanation: 'Core — без GUI, меньше компонентов для обслуживания и атак.' },
-    { question: 'Команда переименования Windows Server в PowerShell:', answer: 'Rename-Computer -NewName "имя" -Restart' },
+    { question: 'Команда переименования Windows Server в PowerShell:', options: ['Rename-Computer -NewName "имя" -Restart', 'Set-ComputerName -Force', 'Rename-ADComputer -NewName', 'hostnamectl set-hostname'], answer: 'Rename-Computer -NewName "имя" -Restart' },
     { question: 'Роль файлового сервера SMB на Windows Server обеспечивает:', options: ['Общий доступ к папкам в домене', 'Только DHCP', 'Только Wi‑Fi', 'Только VPN'], answer: 'Общий доступ к папкам в домене' },
   ],
   'active-directory': [
     { question: 'Что такое OU в Active Directory?', options: ['Контейнер для делегирования и GPO', 'Тип группы безопасности', 'DNS-зона'], answer: 'Контейнер для делегирования и GPO' },
     { question: 'Какой протокол аутентификации использует AD по умолчанию?', options: ['Kerberos', 'NTLM only', 'LDAP plain text'], answer: 'Kerberos' },
     { question: 'Сколько минимум DC рекомендуется в production?', options: ['2', '1', '5'], answer: '2' },
-    { question: 'AGDLP расшифровывается как:', answer: 'Account → Global group → Domain Local group → Permission' },
+    { question: 'AGDLP расшифровывается как:', options: ['Account → Global group → Domain Local group → Permission', 'Account → Domain Local → Global → Policy', 'Admin → Group → Domain → Password', 'Active Directory → Group → Domain → Login'], answer: 'Account → Global group → Domain Local group → Permission' },
     { question: 'Где хранится AD-интегрированная DNS-зона?', options: ['В Active Directory', 'Только в hosts файле', 'На роутере'], answer: 'В Active Directory' },
     { question: 'Команда проверки здоровья DC:', options: ['dcdiag', 'ipconfig', 'docker ps'], answer: 'dcdiag' },
     { question: 'Global Security Group в AD используют для:', options: ['Сбора пользователей по ролям/отделам', 'Прямого назначения NTFS прав', 'Хранения DNS-зон', 'Публикации принтеров только'], answer: 'Сбора пользователей по ролям/отделам', explanation: 'По AGDLP пользователей добавляют в Global, права — через Domain Local.' },
     { question: 'Лес (Forest) в AD — это:', options: ['Граница безопасности и схемы', 'Один OU', 'Только DNS-зона', 'Группа принтеров'], answer: 'Граница безопасности и схемы' },
-    { question: 'Утилита для поиска источника блокировки учётной записи:', answer: 'LockoutStatus.exe или Get-ADUser / Event Viewer (ID 4740)' },
+    { question: 'Утилита для поиска источника блокировки учётной записи:', options: ['LockoutStatus.exe или Get-ADUser / Event Viewer (ID 4740)', 'dcdiag /dns', 'ipconfig /renew', 'gpupdate /force'], answer: 'LockoutStatus.exe или Get-ADUser / Event Viewer (ID 4740)' },
     { question: 'Репликация AD между DC использует протокол:', options: ['RPC / SMTP (для межсайтовой)', 'Только HTTP', 'Только FTP', 'Только SNMP'], answer: 'RPC / SMTP (для межсайтовой)' },
   ],
   'gpo-user-management': [
     { question: 'Что означает LSDOU в Group Policy?', options: ['Local, Site, Domain, OU — порядок применения', 'Linux, Server, Domain, User', 'Logon, Startup, Domain, OU'], answer: 'Local, Site, Domain, OU — порядок применения' },
     { question: 'GPO Preferences используются для:', options: ['Drive maps, registry, shortcuts без ADMX', 'Только паролей', 'Только BitLocker'], answer: 'Drive maps, registry, shortcuts без ADMX' },
     { question: 'Первая операция при offboarding сотрудника:', options: ['Disable AD account', 'Delete AD account', 'Format PC'], answer: 'Disable AD account' },
-    { question: 'Команда принудительного обновления GPO на клиенте:', answer: 'gpupdate /force' },
+    { question: 'Команда принудительного обновления GPO на клиенте:', options: ['gpupdate /force', 'gpresult /r', 'dcdiag /v', 'rsop.msc'], answer: 'gpupdate /force' },
     { question: 'Где НЕ следует хранить пароли в GPO?', options: ['GPP Scheduled Tasks с embedded creds', 'GPO Password Policy', 'GPO Screensaver lock'], answer: 'GPP Scheduled Tasks с embedded creds' },
     { question: 'Computer Configuration применяется:', options: ['При загрузке компьютера', 'Только при logout', 'Только на DC'], answer: 'При загрузке компьютера' },
     { question: 'Item-Level Targeting в GPO Preferences позволяет:', options: ['Применять настройку по условию (OU, группа, IP)', 'Шифровать GPO', 'Удалять AD-объекты', 'Менять схему леса'], answer: 'Применять настройку по условию (OU, группа, IP)' },
     { question: 'gpresult /r на клиенте показывает:', options: ['Какие GPO применены', 'Список всех DC', 'Только MAC-адрес', 'Только DHCP lease'], answer: 'Какие GPO применены' },
-    { question: 'Команда просмотра применённых GPO с HTML-отчётом:', answer: 'gpresult /h report.html' },
+    { question: 'Команда просмотра применённых GPO с HTML-отчётом:', options: ['gpresult /h report.html', 'gpupdate /h report.html', 'gpresult /html без имени файла', 'gpreport /export report.xml'], answer: 'gpresult /h report.html' },
     { question: 'Loopback Processing в GPO нужен когда:', options: ['Нужны user settings независимо от физического места ПК', 'Отключить все GPO', 'Только для DC', 'Только для принтеров'], answer: 'Нужны user settings независимо от физического места ПК', explanation: 'Режим Merge или Replace — для терминалов, kiosk, lab.' },
   ],
   'backups-disaster-recovery': [
@@ -46,7 +46,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Immutable backup защищает от:', options: ['Ransomware', 'Медленного интернета', 'VLAN misconfiguration'], answer: 'Ransomware' },
     { question: 'RTO (Recovery Time Objective) — это:', options: ['Допустимое время простоя сервиса', 'Допустимая потеря данных', 'Количество копий бэкапа', 'Срок хранения ленты'], answer: 'Допустимое время простоя сервиса', explanation: 'RPO — сколько данных можно потерять; RTO — как быстро восстановить работу.' },
     { question: 'Тест восстановления (restore drill) нужен чтобы:', options: ['Убедиться что бэкапы реально работают', 'Ускорить интернет', 'Обновить GPO', 'Сменить VLAN'], answer: 'Убедиться что бэкапы реально работают' },
-    { question: 'Первый шаг при восстановлении DC из бэкапа:', answer: 'Загрузка в Directory Services Restore Mode (DSRM) или восстановление System State' },
+    { question: 'Первый шаг при восстановлении DC из бэкапа:', options: ['Загрузка в Directory Services Restore Mode (DSRM) или восстановление System State', 'Сразу запустить dcpromo на новом сервере', 'Удалить все GPO в домене', 'Переустановить Windows без восстановления AD'], answer: 'Загрузка в Directory Services Restore Mode (DSRM) или восстановление System State' },
     { question: 'Offsite-копия бэкапа обычно хранится:', options: ['В другом здании/облаке, отдельно от production', 'На том же NAS что production', 'Только на рабочем столе админа', 'В Guest VLAN'], answer: 'В другом здании/облаке, отдельно от production' },
   ],
   'office-network-design': [
@@ -58,7 +58,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Маркировка патч-кордов нужна для:', options: ['Быстрой диагностики при отказе', 'Красоты', 'Снижения PoE'], answer: 'Быстрой диагностики при отказе' },
     { question: 'DMZ в офисной сети используют для:', options: ['Публикации сервисов с ограниченным доступом извне', 'Хранения AD', 'Guest Wi‑Fi без firewall', 'Только принтеров'], answer: 'Публикации сервисов с ограниченным доступом извне' },
     { question: 'Core switch в трёхуровневой модели — это:', options: ['Центральный L3/L2 узел агрегации', 'Только Wi‑Fi контроллер', 'Модем ISP', 'Принтерный сервер'], answer: 'Центральный L3/L2 узел агрегации' },
-    { question: 'Главная цель сегментации сети в офисе:', answer: 'Ограничение blast radius — изоляция гостей, IoT и критичных систем' },
+    { question: 'Главная цель сегментации сети в офисе:', options: ['Ограничение blast radius — изоляция гостей, IoT и критичных систем', 'Увеличение broadcast-домена для простоты', 'Объединение всех VLAN в один', 'Отключение firewall между сегментами'], answer: 'Ограничение blast radius — изоляция гостей, IoT и критичных систем' },
     { question: 'Стандарт структурированной кабельной системы в офисе:', options: ['TIA/EIA-568', 'ISO 9001', 'PCI DSS', 'HIPAA only'], answer: 'TIA/EIA-568' },
   ],
   'vlan-switching': [
@@ -70,7 +70,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'LAG (LACP) даёт:', options: ['Объединение линков для bandwidth и redundancy', 'Только Wi‑Fi', 'Только VLAN 1'], answer: 'Объединение линков для bandwidth и redundancy' },
     { question: 'Native VLAN на trunk-порту — это:', options: ['Untagged VLAN для кадров без 802.1Q tag', 'Самый защищённый VLAN', 'Только management', 'VLAN для принтеров'], answer: 'Untagged VLAN для кадров без 802.1Q tag', explanation: 'Native VLAN на обоих концах trunk должен совпадать — иначе утечки и петли.' },
     { question: 'Voice VLAN (802.1p) выделяют для:', options: ['Приоритета IP-телефонии', 'Только гостей', 'Только серверов AD', 'Отключения PoE'], answer: 'Приоритета IP-телефонии' },
-    { question: 'Команда перевода порта в access mode (типичный Cisco CLI):', answer: 'switchport mode access' },
+    { question: 'Команда перевода порта в access mode (типичный Cisco CLI):', options: ['switchport mode access', 'switchport mode trunk', 'vlan access 20', 'spanning-tree portfast'], answer: 'switchport mode access' },
     { question: 'Root bridge в STP выбирается по:', options: ['Наименьшему Bridge Priority + MAC', 'Наибольшему IP', 'Случайно', 'Количеству PoE портов'], answer: 'Наименьшему Bridge Priority + MAC' },
   ],
   'office-dhcp-dns': [
@@ -82,7 +82,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'SRV запись _ldap._tcp нужна для:', options: ['Поиска Domain Controller', 'Почты', 'Печати'], answer: 'Поиска Domain Controller' },
     { question: 'TTL в DNS-записи определяет:', options: ['Время кэширования ответа клиентом', 'Скорость интернета', 'DHCP lease', 'VLAN ID'], answer: 'Время кэширования ответа клиентом' },
     { question: 'Типичный DHCP lease time в офисе:', options: ['8–24 часа', '5 секунд', '365 дней', 'Без срока (вечный)'], answer: '8–24 часа' },
-    { question: 'Команда сброса DNS-кэша на Windows-клиенте:', answer: 'ipconfig /flushdns' },
+    { question: 'Команда сброса DNS-кэша на Windows-клиенте:', options: ['ipconfig /flushdns', 'ipconfig /release', 'nslookup /reset', 'netsh winsock reset'], answer: 'ipconfig /flushdns' },
     { question: 'Dynamic DNS update в AD позволяет:', options: ['Клиентам регистрировать A/AAAA записи в зоне', 'Удалять DC', 'Менять VLAN', 'Отключать Kerberos'], answer: 'Клиентам регистрировать A/AAAA записи в зоне', explanation: 'Без secure DDNS старые записи накапливаются — нужна очистка и scavenging.' },
   ],
   'office-wifi': [
@@ -94,7 +94,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Скрытие SSID:', options: ['Не является реальной защитой', 'Заменяет WPA3', 'Блокирует гостей'], answer: 'Не является реальной защитой' },
     { question: 'Неперекрывающиеся каналы 2.4 GHz:', options: ['1, 6, 11', '1, 2, 3', '5, 10, 15', 'Только канал 14'], answer: '1, 6, 11' },
     { question: 'WPA3-Personal улучшает по сравнению с WPA2:', options: ['Защиту от offline brute-force (SAE)', 'Дальность сигнала', 'PoE budget', 'Скорость DNS'], answer: 'Защиту от offline brute-force (SAE)' },
-    { question: 'Инструмент для Wi‑Fi site survey в офисе:', answer: 'Ekahau, NetSpot, inSSIDer или встроенный survey в контроллере' },
+    { question: 'Инструмент для Wi‑Fi site survey в офисе:', options: ['Ekahau, NetSpot, inSSIDer или встроенный survey в контроллере', 'Только ping и tracert из командной строки', 'Wireshark для анализа TLS-сертификатов Wi‑Fi', 'nslookup для проверки покрытия сигнала'], answer: 'Ekahau, NetSpot, inSSIDer или встроенный survey в контроллере' },
     { question: 'Channel bonding 80 MHz на 5 GHz даёт:', options: ['Больше throughput, но меньше свободных каналов', 'Только 2.4 GHz', 'Отключение PoE', 'Автоматический AD join'], answer: 'Больше throughput, но меньше свободных каналов', explanation: 'В плотных офисах часто лучше 20/40 MHz для меньших помех.' },
   ],
   'omada-fundamentals': [
@@ -106,7 +106,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Backup конфига controller нужен:', options: ['Регулярно, перед изменениями', 'Никогда', 'Только при смене ISP'], answer: 'Регулярно, перед изменениями' },
     { question: 'Omada Discovery Utility нужна для:', options: ['Поиска устройств до adoption', 'Удаления VLAN', 'Настройки AD', 'Печати'], answer: 'Поиска устройств до adoption' },
     { question: 'Site в Omada Controller — это:', options: ['Логическая группа устройств одной локации', 'Только один AP', 'DNS-зона', 'VPN-туннель'], answer: 'Логическая группа устройств одной локации', explanation: 'Organization может содержать несколько Site для филиалов.' },
-    { question: 'Порт HTTPS Omada Software Controller по умолчанию:', answer: '8043 (или 443 при reverse proxy)' },
+    { question: 'Порт HTTPS Omada Software Controller по умолчанию:', options: ['8043 (или 443 при reverse proxy)', '22', '3389', '161/UDP'], answer: '8043 (или 443 при reverse proxy)' },
     { question: 'Inform URL на устройстве Omada указывает:', options: ['Адрес controller для adoption', 'DNS ISP', 'Принтер', 'RADIUS только'], answer: 'Адрес controller для adoption' },
   ],
   'omada-switches-vlans': [
@@ -118,7 +118,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Loop prevention на access порту:', options: ['Предотвращает петлю от пользовательского switch', 'Ускоряет Wi‑Fi', 'Заменяет AD'], answer: 'Предотвращает петлю от пользовательского switch' },
     { question: 'PVID на trunk-порту Omada определяет:', options: ['Native (untagged) VLAN', 'Максимальную скорость порта', 'PoE класс', 'STP root priority'], answer: 'Native (untagged) VLAN' },
     { question: 'IGMP Snooping на switch нужен для:', options: ['Корректной доставки multicast (IPTV, видео)', 'DHCP relay', 'AD replication', 'VPN only'], answer: 'Корректной доставки multicast (IPTV, видео)' },
-    { question: 'Port mirroring используют для:', answer: 'Копирования трафика порта на анализатор для диагностики' },
+    { question: 'Port mirroring используют для:', options: ['Копирования трафика порта на анализатор для диагностики', 'Увеличения bandwidth порта вдвое', 'Автоматического создания VLAN', 'Настройки DHCP relay'], answer: 'Копирования трафика порта на анализатор для диагностики' },
     { question: 'Storm Control на Omada switch ограничивает:', options: ['Broadcast/multicast flood на порту', 'Скорость интернета WAN', 'Количество AD-пользователей', 'DNS TTL'], answer: 'Broadcast/multicast flood на порту' },
   ],
   'omada-wireless': [
@@ -130,7 +130,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Mesh в Omada — когда:', options: ['Нет ethernet до AP (throughput ниже)', 'Всегда обязателен', 'Только для DC'], answer: 'Нет ethernet до AP (throughput ниже)' },
     { question: 'SSID Schedule в Omada позволяет:', options: ['Включать Wi‑Fi по расписанию', 'Автоматически менять AD-пароли', 'Отключать PoE', 'Менять VLAN на switch'], answer: 'Включать Wi‑Fi по расписанию' },
     { question: 'WPA2-PSK в корпоративной сети нежелателен потому что:', options: ['Общий пароль — сложно отозвать при увольнении', 'Не работает на 5 GHz', 'Требует FortiGate', 'Блокирует RADIUS'], answer: 'Общий пароль — сложно отозвать при увольнении', explanation: 'Enterprise 802.1X даёт per-user учётные данные.' },
-    { question: 'Рекомендуемая ширина канала 5 GHz в плотном офисе:', answer: '20 или 40 MHz (80 MHz — только при малом числе соседей)' },
+    { question: 'Рекомендуемая ширина канала 5 GHz в плотном офисе:', options: ['20 или 40 MHz (80 MHz — только при малом числе соседей)', 'Только 160 MHz всегда', 'Только 5 MHz для плотной среды', '80 MHz обязательно в любом офисе'], answer: '20 или 40 MHz (80 MHz — только при малом числе соседей)' },
     { question: 'Standalone mode AP в Omada используют когда:', options: ['Нет controller — управление локально на AP', 'Обязателен для Corp SSID', 'Только для DC', 'Нужен только mesh'], answer: 'Нет controller — управление локально на AP' },
   ],
   'omada-operations': [
@@ -142,7 +142,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'При смерти controller восстанавливают из:', options: ['Backup + re-adopt', 'Только factory reset AP', 'Удаления VLAN'], answer: 'Backup + re-adopt' },
     { question: 'Syslog с Omada Gateway отправляют для:', options: ['Централизованного хранения логов', 'Ускорения Wi‑Fi', 'AD backup', 'Печати'], answer: 'Централизованного хранения логов' },
     { question: 'SNMP на Omada используют для:', options: ['Мониторинга в Zabbix/Prometheus/Grafana', 'Только DNS', 'Только GPO', 'Только печати'], answer: 'Мониторинга в Zabbix/Prometheus/Grafana' },
-    { question: 'После factory reset устройства Omada нужно:', answer: 'Снова выполнить adoption и применить профили с controller' },
+    { question: 'После factory reset устройства Omada нужно:', options: ['Снова выполнить adoption и применить профили с controller', 'Только перезагрузить роутер ISP', 'Удалить все VLAN в AD', 'Отключить PoE на всех портах'], answer: 'Снова выполнить adoption и применить профили с controller' },
     { question: 'Load Balance на Dual WAN в Omada распределяет:', options: ['Сессии по обоим каналам по политике', 'Только DNS', 'Только AD replication', 'Только multicast'], answer: 'Сессии по обоим каналам по политике', explanation: 'Failover и load balance — разные режимы; проверяйте health check.' },
   ],
   'fortigate-fundamentals': [
@@ -154,7 +154,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Первое после включения нового FG:', options: ['Сменить пароль admin', 'Открыть все порты', 'Отключить DNS'], answer: 'Сменить пароль admin' },
     { question: 'FortiCare Support контракт даёт:', options: ['Доступ к обновлениям firmware и ТП', 'Бесплатный интернет', 'Автоматический AD', 'Только Wi‑Fi'], answer: 'Доступ к обновлениям firmware и ТП' },
     { question: 'Management interface FortiGate должен быть:', options: ['В защищённом VLAN с ограниченным доступом', 'На WAN с any-any', 'Без пароля', 'Только через Telnet'], answer: 'В защищённом VLAN с ограниченным доступом', explanation: 'Mgmt не должен быть доступен из интернета.' },
-    { question: 'CLI-команда просмотра загрузки CPU и сессий:', answer: 'get system performance status или diagnose sys top' },
+    { question: 'CLI-команда просмотра загрузки CPU и сессий:', options: ['get system performance status или diagnose sys top', 'show run и show interface status', 'get vpn ssl stats только для VPN', 'execute ping 8.8.8.8 для мониторинга CPU'], answer: 'get system performance status или diagnose sys top' },
     { question: 'ZTNA (Zero Trust) на FortiGate означает:', options: ['Проверку каждого доступа по identity и контексту', 'Открытие всех портов', 'Только PSK VPN', 'Отключение логов'], answer: 'Проверку каждого доступа по identity и контексту' },
   ],
   'fortigate-firewall-policies': [
@@ -166,7 +166,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'VIP на FortiGate — это:', options: ['Port forwarding / DNAT', 'VLAN ID', 'VPN user'], answer: 'Port forwarding / DNAT' },
     { question: 'Implicit deny на FortiGate означает:', options: ['Трафик без совпадения в policy блокируется', 'Всё разрешено по умолчанию', 'Только UDP блокируется', 'Guest VLAN открыт'], answer: 'Трафик без совпадения в policy блокируется' },
     { question: 'Application Control в policy позволяет:', options: ['Разрешать/блокировать по приложению, не только порту', 'Только менять DNS', 'Только AD join', 'Только печать'], answer: 'Разрешать/блокировать по приложению, не только порту' },
-    { question: 'CLI для трассировки почему трафик заблокирован:', answer: 'diagnose debug flow (или diagnose firewall iprope lookup)' },
+    { question: 'CLI для трассировки почему трафик заблокирован:', options: ['diagnose debug flow (или diagnose firewall iprope lookup)', 'get system status', 'execute backup config', 'config system interface'], answer: 'diagnose debug flow (или diagnose firewall iprope lookup)' },
     { question: 'Log Allowed Traffic в policy нужен для:', options: ['Аудита и troubleshooting разрешённых сессий', 'Ускорения throughput', 'Отключения UTM', 'Смены VLAN'], answer: 'Аудита и troubleshooting разрешённых сессий', explanation: 'All Sessions — много логов; включайте выборочно на тестовых policy.' },
   ],
   'fortinet-vpn': [
@@ -178,7 +178,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'FortiClient используется для:', options: ['SSL/IPsec VPN клиент', 'Только antivirus на FG', 'GPO editor'], answer: 'SSL/IPsec VPN клиент' },
     { question: 'IKE Phase 1 в IPsec отвечает за:', options: ['Аутентификацию и согласование шифрования туннеля', 'Только маршрутизацию', 'Только DNS', 'Только DHCP'], answer: 'Аутентификацию и согласование шифрования туннеля' },
     { question: 'SSL-VPN предпочтителен для:', options: ['Удалённых сотрудников через NAT/firewall', 'Только site-to-site', 'Только печати', 'Только AD schema'], answer: 'Удалённых сотрудников через NAT/firewall' },
-    { question: 'FortiClient EMS используется для:', answer: 'Централизованного развёртывания, профилей и отчётов FortiClient' },
+    { question: 'FortiClient EMS используется для:', options: ['Централизованного развёртывания, профилей и отчётов FortiClient', 'Только антивируса на FortiGate', 'Редактирования GPO в AD', 'Настройки DNS на DC'], answer: 'Централизованного развёртывания, профилей и отчётов FortiClient' },
     { question: 'Dead Peer Detection (DPD) в IPsec нужен для:', options: ['Обнаружения обрыва туннеля и переподключения', 'Ускорения Wi‑Fi', 'Смены VLAN', 'Печати'], answer: 'Обнаружения обрыва туннеля и переподключения', explanation: 'Без DPD «мёртвый» туннель может долго не пересоздаваться.' },
   ],
   'fortinet-operations': [
@@ -190,7 +190,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'CPU 100% на FG — проверить:', options: ['Session table и UTM load', 'Только кабель', 'Только DNS MX'], answer: 'Session table и UTM load' },
     { question: 'Config Revision History на FortiGate позволяет:', options: ['Откатить изменения конфигурации', 'Удалить AD', 'Сменить ISP', 'Отключить PoE'], answer: 'Откатить изменения конфигурации' },
     { question: 'Перед firmware upgrade на HA-кластере FortiGate:', options: ['Проверить совместимость версий и сделать backup', 'Сразу reboot обоих', 'Удалить все policy', 'Отключить DNS'], answer: 'Проверить совместимость версий и сделать backup', explanation: 'Обычно обновляют secondary, failover, затем primary.' },
-    { question: 'Команда просмотра таблицы сессий FortiGate:', answer: 'diagnose sys session list' },
+    { question: 'Команда просмотра таблицы сессий FortiGate:', options: ['diagnose sys session list', 'get system session table', 'show ip route', 'config system interface'], answer: 'diagnose sys session list' },
     { question: 'FortiGuard Outbreak Alerts предупреждают о:', options: ['Новых угрозах и zero-day кампаниях', 'Смене пароля AD', 'PoE budget', 'Печати'], answer: 'Новых угрозах и zero-day кампаниях' },
   ],
   'opnsense-firewall-nat': [
@@ -202,7 +202,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Aliases в OPNsense мапятся в pf как:', options: ['pf tables', 'Отдельные rules per IP', 'NAT only', 'DNS records'], answer: 'pf tables' },
     { question: 'Floating rules используются для:', options: ['Global/cross-interface правил', 'Только LAN', 'Только DHCP', 'Только VPN'], answer: 'Global/cross-interface правил' },
     { question: 'Hairpin NAT (NAT reflection) нужен когда:', options: ['Внутренний клиент обращается к public IP сервиса', 'Только для Guest VLAN', 'Только OpenVPN', 'Отключение SNAT'], answer: 'Внутренний клиент обращается к public IP сервиса' },
-    { question: 'CLI для просмотра NAT rules в pf:', answer: 'pfctl -vvsn', explanation: 'pfctl -vvsr — filter rules; pfctl -s nat — краткий список.' },
+    { question: 'CLI для просмотра NAT rules в pf:', options: ['pfctl -vvsn', 'pfctl -vvsr', 'pfctl -s nat', 'pfctl -d'], answer: 'pfctl -vvsn', explanation: 'pfctl -vvsr — filter rules; pfctl -s nat — краткий список.' },
     { question: 'Guest VLAN policy на OPNsense:', options: ['Block RFC1918, allow internet', 'Allow all internal', 'Disable firewall', 'WAN как gateway'], answer: 'Block RFC1918, allow internet', explanation: 'Гости не должны достигать внутренние подсети.' },
   ],
   'opnsense-vpn': [
@@ -214,7 +214,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Firewall rules для VPN ставят на:', options: ['Tunnel interface inbound (wg0/ovpns1)', 'Только WAN outbound', 'Только LAN', 'Только DNS'], answer: 'Tunnel interface inbound (wg0/ovpns1)' },
     { question: 'AllowedIPs в WireGuard определяют:', options: ['Маршруты/подсети peer через туннель', 'Только DNS', 'Только порт listen', 'CARP skew'], answer: 'Маршруты/подсети peer через туннель' },
     { question: 'PPTP/L2TP без IPsec:', options: ['Не использовать — небезопасны', 'Рекомендованы Microsoft', 'Требуются для AD', 'Быстрее WireGuard'], answer: 'Не использовать — небезопасны' },
-    { question: 'Команда проверки WireGuard peers и handshake:', answer: 'wg show' },
+    { question: 'Команда проверки WireGuard peers и handshake:', options: ['wg show', 'ipsec statusall', 'openvpn --status', 'ifconfig wg0 down'], answer: 'wg show' },
     { question: 'MFA для VPN в AD офисе через:', options: ['RADIUS/NPS', 'Только local users', 'Только PSK', 'SNMP'], answer: 'RADIUS/NPS', explanation: 'OpenVPN и IPsec поддерживают RADIUS; WireGuard — внешний auth или keys.' },
   ],
   'opnsense-services': [
@@ -226,7 +226,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Captive Portal на OPNsense для:', options: ['Guest Wi‑Fi с авторизацией', 'AD replication', 'CARP HA', 'ZFS scrub'], answer: 'Guest Wi‑Fi с авторизацией' },
     { question: 'Unbound на OPNsense — это:', options: ['DNS resolver (можно расширять)', 'Только DHCP', 'Только SNMP', 'Только syslog'], answer: 'DNS resolver (можно расширять)' },
     { question: 'Netflow exporter на OPNsense нужен для:', options: ['Анализа трафика в NMS (NTOPng и др.)', 'Только backup', 'Только VPN', 'Только ACME'], answer: 'Анализа трафика в NMS (NTOPng и др.)' },
-    { question: 'CLI установки плагина Suricata:', answer: 'pkg install os-suricata (или через GUI Firmware → Plugins)' },
+    { question: 'CLI установки плагина Suricata:', options: ['pkg install os-suricata (или через GUI Firmware → Plugins)', 'opnsense-update -b suricata', 'apt install suricata', 'service suricata enable'], answer: 'pkg install os-suricata (или через GUI Firmware → Plugins)' },
     { question: 'Zenarmor (Sensei) добавляет:', options: ['L7 application filtering', 'Только PoE', 'Только CARP', 'Только ZFS'], answer: 'L7 application filtering', explanation: 'Vendor package — отдельный от os-suricata подход к L7.' },
   ],
   'opnsense-operations': [
@@ -238,7 +238,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Asymmetric routing после failover вызывает:', options: ['Stateful firewall drops / broken TCP', 'Ускорение VPN', 'Авто DNS fix', 'PoE shutdown'], answer: 'Stateful firewall drops / broken TCP' },
     { question: 'SNMP в production OPNsense:', options: ['SNMPv3 authPriv, не v2c public', 'v2c public на WAN', 'Только UDP 161 с internet', 'Отключить всегда'], answer: 'SNMPv3 authPriv, не v2c public' },
     { question: 'Правило 3-2-1 для MSP backups:', options: ['3 копии, 2 media, 1 offsite', '3 сервера, 2 диска', '3 VPN', '3 VLAN'], answer: '3 копии, 2 media, 1 offsite' },
-    { question: 'CLI проверки pf states и лимитов:', answer: 'pfctl -si', explanation: 'pfctl -s state — список states; pfctl -si — summary info.' },
+    { question: 'CLI проверки pf states и лимитов:', options: ['pfctl -si', 'pfctl -s state', 'ifconfig -a', 'netstat -rn'], answer: 'pfctl -si', explanation: 'pfctl -s state — список states; pfctl -si — summary info.' },
     { question: 'advskew в CARP определяет:', options: ['Приоритет MASTER (lower skew wins)', 'DNS TTL', 'DHCP lease', 'VPN port'], answer: 'Приоритет MASTER (lower skew wins)', explanation: 'Primary: skew 0–10; backup: 100–254.' },
   ],
   'opnsense-fundamentals': [
@@ -250,7 +250,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Пакет os-suricata предоставляет:', options: ['IDS/IPS по сигнатурам', 'Только DHCP', 'Wi‑Fi controller', 'Почтовый relay'], answer: 'IDS/IPS по сигнатурам' },
     { question: 'CARP в OPNsense используется для:', options: ['HA с общими virtual IP', 'DNS cache', 'LDAP auth', 'PoE budget'], answer: 'HA с общими virtual IP' },
     { question: 'Полная конфигурация OPNsense хранится в:', options: ['config.xml', 'registry.db', 'etcd', 'GPO Active Directory'], answer: 'config.xml' },
-    { question: 'CLI-команда списка активных firewall states:', answer: 'pfctl -s state', explanation: 'pfctl -vvsr — rules с counters; clog — live filter log.' },
+    { question: 'CLI-команда списка активных firewall states:', options: ['pfctl -s state', 'pfctl -F all', 'ipfw list', 'iptables -L -n'], answer: 'pfctl -s state', explanation: 'pfctl -vvsr — rules с counters; clog — live filter log.' },
     { question: 'Best practice для Guest VLAN на OPNsense:', options: ['Block RFC1918, allow только internet', 'Allow все internal subnets', 'Отключить firewall на Guest', 'WAN как gateway Guest'], answer: 'Block RFC1918, allow только internet', explanation: 'Гости не должны достигать внутренние серверы и VLAN.' },
   ],
   'it-support-foundations': [
@@ -262,7 +262,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Blameless в support значит:', options: ['Фокус на решении, не на обвинениях', 'Не помогать пользователю', 'Закрывать тикеты без ответа'], answer: 'Фокус на решении, не на обвинениях' },
     { question: 'CMDB отличается от asset inventory тем что:', options: ['Связывает CI и зависимости сервисов', 'Только считает мыши', 'Только DNS', 'Только VPN'], answer: 'Связывает CI и зависимости сервисов' },
     { question: 'Shift-left в IT support означает:', options: ['Раннее вовлечение IT и self-service', 'Перенос серверов влево в стойке', 'Только L3', 'Отказ от тикетов'], answer: 'Раннее вовлечение IT и self-service' },
-    { question: 'В ITIL Problem отличается от Incident тем что:', answer: 'Incident — восстановить сервис сейчас; Problem — найти и устранить корневую причину' },
+    { question: 'В ITIL Problem отличается от Incident тем что:', options: ['Incident — восстановить сервис сейчас; Problem — найти и устранить корневую причину', 'Incident — долгосрочный анализ; Problem — быстрый workaround', 'Incident и Problem — синонимы в ITIL 4', 'Problem — только для VIP пользователей'], answer: 'Incident — восстановить сервис сейчас; Problem — найти и устранить корневую причину' },
     { question: 'First Call Resolution (FCR) измеряет:', options: ['% решённых с первого обращения', 'Скорость интернета', 'PoE на switch', 'Количество VLAN'], answer: '% решённых с первого обращения', explanation: 'Высокий FCR снижает нагрузку на L2/L3.' },
   ],
   'helpdesk-and-sla': [
@@ -274,7 +274,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Pending (user) статус когда:', options: ['Ждём ответа пользователя', 'Проблема решена', 'P1 закрыт'], answer: 'Ждём ответа пользователя' },
     { question: 'MTTR (Mean Time To Repair) — это:', options: ['Среднее время восстановления после сбоя', 'Время до первого ответа', 'Срок лицензии', 'DHCP lease'], answer: 'Среднее время восстановления после сбоя' },
     { question: 'CSAT в helpdesk измеряет:', options: ['Удовлетворённость пользователя поддержкой', 'Скорость CPU firewall', 'Количество VLAN', 'Размер бэкапа'], answer: 'Удовлетворённость пользователя поддержкой' },
-    { question: 'Минимум информации при открытии тикета:', answer: 'Пользователь, симптомы, scope (один/многие), срочность, что уже пробовали' },
+    { question: 'Минимум информации при открытии тикета:', options: ['Пользователь, симптомы, scope (один/многие), срочность, что уже пробовали', 'Только имя пользователя без описания проблемы', 'MAC-адрес принтера и версия Windows Server', 'Номер кредитной карты и пароль от AD'], answer: 'Пользователь, симптомы, scope (один/многие), срочность, что уже пробовали' },
     { question: 'Триаж тикетов — это:', options: ['Приоритизация по impact и urgency', 'Удаление всех P3', 'Только закрытие старых', 'Смена пароля AD'], answer: 'Приоритизация по impact и urgency', explanation: 'P1/P2 назначаются до глубокой диагностики.' },
   ],
   'endpoint-support': [
@@ -286,7 +286,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Golden image нужен для:', options: ['Стандартизации рабочих станций', 'Только серверов Linux', 'Только firewall'], answer: 'Стандартизации рабочих станций' },
     { question: 'Safe Mode with Networking запускают когда:', options: ['Нужна диагностика с сетью, но без лишних драйверов', 'Нужен только BIOS', 'Нужен только VPN', 'Нужен только принтер'], answer: 'Нужна диагностика с сетью, но без лишних драйверов' },
     { question: 'Intune (MDM) в офисе используют для:', options: ['Управления политиками и приложениями на устройствах', 'Только DNS', 'Только VLAN', 'Только печати'], answer: 'Управления политиками и приложениями на устройствах' },
-    { question: 'Команда проверки применённых GPO для текущего пользователя:', answer: 'gpresult /scope user /v' },
+    { question: 'Команда проверки применённых GPO для текущего пользователя:', options: ['gpresult /scope user /v', 'gpupdate /force', 'dcdiag /v', 'rsop.msc /computer'], answer: 'gpresult /scope user /v' },
     { question: 'Teams не запускается — часто помогает очистка:', options: ['Кэша Teams (%appdata%\\Microsoft\\Teams)', 'AD schema', 'VLAN на switch', 'DHCP scope'], answer: 'Кэша Teams (%appdata%\\Microsoft\\Teams)', explanation: 'Также проверьте WebView2 и сетевой доступ к Microsoft 365.' },
   ],
   'support-playbooks': [
@@ -298,7 +298,7 @@ export const officeItQuizzes: Record<string, QuizQuestion[]> = {
     { question: 'Ping 8.8.8.8 ok, но google.com fail — проблема:', options: ['DNS', 'Кабель', 'Принтер'], answer: 'DNS' },
     { question: 'Post-Incident Review (PIR) проводят чтобы:', options: ['Зафиксировать уроки и улучшить процессы', 'Найти виновного и уволить', 'Удалить все тикеты', 'Отключить VPN'], answer: 'Зафиксировать уроки и улучшить процессы' },
     { question: 'War room при P1 outage — это:', options: ['Координация ответственных в реальном времени', 'Комната с принтером', 'Guest Wi‑Fi', 'Только email переписка'], answer: 'Координация ответственных в реальном времени' },
-    { question: 'Runbook onboarding нового сотрудника включает:', answer: 'Создание AD-учётки, лицензии M365, оборудование, доступы, инструктаж по безопасности' },
+    { question: 'Runbook onboarding нового сотрудника включает:', options: ['Создание AD-учётки, лицензии M365, оборудование, доступы, инструктаж по безопасности', 'Только выдачу ноутбука без учётной записи', 'Удаление AD-групп и отключение VPN', 'Форматирование ПК и отключение M365'], answer: 'Создание AD-учётки, лицензии M365, оборудование, доступы, инструктаж по безопасности' },
     { question: 'Change Request перед изменением firewall в production:', options: ['Обязателен — окно, rollback, approver', 'Не нужен никогда', 'Только для Wi‑Fi', 'Только устно'], answer: 'Обязателен — окно, rollback, approver', explanation: 'Даже «маленькое» правило может отрезать офис от AD.' },
   ],
 }

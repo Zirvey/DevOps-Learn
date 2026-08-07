@@ -985,11 +985,22 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
     },
     {
       question: 'Tool for Wi‑Fi site survey in the office:',
+      options: [
+        'Ekahau, NetSpot, inSSIDer, or built-in survey in the controller',
+        'ping and tracert from the command line only',
+        'Wireshark for TLS certificate analysis on Wi‑Fi',
+        'nslookup to check signal coverage',
+      ],
       answer: 'Ekahau, NetSpot, inSSIDer, or built-in survey in the controller',
     },
     {
       question: 'Channel bonding 80 MHz on 5 GHz gives:',
-      options: ['Higher throughput but fewer free channels', 'Only 2.4 GHz', 'Disabling PoE', 'Automatic AD join'],
+      options: [
+        'Higher throughput but fewer free channels',
+        'Only 2.4 GHz support',
+        'Disables PoE',
+        'Automatic AD join',
+      ],
       answer: 'Higher throughput but fewer free channels',
       explanation: 'In dense offices, 20/40 MHz is often better for less interference.',
     },

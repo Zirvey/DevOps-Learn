@@ -1007,6 +1007,12 @@ OFFLINE=$(echo "$DEVICES" | jq '[.data[] | select(.status==0)] | length')
     },
     {
       question: 'After factory reset of an Omada device you need to:',
+      options: [
+        'Perform adoption again and apply profiles from the controller',
+        'Delete the controller and reinstall Windows',
+        'Change the device to standalone mode permanently',
+        'Format all switches in the LAN',
+      ],
       answer: 'Perform adoption again and apply profiles from the controller',
     },
     {

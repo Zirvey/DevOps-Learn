@@ -400,6 +400,12 @@ aws sts get-caller-identity | jq .`,
     },
     {
       question: 'Why is indentation critical in YAML?',
+      options: [
+        'Indentation defines nesting; mixing tabs and spaces breaks parsing.',
+        'YAML ignores indentation like JSON.',
+        'Tabs and spaces are interchangeable in all parsers.',
+        'Indentation is only cosmetic in YAML.',
+      ],
       answer: 'Indentation defines nesting; mixing tabs and spaces breaks parsing.',
     },
     {
@@ -424,6 +430,12 @@ aws sts get-caller-identity | jq .`,
     },
     {
       question: 'How does null in YAML differ from an empty string ""?',
+      options: [
+        'null means absence of a value; an empty string is a value of length 0.',
+        'null and "" are always identical in YAML parsers',
+        'null is a syntax error; "" is the only way to represent missing values',
+        'null stores a zero-byte file path; "" stores a space character',
+      ],
       answer: 'null means absence of a value; an empty string is a value of length 0.',
     },
     {
@@ -470,6 +482,12 @@ aws sts get-caller-identity | jq .`,
     },
     {
       question: 'How do you set three replicas and nginx:1.25 image in a Kubernetes Deployment in YAML (name the keys)?',
+      options: [
+        'spec.replicas: 3 and spec.template.spec.containers[].image: nginx:1.25 (plus apiVersion/kind/metadata).',
+        'metadata.replicas and status.template.image',
+        'kind.replicas and containers.image without spec',
+        'apiVersion.replicas and pod.template.image directly',
+      ],
       answer: 'spec.replicas: 3 and spec.template.spec.containers[].image: nginx:1.25 (plus apiVersion/kind/metadata).',
     },
   ],

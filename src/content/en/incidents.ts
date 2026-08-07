@@ -444,6 +444,13 @@ spec:
     },
     {
       question: `What is MTTR?`,
+
+      options: [
+        `Mean Time To Recovery — average time to restore the service after an incident.`,
+        `Maximum Time To Response — time until first support response`,
+        `Mean Time To Repair — average time to repair warehouse equipment`,
+        `Minimum Traffic Through Rate — minimum throughput traffic`,
+      ],
       answer: `Mean Time To Recovery — average time to restore the service after an incident.`,
     },
     {
@@ -468,6 +475,13 @@ spec:
     },
     {
       question: `What should a blameless postmortem include?`,
+
+      options: [
+        `Impact, timeline, root cause, contributing factors, action items with owners.`,
+        `Only a list of culprits`,
+        `Only CPU graphs without a timeline`,
+        `Chat correspondence without structure and action items`,
+      ],
       answer: `Impact, timeline, root cause, contributing factors, action items with owners.`,
     },
     {
@@ -514,6 +528,12 @@ spec:
     },
     {
       question: `What are good action items in a postmortem?`,
+      options: [
+        `Specific, with owner and deadline; focused on preventing recurrence, not punishment.`,
+        `Vague ideas with no owners or dates.`,
+        `Blame individuals publicly in the report.`,
+        `Only document what went well with no follow-up.`,
+      ],
       answer: `Specific, with owner and deadline; focused on preventing recurrence, not punishment.`,
     },
   ],

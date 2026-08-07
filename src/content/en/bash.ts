@@ -415,6 +415,12 @@ bash -x myscript.sh 2>&1 | tee debug.log`,
     },
     {
       question: 'How does [[ ]] differ from [ ] in bash?',
+      options: [
+        '[[ ]] is a built-in construct with safer parsing and support for regex/logic without escaping.',
+        '[ ] is built-in while [[ ]] calls external test',
+        '[[ ]] works only in sh, [ ] only in bash',
+        'No difference, they are synonyms',
+      ],
       answer:
         '[[ ]] is a built-in construct with safer parsing and support for regex/logic without escaping.',
     },
@@ -435,6 +441,12 @@ bash -x myscript.sh 2>&1 | tee debug.log`,
     },
     {
       question: 'How do you capture command output into a variable?',
+      options: [
+        'var=$(command) or var=`command` (prefer $()).',
+        'var=command without parentheses',
+        'var={{ command }}',
+        'var=[command]',
+      ],
       answer: 'var=$(command) or var=`command` (prefer $()).',
     },
     {
@@ -481,6 +493,12 @@ bash -x myscript.sh 2>&1 | tee debug.log`,
     },
     {
       question: 'How do you safely handle paths with spaces when copying in a script?',
+      options: [
+        'Wrap the variable in double quotes: cp "$src" "$dst".',
+        'Use single quotes only: cp \'$src\' \'$dst\'.',
+        'Escape spaces with backslash without quoting variables.',
+        'Use glob expansion: cp $src $dst always works.',
+      ],
       answer: 'Wrap the variable in double quotes: cp "$src" "$dst".',
     },
   ],

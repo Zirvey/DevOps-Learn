@@ -1728,6 +1728,12 @@ A: Restored config passes checklist: WAN, NAT, VPN, critical rules, monitoring, 
     },
     {
       question: 'CLI command to check pf states and limits:',
+      options: [
+        'pfctl -si',
+        'pfctl -F all',
+        'configctl firmware status',
+        'ifconfig -a',
+      ],
       answer: 'pfctl -si',
       explanation: 'pfctl -s state lists states; pfctl -si shows summary info including limits.',
     },

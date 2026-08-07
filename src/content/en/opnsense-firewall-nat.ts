@@ -1379,6 +1379,7 @@ A: pf interface anchors + separate NAT section vs unified FortiOS policy with NA
     },
     {
       question: 'CLI command to view NAT rules with hit counters:',
+      options: ['pfctl -vvsn', 'pfctl -vvsr', 'pfctl -s nat', 'pfctl -d'],
       answer: 'pfctl -vvsn',
       explanation: 'Use pfctl -vvsr for filter rules; pfctl -s state for active sessions.',
     },
@@ -1386,9 +1387,9 @@ A: pf interface anchors + separate NAT section vs unified FortiOS policy with NA
       question: 'Guest VLAN isolation best practice (rule order):',
       options: [
         'Block RFC1918 above allow internet',
-        'Allow any above block internal',
-        'Only WAN rules needed',
-        'Disable firewall on Guest VLAN',
+        'Allow any above block-internal',
+        'Disable firewall on Guest',
+        'Use WAN as Guest gateway',
       ],
       answer: 'Block RFC1918 above allow internet',
       explanation: 'If allow-any is above block-internal, guest clients can reach corporate subnets.',

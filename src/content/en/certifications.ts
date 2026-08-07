@@ -306,6 +306,12 @@ kubectl explain pod.spec.containers`,
     },
     {
       question: `How does CKA differ from CKAD in focus?`,
+      options: [
+        `CKA focuses on cluster administration; CKAD focuses on developing and deploying apps on Kubernetes.`,
+        `CKAD is only for Windows admins; CKA is only for network engineers.`,
+        `They are identical exams with different names.`,
+        `CKA covers only Helm; CKAD covers only Terraform.`,
+      ],
       answer: `CKA focuses on cluster administration; CKAD focuses on developing and deploying apps on Kubernetes.`,
     },
     {
@@ -330,6 +336,12 @@ kubectl explain pod.spec.containers`,
     },
     {
       question: `How long do AWS and Kubernetes (CNCF) certs usually remain valid?`,
+      options: [
+        `About 3 years; you must retake or recertify per the program rules.`,
+        `Lifetime with no renewal`,
+        `6 months with auto-renew only`,
+        `10 years unless you change employers`,
+      ],
       answer: `About 3 years; you must retake or recertify per the program rules.`,
     },
     {
@@ -376,6 +388,13 @@ kubectl explain pod.spec.containers`,
     },
     {
       question: `Name three mistakes when preparing for a hands-on Kubernetes exam.`,
+
+      options: [
+        `Not practicing kubectl under time pressure, ignoring kubernetes.io documentation, not practicing troubleshooting Pods/Services.`,
+        `Too much kubectl practice and reading official documentation`,
+        `Memorizing all YAML manifests by heart without practice`,
+        `Using only multiple-choice trainers without hands-on practice`,
+      ],
       answer: `Not practicing kubectl under time pressure, ignoring kubernetes.io documentation, not practicing troubleshooting Pods/Services.`,
     },
   ],

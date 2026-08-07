@@ -465,6 +465,13 @@ Internet → IGW → ALB (public subnet)
     },
     {
       question: `What is a NAT Gateway for?`,
+
+      options: [
+        `Provide outbound internet from a private subnet without inbound access from the outside.`,
+        `Provide inbound internet access to private EC2`,
+        `Replace Internet Gateway in the public subnet`,
+        `Encrypt all traffic between VPCs`,
+      ],
       answer: `Provide outbound internet from a private subnet without inbound access from the outside.`,
     },
     {
@@ -489,6 +496,12 @@ Internet → IGW → ALB (public subnet)
     },
     {
       question: `What does VPC peering do?`,
+      options: [
+        `Connects two VPCs for private IP routing (subject to CIDR and routes).`,
+        `Creates a public internet gateway between regions.`,
+        `Replaces NAT Gateway for outbound traffic.`,
+        `Merges two VPCs into one shared CIDR automatically.`,
+      ],
       answer: `Connects two VPCs for private IP routing (subject to CIDR and routes).`,
     },
     {
@@ -535,6 +548,12 @@ Internet → IGW → ALB (public subnet)
     },
     {
       question: `How do you give EC2 in a private subnet internet access without a public IP?`,
+      options: [
+        `Route 0.0.0.0/0 to a NAT Gateway in a public subnet with IGW.`,
+        `Assign a public IP to every private instance.`,
+        `Use VPC peering to the internet.`,
+        `Open inbound 0.0.0.0/0 on the private subnet ACL.`,
+      ],
       answer: `Route 0.0.0.0/0 to a NAT Gateway in a public subnet with IGW.`,
     },
   ],

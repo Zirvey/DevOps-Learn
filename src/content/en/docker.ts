@@ -241,6 +241,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "What does each layer record in the Dockerfile?",
+      options: [
+        "New read-only layer of the image file system (except for the final container with a writable layer).",
+        "A Git commit hash for the Dockerfile.",
+        "A network interface per RUN instruction.",
+        "Encrypted secrets stored only in CMD.",
+      ],
       answer: "New read-only layer of the image file system (except for the final container with a writable layer).",
     },
     {
@@ -265,6 +271,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How does the default bridge network differ from host network mode?",
+      options: [
+        "Bridge isolates the container with NAT; host mode uses the host's network namespace directly.",
+        "Bridge and host mode are identical in Docker",
+        "Host mode adds extra NAT between container and host",
+        "Bridge mode removes all network isolation completely",
+      ],
       answer: "Bridge isolates the container with NAT; host mode uses the host's network namespace directly.",
     },
     {
@@ -311,6 +323,14 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How do you remove all stopped containers with one command?",
+
+
+      options: [
+        "docker container prune (or docker rm $(docker ps -aq) with caution).",
+        "docker images prune",
+        "docker system kill",
+        "docker network create --prune",
+      ],
       answer: "docker container prune (or docker rm $(docker ps -aq) with caution).",
     },
   ],

@@ -455,6 +455,12 @@ groups:
     },
     {
       question: `Why centralize logs (ELK, Loki, CloudWatch Logs)?`,
+      options: [
+        `A single search point, correlation, retention, and access when individual hosts are down.`,
+        `Logs must stay only on each local disk forever.`,
+        `Centralization removes the need for timestamps.`,
+        `It prevents any log retention policies.`,
+      ],
       answer: `A single search point, correlation, retention, and access when individual hosts are down.`,
     },
     {
@@ -479,6 +485,12 @@ groups:
     },
     {
       question: `How does a trace (distributed tracing) complement logs?`,
+      options: [
+        `It shows the request path across services with latency per span, making bottlenecks easier to find.`,
+        `Traces replace the need for any logs entirely.`,
+        `Traces only store ERROR level messages.`,
+        `Tracing is unrelated to distributed systems.`,
+      ],
       answer: `It shows the request path across services with latency per span, making bottlenecks easier to find.`,
     },
     {
@@ -525,6 +537,12 @@ groups:
     },
     {
       question: `What fields should you at minimum include in a production service structured log?`,
+      options: [
+        `timestamp, level, message, service/name, correlation/trace id, environment.`,
+        `emoji, wallpaper path, RAM size`,
+        `only free-text stack traces with no fields`,
+        `hostname only`,
+      ],
       answer: `timestamp, level, message, service/name, correlation/trace id, environment.`,
     },
   ],

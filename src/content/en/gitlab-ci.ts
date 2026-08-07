@@ -489,6 +489,12 @@ echo $CI_REGISTRY_PASSWORD | docker login \\
     },
     {
       question: 'What is the difference between a stage and a job in GitLab CI?',
+      options: [
+        'A stage is a logical group; jobs within a stage run in parallel, and stages run sequentially.',
+        'A job is a group of stages that run in parallel.',
+        'Stages and jobs are interchangeable terms.',
+        'Only one job can exist per pipeline.',
+      ],
       answer:
         'A stage is a logical group; jobs within a stage run in parallel, and stages run sequentially.',
     },
@@ -522,6 +528,12 @@ echo $CI_REGISTRY_PASSWORD | docker login \\
     },
     {
       question: 'What is the difference between artifacts and cache?',
+      options: [
+        'Artifacts are guaranteed files passed between jobs until expire_in; cache is best-effort for speeding up repeated runs (e.g. dependencies).',
+        'Artifacts and cache are the same GitLab feature with different names',
+        'Cache is mandatory and never expires; artifacts are optional only',
+        'Artifacts speed up tests; cache is only for Docker images',
+      ],
       answer:
         'Artifacts are guaranteed files passed between jobs until expire_in; cache is best-effort for speeding up repeated runs (e.g. dependencies).',
     },
@@ -544,6 +556,12 @@ echo $CI_REGISTRY_PASSWORD | docker login \\
     },
     {
       question: 'What does extends do in .gitlab-ci.yml?',
+      options: [
+        'Inherits configuration from a hidden or named template job (DRY for shared job settings).',
+        'Storing Docker images between GitLab runners',
+        'Automatic encryption of secrets in the repository',
+        'Forcing pipeline runs only on a cron schedule',
+      ],
       answer:
         'Inherits configuration from a hidden or named template job (DRY for shared job settings).',
     },

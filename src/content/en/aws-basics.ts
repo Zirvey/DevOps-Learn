@@ -619,6 +619,14 @@ systemctl start nginx && systemctl enable nginx`,
     },
     {
       question: `What is IAM used for?`,
+
+
+      options: [
+        `Managing identities, access policies, and roles in AWS.`,
+        `Routing traffic between VPC and the internet.`,
+        `Storing S3 objects and bucket versioning.`,
+        `Auto-scaling EC2 based on CPU metrics.`,
+      ],
       answer: `Managing identities, access policies, and roles in AWS.`,
     },
     {
@@ -643,6 +651,13 @@ systemctl start nginx && systemctl enable nginx`,
     },
     {
       question: `What is the shared responsibility model in AWS?`,
+
+      options: [
+        `AWS is responsible for security of the cloud; the customer is responsible for security in the cloud (data, config, access).`,
+        `AWS is fully responsible for all security aspects including customer data`,
+        `The customer is only responsible for physical security of AWS data centers`,
+        `Responsibility is split 50/50 with no distinction by service layer`,
+      ],
       answer: `AWS is responsible for security of the cloud; the customer is responsible for security in the cloud (data, config, access).`,
     },
     {
@@ -689,6 +704,12 @@ systemctl start nginx && systemctl enable nginx`,
     },
     {
       question: `Name three ways to reduce the risk of leaking AWS access keys.`,
+      options: [
+        `IAM roles instead of keys, key rotation, MFA, banning keys in code/CI (any three reasonable practices).`,
+        `Embed keys in README files for team visibility.`,
+        `Use one shared root key for all services.`,
+        `Disable MFA to simplify automation.`,
+      ],
       answer: `IAM roles instead of keys, key rotation, MFA, banning keys in code/CI (any three reasonable practices).`,
     },
   ],

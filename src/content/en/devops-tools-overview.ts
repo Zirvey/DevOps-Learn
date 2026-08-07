@@ -305,6 +305,12 @@ This chapter is a **map of the terrain**. Details come in the following modules.
     },
     {
       question: 'Name typical CI/CD pipeline components.',
+      options: [
+        'Checkout, build, test, scan, package, deploy, notify.',
+        'Email, print, fax, archive',
+        'Only git push and kubectl apply',
+        'Compile, sign, ship, invoice',
+      ],
       answer: 'Checkout, build, test, scan, package, deploy, notify.',
     },
     {
@@ -329,6 +335,13 @@ This chapter is a **map of the terrain**. Details come in the following modules.
     },
     {
       question: 'List three DevSecOps tool categories.',
+
+      options: [
+        'SAST, DAST/image scanning, secrets and policy management.',
+        'CI/CD pipelines, Docker, and Kubernetes only',
+        'Monitoring, logging, and alerting without security checks',
+        'VCS, issue tracker, and wiki for documentation',
+      ],
       answer: 'SAST, DAST/image scanning, secrets and policy management.',
     },
     {
@@ -365,6 +378,13 @@ This chapter is a **map of the terrain**. Details come in the following modules.
     },
     {
       question: 'List three categories of tools typically included in a "platform" DevOps stack.',
+
+      options: [
+        'VCS, CI/CD, containerization/orchestration, IaC, monitoring/logging (any three from this list).',
+        'IDE, browser, email client',
+        'Cloud billing consoles only',
+        'HR systems, accounting, CRM',
+      ],
       answer: 'VCS, CI/CD, containerization/orchestration, IaC, monitoring/logging (any three from this list).',
     },
   ],

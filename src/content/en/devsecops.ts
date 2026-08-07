@@ -559,6 +559,12 @@ checkov -d . --framework terraform`,
     },
     {
       question: `Why scan Docker images in CI?`,
+      options: [
+        `Find known CVEs in base layers and dependencies before deploying to prod.`,
+        `Increase image size for better compression.`,
+        `Replace unit tests with image scans only.`,
+        `Disable registry access to speed up builds.`,
+      ],
       answer: `Find known CVEs in base layers and dependencies before deploying to prod.`,
     },
     {
@@ -583,6 +589,12 @@ checkov -d . --framework terraform`,
     },
     {
       question: `What does OWASP Top 10 cover for web applications?`,
+      options: [
+        `Common vulnerability classes: injection, broken auth, XSS, and others.`,
+        `Only physical data center security standards.`,
+        `A list of approved Docker base images only.`,
+        `Kubernetes RBAC role templates.`,
+      ],
       answer: `Common vulnerability classes: injection, broken auth, XSS, and others.`,
     },
     {
@@ -629,6 +641,12 @@ checkov -d . --framework terraform`,
     },
     {
       question: `Name three hardening measures for Kubernetes API and worker nodes.`,
+      options: [
+        `RBAC least privilege, private API endpoint/network policies, regular patches and restricting privileged Pods.`,
+        `Disable RBAC and use cluster-admin for all services`,
+        `Expose the API server publicly without auth for speed`,
+        `Never patch nodes to avoid reboot risk`,
+      ],
       answer: `RBAC least privilege, private API endpoint/network policies, regular patches and restricting privileged Pods.`,
     },
   ],

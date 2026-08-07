@@ -972,8 +972,8 @@ Lead calls user within 24h; acknowledge; explain; offer follow-up; document in t
     },
     {
       question: 'Pending (user) status when:',
-      options: ['We are waiting for the user\'s response', 'Problem solved', 'P1 closed'],
-      answer: 'We are waiting for the user\'s response',
+      options: ["We are waiting for the user's response", 'Problem solved', 'P1 closed', 'SLA breached'],
+      answer: "We are waiting for the user's response",
     },
     {
       question: 'MTTR (Mean Time To Repair) is:',
@@ -997,6 +997,12 @@ Lead calls user within 24h; acknowledge; explain; offer follow-up; document in t
     },
     {
       question: 'Minimum information when opening a ticket:',
+      options: [
+        'User, symptoms, scope (one/many), urgency, what was already tried',
+        'Only the user\'s password and desk number',
+        'Ticket color, font size, and emoji',
+        'Manager approval code before any description',
+      ],
       answer: 'User, symptoms, scope (one/many), urgency, what was already tried',
     },
     {

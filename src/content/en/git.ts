@@ -646,6 +646,13 @@ reflog when “everything is gone”
     },
     {
       question: 'What does git stash do?',
+
+      options: [
+        'Temporarily saves uncommitted changes so you can switch to another task.',
+        'Permanently deletes local commits',
+        'Creates a new branch from current HEAD',
+        'Overwrites the remote branch with force push',
+      ],
       answer: 'Temporarily saves uncommitted changes so you can switch to another task.',
     },
     {
@@ -670,6 +677,12 @@ reflog when “everything is gone”
     },
     {
       question: 'Why use .gitignore?',
+      options: [
+        'To exclude build artifacts, secrets, and local files from the index.',
+        'To encrypt the repository before pushing.',
+        'To list all remote branches automatically.',
+        'To force-push without conflicts.',
+      ],
       answer: 'To exclude build artifacts, secrets, and local files from the index.',
     },
     {
@@ -685,6 +698,12 @@ reflog when “everything is gone”
     },
     {
       question: 'What does git fetch do without a merge?',
+      options: [
+        'Downloads objects and updates remote-tracking branches (origin/*) without changing the working directory or current branch.',
+        'Merges origin/main into your current branch automatically.',
+        'Deletes all local branches.',
+        'Pushes local commits to the remote.',
+      ],
       answer:
         'Downloads objects and updates remote-tracking branches (origin/*) without changing the working directory or current branch.',
     },
@@ -711,6 +730,12 @@ reflog when “everything is gone”
     },
     {
       question: 'How do you view change history for a specific file with blame info?',
+      options: [
+        'git log --follow -- path/to/file or git blame path/to/file',
+        'git status path/to/file only',
+        'git checkout path/to/file',
+        'git remote -v path/to/file',
+      ],
       answer: 'git log --follow -- path/to/file or git blame path/to/file',
     },
   ],

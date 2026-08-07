@@ -993,6 +993,12 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
     },
     {
       question: 'Main goal of network segmentation in an office:',
+      options: [
+        'Limit blast radius—isolate guests, IoT, and critical systems',
+        'Increase broadcast domain for simplicity',
+        'Merge all VLANs into one',
+        'Disable firewall between segments',
+      ],
       answer: 'Limit blast radius—isolate guests, IoT, and critical systems',
     },
     {

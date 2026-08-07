@@ -452,6 +452,13 @@ Add screenshots of Grafana and the architecture diagram.`,
     },
     {
       question: `Why draw an architecture diagram in a portfolio?`,
+
+      options: [
+        `To show understanding of data flows, networks, CI/CD, and observability.`,
+        `Decorate the resume with screenshots without explanation`,
+        `Replace project descriptions with a list of technologies`,
+        `Hide architectural decisions from the recruiter`,
+      ],
       answer: `To show understanding of data flows, networks, CI/CD, and observability.`,
     },
     {
@@ -466,6 +473,12 @@ Add screenshots of Grafana and the architecture diagram.`,
     },
     {
       question: `Why is a public GitHub/GitLab important?`,
+      options: [
+        `Recruiters and interviewers can assess code style, commits, and documentation.`,
+        `It guarantees a job without review.`,
+        `Private repos are always preferred by hiring teams.`,
+        `It replaces the need for any technical interview.`,
+      ],
       answer: `Recruiters and interviewers can assess code style, commits, and documentation.`,
     },
     {
@@ -480,6 +493,12 @@ Add screenshots of Grafana and the architecture diagram.`,
     },
     {
       question: `What should you include in a README for a reviewer?`,
+      options: [
+        `Project goal, stack, prerequisites, deploy/destroy commands, diagram, and dashboard screenshots.`,
+        `Only a one-line title with no setup steps.`,
+        `Credentials and API keys for quick testing.`,
+        `A list of unrelated technologies with no instructions.`,
+      ],
       answer: `Project goal, stack, prerequisites, deploy/destroy commands, diagram, and dashboard screenshots.`,
     },
     {
@@ -516,6 +535,12 @@ Add screenshots of Grafana and the architecture diagram.`,
     },
     {
       question: `What three sections are useful in ARCHITECTURE.md for a DevOps project?`,
+      options: [
+        `Component diagram, CI/CD flow, network/secrets and observability.`,
+        `Resume, hobbies, favorite IDE theme`,
+        `Only a list of npm dependencies`,
+        `Marketing copy and social links`,
+      ],
       answer: `Component diagram, CI/CD flow, network/secrets and observability.`,
     },
   ],

@@ -1203,11 +1203,17 @@ Monitor Event 4769 for RC4 encryption, service accounts with SPN and weak passwo
     },
     {
       question: 'AGDLP stands for:',
+      options: [
+        'Account → Global group → Domain Local group → Permission',
+        'Account → Domain Local → Global → Policy',
+        'Admin → Group → Domain → Password',
+        'Active Directory → Group → Domain → Login',
+      ],
       answer: 'Account → Global group → Domain Local group → Permission',
     },
     {
       question: 'Where is the AD-integrated DNS zone stored?',
-      options: ['In Active Directory', 'Only in the hosts file', 'On the router'],
+      options: ['In Active Directory', 'Only in the hosts file', 'On the router', 'In the DHCP scope only'],
       answer: 'In Active Directory',
     },
     {
@@ -1228,6 +1234,12 @@ Monitor Event 4769 for RC4 encryption, service accounts with SPN and weak passwo
     },
     {
       question: 'Utility to find the source of account lockout:',
+      options: [
+        'LockoutStatus.exe or Get-ADUser / Event Viewer (ID 4740)',
+        'dcdiag /dns',
+        'ipconfig /renew',
+        'gpupdate /force',
+      ],
       answer: 'LockoutStatus.exe or Get-ADUser / Event Viewer (ID 4740)',
     },
     {

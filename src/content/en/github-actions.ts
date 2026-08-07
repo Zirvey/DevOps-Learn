@@ -163,6 +163,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How is job different from step?",
+
+      options: [
+        "Job — set steps on runner; step - a separate action (action or shell).",
+        "Job — a separate shell command; step — the entire pipeline.",
+        "Job runs only locally; step — only in the cloud.",
+        "No difference — they are synonyms in GitHub Actions.",
+      ],
       answer: "Job — set steps on runner; step - a separate action (action or shell).",
     },
     {
@@ -187,6 +194,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "When to use matrix strategy?",
+
+      options: [
+        "For parallel running on different OS versions, languages ​​or parameters.",
+        "For strictly sequential job execution one after another",
+        "Only for deploying to a single target environment",
+        "For storing secrets and environment variables in the workflow",
+      ],
       answer: "For parallel running on different OS versions, languages ​​or parameters.",
     },
     {
@@ -233,6 +247,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How do you pass output from one job to the next in GitHub Actions?",
+      options: [
+        "Via job outputs and referencing needs.<job_id>.outputs.<name> in subsequent steps.",
+        "By copying files manually between runners.",
+        "Using only environment secrets with no job outputs.",
+        "Through a shared database outside GitHub.",
+      ],
       answer: "Via job outputs and referencing needs.<job_id>.outputs.<name> in subsequent steps.",
     },
   ],

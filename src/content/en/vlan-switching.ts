@@ -986,6 +986,12 @@ Expanded labs FAQ troubleshooting case studies CompTIA mapping interview templat
     },
     {
       question: 'Command to put a port in access mode (typical Cisco CLI):',
+      options: [
+        'switchport mode access',
+        'switchport trunk native vlan 1',
+        'no switchport',
+        'spanning-tree portfast default',
+      ],
       answer: 'switchport mode access',
     },
     {

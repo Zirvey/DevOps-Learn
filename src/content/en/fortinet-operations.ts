@@ -1364,6 +1364,12 @@ A: Confirm scope, check WAN link status, ping ISP gateway, check SD-WAN failover
     },
     {
       question: 'Command to view the FortiGate session table:',
+      options: [
+        'diagnose sys session list',
+        'get system session list',
+        'show firewall session all',
+        'execute session-table dump',
+      ],
       answer: 'diagnose sys session list',
     },
     {

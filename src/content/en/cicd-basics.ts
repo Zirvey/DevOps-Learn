@@ -111,6 +111,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "Why run a pipeline on a pull request?",
+
+      options: [
+        "Early detection of errors before merging into the main branch.",
+        "To speed up merge without code review",
+        "Only for generating a changelog",
+        "Pipeline on PR runs exclusively on main",
+      ],
       answer: "Early detection of errors before merging into the main branch.",
     },
     {
@@ -135,6 +142,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "What are the typical stages of a CI pipeline for a web application?",
+      options: [
+        "Lint, unit tests, build, integration/e2e, security scan, publish artifact/image.",
+        "Deploy to production first, then run tests.",
+        "Only manual QA with no automation.",
+        "Compile once and skip all verification stages.",
+      ],
       answer: "Lint, unit tests, build, integration/e2e, security scan, publish artifact/image.",
     },
     {
@@ -181,6 +194,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "List three practices to speed up the feedback loop in CI.",
+      options: [
+        "Parallel jobs, dependency caching, fast unit tests at early stages.",
+        "Run all stages sequentially with no cache.",
+        "Deploy first and test in production only.",
+        "Disable pipelines to reduce CI cost.",
+      ],
       answer: "Parallel jobs, dependency caching, fast unit tests at early stages.",
     },
   ],

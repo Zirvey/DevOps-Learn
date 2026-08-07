@@ -113,6 +113,13 @@ const translation: ChapterTranslation = {
     },
     {
       question: "What tools are often used for GitOps in Kubernetes?",
+
+      options: [
+        "Argo CD, Flux (and analogues).",
+        "Only kubectl apply without a sync controller",
+        "Jenkins and TeamCity for deploying from Git",
+        "Terraform only without tying to a Kubernetes cluster",
+      ],
       answer: "Argo CD, Flux (and analogues).",
     },
     {
@@ -137,6 +144,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How to organize promotion between dev/stage/prod in GitOps?",
+      options: [
+        "Separate branches/directories/overlay (Kustomize) or updating the image tag via PR.",
+        "kubectl apply directly on production clusters from laptops.",
+        "Store secrets in plain text in the main branch.",
+        "Disable pull requests for faster deploys.",
+      ],
       answer: "Separate branches/directories/overlay (Kustomize) or updating the image tag via PR.",
     },
     {
@@ -183,6 +196,12 @@ const translation: ChapterTranslation = {
     },
     {
       question: "How to safely update an image tag in GitOps without a direct push to main?",
+      options: [
+        "Via PR updating values/manifest with review; CI can open a PR after a successful image build.",
+        "Push directly to main without review.",
+        "kubectl set image on production from a laptop.",
+        "Edit cluster state only with helm delete.",
+      ],
       answer: "Via PR updating values/manifest with review; CI can open a PR after a successful image build.",
     },
   ],

@@ -1149,6 +1149,12 @@ Software Linux: \\\`/opt/tplink/EAPController/logs/\\\`. UI: Logs menu. Syslog f
     },
     {
       question: 'Default HTTPS port for Omada Software Controller:',
+      options: [
+        '8043 (or 443 behind a reverse proxy)',
+        '22 (SSH default)',
+        '8080 only with no alternatives',
+        '161 (SNMP)',
+      ],
       answer: '8043 (or 443 behind a reverse proxy)',
     },
     {

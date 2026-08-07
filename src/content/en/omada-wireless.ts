@@ -986,11 +986,22 @@ Wi-Fi problem reported
     },
     {
       question: 'Recommended 5 GHz channel width in a dense office:',
+      options: [
+        '20 or 40 MHz (80 MHz—only with few neighbors)',
+        '160 MHz always',
+        '5 MHz only for dense environments',
+        '80 MHz mandatory in any office',
+      ],
       answer: '20 or 40 MHz (80 MHz—only with few neighbors)',
     },
     {
       question: 'Standalone mode AP in Omada is used when:',
-      options: ['No controller—managed locally on the AP', 'Required for Corp SSID', 'DC only', 'Mesh only'],
+      options: [
+        'No controller—managed locally on the AP',
+        'Corp SSID is mandatory',
+        'Only for DC',
+        'Mesh is required',
+      ],
       answer: 'No controller—managed locally on the AP',
     },
   ],
