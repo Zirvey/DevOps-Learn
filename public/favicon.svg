@@ -1,10 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#050607"/>
-  <path
-    d="M16 11.5C16 7 9.5 7 9.5 16C9.5 25 16 25 16 20.5C16 25 22.5 25 22.5 16C22.5 7 16 7 16 11.5Z"
-    stroke="#3fcb7f"
-    stroke-width="3.25"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- Pixel terminal prompt favicon -->
+  <rect width="16" height="16" fill="#000000"/>
+  <g fill="#3fcb7f">
+    <!-- Frame (1px, cut corners) -->
+    <rect x="3" y="2" width="10" height="1"/>
+    <rect x="3" y="13" width="10" height="1"/>
+    <rect x="2" y="3" width="1" height="10"/>
+    <rect x="13" y="3" width="1" height="10"/>
+    <!-- Prompt “>” — thicker chevron, lower -->
+    <rect x="4" y="7" width="2" height="1"/>
+    <rect x="5" y="8" width="2" height="1"/>
+    <rect x="6" y="9" width="2" height="1"/>
+    <rect x="5" y="10" width="2" height="1"/>
+    <rect x="4" y="11" width="2" height="1"/>
+  </g>
 </svg>
