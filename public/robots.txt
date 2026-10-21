@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zirvey.github.io/DevOps-Learn/sitemap.xml

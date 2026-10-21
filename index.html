@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DevOps Learn — бесплатная платформа: Linux, Docker, Kubernetes, CI/CD, Terraform, Office IT. Уроки, терминал, квизы, треки."
+    />
+    <meta name="theme-color" content="#0a0e17" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DevOps Learn" />
+    <meta property="og:title" content="DevOps — Платформа обучения" />
+    <meta
+      property="og:description"
+      content="Структурированный курс DevOps и Office IT: главы, практика, терминальный тренажёр и квизы."
+    />
+    <meta property="og:url" content="https://zirvey.github.io/DevOps-Learn/" />
+    <meta
+      property="og:image"
+      content="https://zirvey.github.io/DevOps-Learn/media/og-cover.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DevOps — Платформа обучения" />
+    <meta
+      name="twitter:description"
+      content="Бесплатный курс DevOps и Office IT с практикой и квизами."
+    />
+    <meta
+      name="twitter:image"
+      content="https://zirvey.github.io/DevOps-Learn/media/og-cover.jpg"
+    />
+    <link rel="canonical" href="https://zirvey.github.io/DevOps-Learn/" />
+    <title>DevOps — Платформа обучения</title>
+    <script>
+      (function () {
+        var key = 'devops-handbook-theme';
+        var theme = localStorage.getItem(key);
+        if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
