@@ -24,6 +24,7 @@ export const en: Translations = {
   },
   search: {
     placeholder: 'Search the handbook... (⌘K)',
+    placeholderMobile: 'Search…',
     empty: 'No results',
   },
   home: {

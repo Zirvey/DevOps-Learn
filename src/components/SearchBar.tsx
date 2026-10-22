@@ -6,13 +6,26 @@ import { getLocalizedChapterTitle } from '../i18n/contentLabels'
 import { localizeChapter } from '../i18n/localizeChapter'
 import { useLanguage } from '../i18n/LanguageContext'
 
+const MOBILE_SEARCH_MQ = '(max-width: 768px)'
+
 export function SearchBar() {
   const { locale, t } = useLanguage()
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
+  const [compactPlaceholder, setCompactPlaceholder] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia(MOBILE_SEARCH_MQ).matches : false,
+  )
   const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
   const results = searchChapters(query, locale).slice(0, 8)
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_SEARCH_MQ)
+    const sync = () => setCompactPlaceholder(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -43,7 +56,9 @@ export function SearchBar() {
         <input
           ref={inputRef}
           type="search"
-          placeholder={t('search.placeholder')}
+          placeholder={
+            compactPlaceholder ? t('search.placeholderMobile') : t('search.placeholder')
+          }
           value={query}
           onChange={(e) => {
             setQuery(e.target.value)

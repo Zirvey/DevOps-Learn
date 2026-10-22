@@ -22,6 +22,7 @@ export const ru = {
   },
   search: {
     placeholder: 'Поиск по учебнику... (⌘K)',
+    placeholderMobile: 'Поиск…',
     empty: 'Ничего не найдено',
   },
   home: {

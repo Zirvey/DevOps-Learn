@@ -659,6 +659,8 @@ ul, ol {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: border-color var(--transition);
+  overflow: hidden;
+  min-width: 0;
 }
 
 .search-bar.open .search-input-wrap,
@@ -673,15 +675,23 @@ ul, ol {
 
 .search-input-wrap input {
   flex: 1;
+  min-width: 0;
+  width: 100%;
   background: none;
   border: none;
   outline: none;
   color: var(--text-primary);
   font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .search-input-wrap input::placeholder {
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .search-clear {
@@ -1657,15 +1667,19 @@ ul, ol {
   overflow-wrap: break-word;
 }
 
+.md-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  margin: 16px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .markdown-content table {
-  display: block;
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
-  margin: 16px 0;
   font-size: 0.875rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .markdown-content th,
@@ -1673,6 +1687,9 @@ ul, ol {
   padding: 10px 14px;
   border: 1px solid var(--border);
   text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .markdown-content th {
@@ -2931,11 +2948,22 @@ ul, ol {
     padding-top: max(12px, env(safe-area-inset-top));
     padding-right: max(16px, env(safe-area-inset-right));
     padding-bottom: 12px;
-    padding-left: max(56px, calc(44px + env(safe-area-inset-left) + 12px));
+    /* burger 44 + left inset 12 + gap 12 between burger and search */
+    padding-left: max(68px, calc(44px + env(safe-area-inset-left) + 24px));
   }
 
   .top-bar .search-bar {
     max-width: none;
+    min-width: 0;
+  }
+
+  .top-bar .search-input-wrap {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .top-bar .search-input-wrap input {
+    letter-spacing: 0.04em;
   }
 
   .top-bar-account {
@@ -3053,13 +3081,61 @@ ul, ol {
     columns: 1;
   }
 
-  .markdown-content table {
-    font-size: 0.8125rem;
+  /* Stack markdown tables as labeled cards — no sideways scroll */
+  .md-table-wrap {
+    overflow: visible;
   }
 
+  .markdown-content table,
+  .markdown-content thead,
+  .markdown-content tbody,
+  .markdown-content tr,
   .markdown-content th,
   .markdown-content td {
-    padding: 8px 10px;
+    display: block;
+    width: 100%;
+  }
+
+  .markdown-content thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .markdown-content tr {
+    margin-bottom: 12px;
+    padding: 4px 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+  }
+
+  .markdown-content td {
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    font-size: 0.875rem;
+  }
+
+  .markdown-content td:last-child {
+    border-bottom: none;
+  }
+
+  .markdown-content td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
   }
 }
 
