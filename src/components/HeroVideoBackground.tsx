@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react'
 import { siteConfig } from '../config/site'
-import { DashboardPreview } from './DashboardPreview'
 
-/** Full-bleed loop video behind hero text (Basedash-style) */
+/** Full-bleed loop video behind hero text */
 export function HeroVideoBackground() {
   const [videoReady, setVideoReady] = useState(false)
   const [videoFailed, setVideoFailed] = useState(false)
@@ -32,11 +31,12 @@ export function HeroVideoBackground() {
         </video>
       )}
 
-      <div
+      <img
         className={`hero-video-bg__fallback${showVideo ? '' : ' is-visible'}`}
-      >
-        <DashboardPreview />
-      </div>
+        src={poster}
+        alt=""
+        decoding="async"
+      />
 
       <div className="hero-video-bg__scrim" />
     </div>
